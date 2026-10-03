@@ -1,6 +1,6 @@
 export class ApiConst {
   constructor() { }
-  IsLive: boolean = false;
+  IsLive: boolean = true;
   autohost(location) {
     debugger;
     var apiHost = '';
