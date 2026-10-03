@@ -1,0 +1,77 @@
+ <div style="height: 100%;">
+    <mat-sidenav-container class="h-100 overlay"
+        style="background: url(./assets/img/eRequirement/E-Req1.png); background-repeat: no-repeat; background-size: 100% 100%;">
+ 
+        <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 25vh; margin-bottom: 25vh;">
+            <div class="col-md-3 col-sm-10 mat-elevation-z6 contentBody"
+                style="text-align: center; padding-top: 10px; padding-left: 2%; padding-right: 2%; border-radius: 25px; background-image: radial-gradient( circle farthest-corner at 50.4% 50.5%,  rgba(251,32,86,1) 0%, rgba(135,2,35,1) 90% );">
+
+                <div class="col-md-12 col-sm-10" style="display: inline-block; padding: 0px; margin: 0px;">
+                    <div class="">
+                        <div class="" style="color: #ffffff; font-weight: bold; text-align: center; font-size: 25px;">
+                            <i class="fa fa-align-justify"></i>
+                            Verify OTP
+                        </div>
+                        <div class="card-body" style="margin: 0px; padding: 0px;">
+
+                            <div class="col-md-12" style="padding: 0px; margin: 0px;">
+
+                                <div class="container-fluid" style="padding: 10px;">
+
+
+                                    <form #userForm="ngForm" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                                    <div class="">
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3 inputField"
+                                                style="width: 75%; margin-left: 12.5%;">
+
+                                                <input id="otp" type="text" aria-label="Small"
+                                                    aria-describedby="inputGroup-sizing-sm" autofocus
+                                                   required
+                                                    class="form-control " placeholder="Enter OTP"
+                                                    name="otp" formControlName="otp">
+
+                                             
+
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm"
+                                                style="width: 75%; margin-left: 12.5%;">
+                                                <button class="btn mat-elevation-z6 w-100"
+                                                    [disabled]="userForm.form.invalid"
+                                                    style="background-image: linear-gradient( 179.7deg,  rgba(197,214,227,1) 2.9%, rgba(144,175,202,1) 97.1% ); color:darkblue; font-weight:bold;"
+                                                    type="submit">Submit</button>
+                                                   
+ 
+                                            </div>
+                                        </div>
+                                        </div>
+
+                        </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-container>
+
+
+</div>
+
+
+ 
+
+
+
+
+
+
+
+

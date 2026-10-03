@@ -1,0 +1,433 @@
+
+//   .showImage {
+
+//      background-image: url("../../../assets/img/citygroup/background-image.jpg"); 
+//      background-repeat: no-repeat; 
+//      background-size: cover;
+// }
+
+
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1200px;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+
+.first-column{
+  width: 120px;
+  
+}
+.workExperience{
+  margin-top: 10px;
+ 
+}
+
+.dropDown{
+  margin-left: 30px;
+}
+
+
+.outer{
+ 
+  background: linear-gradient(to top,rgb(98, 104, 103) 50%, #706e6f 90%) no-repeat;
+ height: 1000;
+
+}
+.container{
+  /* border: 2px solid gray; */
+  /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
+  background: white;
+  border-radius: 10px;
+  padding-bottom: 40px;
+  
+}
+.containers{
+  border: 2px solid gray; 
+  /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
+  background: white;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 40px;
+  
+}
+
+
+.container-details{
+  padding-top: 20px;
+ 
+ 
+}
+.inner{
+background-color: white;
+
+width: 30%;
+align-items: center;
+         border-radius: 2%;
+         padding: 15px;
+  
+}
+
+.btnb{
+ 
+  background-color: #0056b3;
+  width: 80%;
+  
+  text-align: center;
+  border-radius: 5px;
+  color:white ;
+  transition:  0.5s;
+  margin-top: 20px;
+  margin-left: 120px;
+
+ 
+}
+.btnb:hover {
+  background-color: blue; /* Background color on hover */
+}
+
+
+.font-weight-bold{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.name_show{
+  padding-left: 40%;
+  padding-top: 10px;
+  color: white;
+}
+
+.persentAddressLen{
+  width: 30px;
+} 
+
+.AppliedPost{
+  background-color: #508bfc;
+  margin-bottom: 0px;
+  padding-left: 40%;
+  padding-top: 20px;
+
+  
+} 
+.leftDate{
+  margin-bottom: 0px;
+  padding-top: 1%;
+   color: white; 
+ 
+} 
+.postRadio label{
+  color: white;
+}
+
+.postRadio{
+  padding-left: 40%;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.first-Row td{
+  text-align: center;
+
+  /* padding-left: 20px; */
+}
+.addButton{
+  padding-left: 9.5%;
+}
+
+
+.first-Row .clm{
+  /* background-color: gray; */
+  background-color: #2e7cbb;
+  border-radius: 3px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid lightblue;
+  width: 15%;
+ 
+ 
+}
+
+
+
+.textSize{
+  font-size: 14px;
+}
+
+.first-Row{
+  margin-left: 8%;
+
+}
+
+.first-Row .first-column{
+  width: 10%;
+}
+
+.startleftDate{
+  color:red
+}
+.timeoVER{
+  color:red;
+
+  
+}
+.leftDate{
+color: blue;
+}
+
+
+
+
+.logoutButton{
+  padding-right: 5%;
+  padding-bottom: .5%;
+  padding-top: .5%;
+}
+
+
+
+.Personal_Information{
+  margin-bottom: 10px;
+}
+
+
+.title_box #title {
+  position: relative;
+  top: -0.6em;
+  margin-left: 1em;
+  display: inline;
+  background-color: white;
+  
+}
+
+.requirementForm #title {
+  position: relative;
+  top: -0.6em;
+  margin-left: 1em;
+  display: inline;
+  background-color: white;
+ 
+}
+
+.requirementForm{
+
+  border: 1px  solid black;
+}
+
+
+.maritalStatus{
+  margin-bottom: 15px;
+}
+
+.EmployeeAddress{
+  margin-bottom: 10px;
+}
+
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+}
+.dropdown-item i {
+  margin-right: 5px;
+}
+.dropdown-menu{
+width: 100px;
+}
+
+  .dropdown{
+      padding-right: 5%;
+      padding-bottom: .5%;
+      padding-top: .5%;
+  }
+
+  .dropdown-item:hover {
+      /* background-color: gray !important; */
+       color: white; 
+    }
+
+    /* .BackButton{
+      margin-left: -2225%;
+  } */
+    .backgroundColor{
+      /* background: linear-gradient(90deg,#411212,#791717,#cc3c3c,#471010,#411212,#791717,#cc3c3c,#471010); */
+      background-color: #143460;
+    }
+    .backgroundColor img{
+      /* Style the header image as desired */
+      width: 35px; /* Adjust width/height as needed */
+      height: 35px;
+      margin-right: 10px; 
+      margin-left: 30px;
+   }
+
+ 
+  
+
+
+
+   .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Each column should be at least 200px wide, but can expand */
+      grid-gap: 10px; /* Gap between grid items */
+  }
+  
+  .grid-item {
+      padding: 5px;
+      border: 1px solid #ccc;
+  }
+  
+  .first-row {
+      font-weight: bold;
+  }
+  
+
+
+
+
+
+
+
+  /* For small devices, display one column per row */
+@media screen and (max-width: 767px) {
+  .work-experience-item {
+      display: block;
+      margin-bottom: 20px;
+  }
+}
+
+
+/* For larger devices, display all data in one row */
+@media screen and (min-width: 768px) {
+  .work-experience-item {
+      display: inline-block;
+     
+      width: 13%; 
+      margin-right: 01%; 
+     
+  }
+}
+
+
+
+.academic-qualification-item {
+  display: block; /* Display one column per row by default */
+}
+
+@media screen and (min-width: 768px) {
+  .academic-qualification-item {
+      display: grid;
+      grid-column-gap: 1%;
+      grid-template-columns: repeat(8, 1fr); 
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .smallDeviceTopCol {
+     color: white;
+    margin-top: 5px;
+    background-color: #428bca;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-radius: 2%;
+
+    
+  }
+  .smallDeviceTopColButton {
+      margin-top: 5px;
+      width: 100%;
+      margin-left: 6px;
+  
+  }
+}
+@media screen and (max-width: 767px) {
+.SubmitButton{
+ width: 80%;
+ margin-left: 10%;
+}
+}
+@media screen and (min-width: 768px) {
+  .Qulification_index{
+   margin-top: 30px;
+  }
+}
+
+
+
+.academic-qualification-item div{
+  margin-left: 5%;
+  margin-left: 5px;
+  width: 100%;
+  
+}
+
+/* for header section */
+@media (max-width: 767px) {
+  .citygroup-container {
+    justify-content: center;
+  }
+
+  .citygroup-name {
+    margin-top: 8px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+   
+  }
+}
+@media (max-width: 767px) {
+  .UploadAllDocument .row{
+      margin-left: -30%;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 40px;
+  
+
+  }
+  .BackButton{
+      margin-right: 1300px;  
+  }
+}
+
+@media (max-width: 767px) {
+  .citygroup-container{
+    /* margin-left: 13%; */
+  }
+}
+@media (max-width: 767px) {
+  .BackButtonClasd{
+    margin-left: 0%;
+  }
+}
+
+
+.form-group {
+  margin-bottom: 15px; /* Adjust the spacing as needed */
+}
+
+.academic-qualification-item {
+  margin-bottom: 30px; /* Creates gap between qualifications */
+}
+
+
+

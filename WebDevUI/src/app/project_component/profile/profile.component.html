@@ -1,0 +1,1859 @@
+<!-- this is break part -->
+
+
+<div id="headerSection" #headerSection style=" margin-right: 20px; margin-top: 2px;">
+
+  <div class="card-header pt-0 pb-0 pl-2 pr-0 clearfix"
+    style="height: 30px; border: 1px solid #ccc; background-color: #138496;">
+    <h4 class="myCustomTitle pt-1"><i style="font-size: 14px;" class="fa fa-table"></i> <span style="cursor: pointer;"
+        (click)="setToggling('Master')"> {{ requirementForm?.get('name')?.value }} Profile
+        {{cmnEntity.isShow?'List':'Entry'}}</span>
+    </h4>
+    <common-button-top #cmnsrv (executeSubmit)="cmnbtnAction($event)" [cmnEntity]="cmnEntity" class="pull-right"
+      [btnForm]="requirementForm"></common-button-top>
+  </div>
+
+
+  <div style="margin-left: 1%;" *ngIf="(applicantdetail && !isEdit) && !cmnEntity.isShow">
+    <h6>Profile already exist</h6>
+  </div>
+
+  <div *ngIf="!cmnEntity.isShow && isToggleMaster && (!applicantdetail || isEdit)"
+    class="col-md-12 pl-0 pr-0 ml-2 pt-2 pb-0 m-0 table-primary">
+    <div class="marquee">
+      Fill the form according to your National ID
+    </div>
+
+    <form style="background-color: white;" id="subForm" [formGroup]="requirementForm" #f="ngForm"
+      class="form-horizontal">
+      <div style="background-color: white; " class="row p-0 m-0 containers">
+        <div class="col-xl-4 col-lg-4 col-11 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+          <div hidden class="form-group clearfix">
+            <label class=" main-title control-label col-sm-2  p-0  pt-1 basicInfo" for="jobTitle"
+              style="float: left;">Job Title: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input disabled formControlName="jobTitle" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="jobTitle"
+                  placeholder="Enter Job Title..." name="jobTitle">
+              </div>
+            </div>
+          </div>
+
+          <div hidden class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0 pt-1" for="post" style="float: left;">Applied Post:
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input disabled formControlName="appliedPost" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="appliedPost"
+                  placeholder="Enter Post Title..." name="appliedPost">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="name" style="float: left;">Full Name: <span
+                class="text-danger">*</span>
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="name" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="name"
+                  placeholder="Enter Full Name..." name="name"
+                  [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger mt-1 fs-4">
+                  <small *ngIf="name.errors.required">Full Name is required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="BnName" style="float: left;">বাংলা নাম:
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="BnName" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="BnName" placeholder=""
+                  BnName="BnName" [ngClass]="{ 'is-invalid': BnName.invalid && (BnName.dirty || BnName.touched) }">
+                <div *ngIf="BnName.invalid && (BnName.dirty || BnName.touched)" class="text-danger mt-1 fs-4">
+                  <small *ngIf="BnName.errors.required"> বাংলায় নাম লিখুন</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="nid" style="float: left;">NID: <span
+                class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="nidN" type="number"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="nidN" placeholder=""
+                  name="nidN" [ngClass]="{ 'is-invalid': nidN.invalid && (nidN.dirty || nidN.touched) }">
+                <div *ngIf="nidN.invalid && (nidN.dirty || nidN.touched)" class="text-danger mt-1 fs-4">
+                  <small *ngIf="nidN.errors.required">NID is required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="tin" style="float: left;">TIN: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="tin" type="number"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="tin" placeholder=""
+                  name="tin">
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="tin" style="float: left;">Tax District:
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 99.5%; font-size: 13px; float: left;">
+                <ng-select2 formControlName="taxDistrict" [options]="options" [allowClear]="true" id="taxDistrict"
+                  name="taxDistrict" [data]="DistrictList" [placeholder]="'Select Tax District'">
+                </ng-select2>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="tin" style="float: left;">Tax Zone:
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 99.5%; font-size: 13px; float: left;">
+                <ng-select2 formControlName="taxZone" [options]="options" [allowClear]="true" id="taxZone"
+                  name="taxZone" [data]="taxZoneList" [placeholder]="'Select Tax Zone'">
+                </ng-select2>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="tin" style="float: left;">Tax Circle:
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 99.5%; font-size: 13px; float: left;">
+                <ng-select2 formControlName="taxCircule" [options]="options" [allowClear]="true" id="taxCircule"
+                  name="taxCircule" [data]="taxCicleList" [placeholder]="'Select Tax Circle'">
+                </ng-select2>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="bloodGroup" style="float: left;">Blood
+              Group: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 99.5%; font-size: 13px; float: left;">
+                <ng-select2 (valueChanged)="getBlood($event)" formControlName="bloodGroup" [data]="bloodGroupList"
+                  [options]="{ placeholder: 'Select Blood Group', allowClear: true }" class="main-input" id="bloodGroup"
+                  name="bloodGroup">
+                </ng-select2>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="relegion" style="float: left;">Relegion:
+              <span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 99.5%; font-size: 13px; float: left;">
+                <ng-select2 class="main-input" formControlName="relegion" [options]="options" [data]="religionList"
+                  [allowClear]="true" id="relegion" name="relegion" [placeholder]="'Select Relegion'">
+                </ng-select2>
+              </div>
+              <small
+                *ngIf="requirementForm.get('religion')?.errors?.required && (requirementForm.get('religion')?.touched || requirementForm.get('religion')?.dirty)"
+                class="text-danger">
+                Religion field must not be empty.
+              </small>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-11 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+
+          <div hidden class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="company" style="float: left;">Company:
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input disabled formControlName="company" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="company"
+                  placeholder="Enter Company..." name="company">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="mobileNumber" style="float: left;">Mobile
+              Number: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input disabled formControlName="mobileNumber" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="mobileNumber" placeholder=""
+                  name="mobileNumber">
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="maritialStatus"
+              style="float: left;">Marital Stat:<span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 99.5%; font-size: 13px; float: left;">
+                <ng-select2 class="main-input" formControlName="maritialStatus" [options]="options"
+                  [data]="maritialStatusList" [allowClear]="true" id="maritialStatus" name="maritialStatus"
+                  [placeholder]="'Select Maritial Status'"
+                  [ngClass]="{ 'is-invalid': maritialStatus.invalid && (maritialStatus.dirty || maritialStatus.touched) }">
+                </ng-select2>
+
+                <div *ngIf="gender.invalid && (maritialStatus.dirty || maritialStatus.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="maritialStatus.errors.required">Maritial Status is required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="spouseName" style="float: left;">Spouse
+              Name: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="spouseName" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="spouseName" placeholder=""
+                  name="spouseName">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="BnSpouseName"
+              style="float: left;">স্বামী/স্ত্রী নাম: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="BnSpouseName" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="BnSpouseName" placeholder=""
+                  name="BnSpouseName">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2 p-0 pt-1" for="fatherName" style="float: left;">Father Name:
+              <span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="fatherName" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="fatherName" placeholder=""
+                  name="fatherName"
+                  [ngClass]="{ 'is-invalid': fatherName.invalid && (fatherName.dirty || fatherName.touched) }">
+                <div *ngIf="fatherName.invalid && (fatherName.dirty || fatherName.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="fatherName.errors.required">Father Name is required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2 p-0 pt-1" for="BnFatherName" style="float: left;">পিতার নাম:
+              <span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="BnFatherName" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="BnFatherName" placeholder=""
+                  name="BnFatherName"
+                  [ngClass]="{ 'is-invalid': BnFatherName.invalid && (BnFatherName.dirty || BnFatherName.touched) }">
+                <div *ngIf="BnFatherName.invalid && (BnFatherName.dirty || BnFatherName.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="BnFatherName.errors.required">পিতার নাম বাংলায় লিখুন</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0 pt-1" for="dateOfBirth" style="float: left;">Date Of
+              Birth <span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="dateOfBirth" type="date"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="dateOfBirth"
+                  placeholder="Enter dateOfBirth..." name="dateOfBirth"
+                  [ngClass]="{ 'is-invalid': dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched) }">
+                <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="dateOfBirth.errors.required">Date Of Birth required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0 pt-1" for="expectedSelery"
+              style="float: left;">Expected Salary: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input formControlName="expectedSelery" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="expectedSelery" placeholder=""
+                  name="expectedSelery">
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+
+        <div class="col-xl-4  col-11 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+
+          <div hidden class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="department"
+              style="float: left;">Department: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <input disabled formControlName="department" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="department" placeholder=""
+                  name="department">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="email" style="float: left;">Email: </label>
+            <div class="col-sm-9 col-lg-9 col-md-6 p-0 m-0" style="float: left;">
+              <div class="input-right" style="padding: 0px;  font-size: 13px; float: left;">
+                <input disabled formControlName="email" type="email"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="email" placeholder=""
+                  name="email">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="motherName" style="float: left;">Mother
+              Name:<span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div class="input-right" style="padding: 0px;  font-size: 13px; float: left;">
+                <input formControlName="motherName" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="motherName" placeholder=""
+                  name="motherName"
+                  [ngClass]="{ 'is-invalid': motherName.invalid && (motherName.dirty || motherName.touched) }">
+                <div *ngIf="motherName.invalid && (motherName.dirty || motherName.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="motherName.errors.required">Mother Name is required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="BnMotherName" style="float: left;">মাতার
+              নাম:<span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div class="input-right" style="padding: 0px;  font-size: 13px; float: left;">
+                <input formControlName="BnMotherName" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="BnMotherName" placeholder=""
+                  name="BnMotherName"
+                  [ngClass]="{ 'is-invalid': BnMotherName.invalid && (BnMotherName.dirty || BnMotherName.touched) }">
+                <div *ngIf="BnMotherName.invalid && (BnMotherName.dirty || BnMotherName.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="BnMotherName.errors.required">মায়ের নাম বাংলায় লিখুন</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="birthPlace" style="float: left;">Birth
+              Place: <span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div class="input-right" style="padding: 0px;  font-size: 13px; float: left;">
+                <input formControlName="birthPlace" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="birthPlace" placeholder=""
+                  name="birthPlace"
+                  [ngClass]="{ 'is-invalid': birthPlace.invalid && (birthPlace.dirty || birthPlace.touched) }">
+                <div *ngIf="birthPlace.invalid && (birthPlace.dirty || birthPlace.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="birthPlace.errors.required">Birth Place is required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="gender" style="float: left;">Gender: <span
+                class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div class="input-right-drop" style="padding: 0px;  font-size: 13px; float: left;">
+                <ng-select2 class="main-input" formControlName="gender" [options]="options" [data]="genderList"
+                  [allowClear]="true" id="gender" name="gender" [placeholder]="'Select Gender'"
+                  [ngClass]="{ 'is-invalid': gender.invalid && (gender.dirty || gender.touched) }">
+                </ng-select2>
+                <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="text-danger mt-1 fs-4">
+                  <small *ngIf="gender.errors.required">Gender is required.</small>
+                </div>
+
+
+              </div>
+            </div>
+
+
+
+          </div>
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="sourceFrom" style="float: left;">Source
+              From:
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div class="input-right-drop" style="padding: 0px;  font-size: 13px;  float: left;">
+                <ng-select2 class="main-input" formControlName="sourceFrom" [options]="options" [data]="sourceList"
+                  [allowClear]="true" id="sourceFrom" name="sourceFrom" [placeholder]="'Select Source'">
+                </ng-select2>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="anyRelative" style="float: left;">Any
+              Relative Here?:<span class="text-danger">*</span></label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 95.5%; font-size: 13px; float: left;">
+                <ng-select2 class="main-input" formControlName="anyRelative" [options]="options" [data]="commonList"
+                  (valueChanged)="getAnyRelative($event)" [allowClear]="true" id="anyRelative" name="anyRelative"
+                  [placeholder]="'Select Relative Status'"
+                  [ngClass]="{ 'is-invalid': anyRelative.invalid && (anyRelative.dirty || anyRelative.touched) }">
+                </ng-select2>
+
+                <div *ngIf="anyRelative.invalid && (anyRelative.dirty || anyRelative.touched)"
+                  class="text-danger mt-1 fs-4">
+                  <small *ngIf="anyRelative.errors.required">Relative Status is required.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div *ngIf="showRelativeDes=='1' || requirementForm.get('anyRelative')?.value === '1' "
+            class="form-group clearfix">
+            <label class="main-title control-label col-sm-2  p-0  pt-1" for="describeRelative"
+              style="float: left;">Spcify Relative: </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                <textarea formControlName="describeRelative" type="text"
+                  class="main-input form-control form-control-sm input-sm input-sm-*" id="describeRelative"
+                  placeholder="Specify about your relative in City Group" name="describeRelative"></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ADDRESS START FORM HERE -->
+      <div style="background-color: white;" class="containers mb-2   mt-2 addressDetails">
+
+        <h6 id="title" style="background-color: #138496; color: white; height: 30px;" class=" mb-1 h5 text-center">
+          Address</h6>
+        <h6 class="addressMstrTitle preandparAddress">Present Address : </h6>
+        <div class="row p-0 m-0">
+
+          <div class=" col-xl-2 col-lg-2 col-12 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="preAddDivision" class="address-title control-label">Division: <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+
+                <div class="address-input address-dropdown"
+                  style="padding: 0px; width: 95.5%;  font-size: 13px; float: left;">
+                  <ng-select2 formControlName="preAddDivision" [options]="options" [allowClear]="true"
+                    id="preAddDivision" name="preAddDivision" [data]="preDivList" [placeholder]="'Select Division'"
+                    (valueChanged)="getDistrictById($event)"
+                    [ngClass]="{ 'is-invalid': preAddDivision.invalid && (formSubmitted || preAddDivision.touched) }">
+                  </ng-select2>
+                  <div *ngIf="preAddDivision.invalid && (formSubmitted || preAddDivision.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="preAddDivision.errors.required">Division is required.</small>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-12 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="preAddDistrict" class="address-title control-label">District: <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-dropdown"
+                  style="padding: 0px; width: 95.5%;  font-size: 13px; float: left;">
+
+                  <ng-select2 formControlName="preAddDistrict" [options]="options" [allowClear]="true"
+                    id="preAddDistrict" name="preAddDistrict" [data]="preDisList" [placeholder]="'Select District'"
+                    (valueChanged)="getThanaById($event)"
+                    [ngClass]="{ 'is-invalid': preAddDistrict.invalid && (formSubmitted || preAddDistrict.touched) }">
+                  </ng-select2>
+                  <div *ngIf="preAddDistrict.invalid && (formSubmitted || preAddDistrict.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="preAddDistrict.errors.required">District is required.</small>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-12 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="preAddThana" class="address-title control-label">Thana: <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-dropdown"
+                  style="padding: 0px; width: 95.5%;  font-size: 13px; float: left;">
+                  <ng-select2 formControlName="preAddThana" [options]="options" [data]="preThnList" [allowClear]="true"
+                    id="preAddThana" name="preAddThana" [placeholder]="'Select Thana'"
+                    [ngClass]="{ 'is-invalid': preAddThana.invalid && (formSubmitted || preAddThana.touched) }">
+                  </ng-select2>
+                  <div *ngIf="preAddThana.invalid && (formSubmitted || preAddThana.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="preAddThana.errors.required">Thana is required.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-11 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="preAddPostOffice" class="address-title control-label">Post: <span
+                  class="text-danger"></span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-plane" style="padding: 0px;   font-size: 13px; float: left;">
+
+                  <input formControlName="preAddPostOffice" type="text"
+                    class=" form-control form-control-sm input-sm input-sm-*" id="preAddPostOffice"
+                    placeholder="Enter Post Office..." name="preAddPostOffice">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-11 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="preAddVillage" class="address-title control-label">Village: <span
+                  class="text-danger"></span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-plane" style="padding: 0px;   font-size: 13px; float: left;">
+
+                  <input formControlName="preAddVillage" type="text"
+                    class=" form-control form-control-sm input-sm input-sm-*" id="preAddVillage" placeholder=""
+                    name="preAddVillage">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-11 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="preAddDetai" class="address-title control-label">Address Detail: <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-plane" style="padding: 0px;   font-size: 13px; float: left;">
+
+                  <textarea formControlName="preAddDetai" type="text"
+                    class=" form-control form-control-sm input-sm input-sm-*" id="preAddDetai" placeholder=""
+                    name="preAddDetai" rows="1"
+                    [ngClass]="{ 'is-invalid': preAddDetai.invalid && (preAddDetai.dirty || preAddDetai.touched) }"></textarea>
+
+                  <div *ngIf="preAddDetai.invalid && (preAddDetai.dirty || preAddDetai.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="preAddDetai.errors.required">Address Detail is required.</small>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="row p-0 m-0">
+
+          <div class="addressMstrTitle  ">
+            <label>
+              <input (click)="sameAsPresentAdd($event)" type="checkbox">
+              Same as Present Address
+            </label>
+          </div>
+        </div>
+
+
+        <h6 class="addressMstrTitle  preandparAddress">Parmanent Address : </h6>
+        <div class="row p-0 m-0">
+
+
+          <div class=" col-xl-2 col-lg-2 col-12 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="parAddDivision" class="address-title control-label">Division: <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input" style="padding: 0px; width: 95.5%;  font-size: 13px; float: left;">
+
+                  <ng-select2 formControlName="parAddDivision" [options]="options" [data]="parDivList"
+                    [allowClear]="true" id="parAddDivision" name="parAddDivision" [placeholder]="'Select Division'"
+                    (valueChanged)="getParDistrictById($event)"
+                    [ngClass]="{ 'is-invalid': parAddDivision.invalid && (formSubmitted || parAddDivision.touched) }">
+                  </ng-select2>
+                  <div *ngIf="parAddDivision.invalid && (formSubmitted || parAddDivision.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="parAddDivision.errors.required">Division is required.</small>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class=" col-xl-2 col-lg-2 col-12 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="parAddDistrict" class="address-title control-label">District: <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input" style="padding: 0px; width: 95.5%;  font-size: 13px; float: left;">
+
+                  <ng-select2 formControlName="parAddDistrict" [options]="options" [data]="parDisList"
+                    [allowClear]="true" id="parAddDistrict" name="parAddDistrict" [placeholder]="'Select District'"
+                    (valueChanged)="getParThanaById($event)"
+                    [ngClass]="{ 'is-invalid': parAddDistrict.invalid && (formSubmitted || parAddDistrict.touched) }">
+                  </ng-select2>
+                  <div *ngIf="parAddDistrict.invalid && (formSubmitted || parAddDistrict.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="parAddDistrict.errors.required">District is required.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-12 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="parAddThana" class="address-title control-label">Thana: <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input" style="padding: 0px; width: 95.5%;  font-size: 13px; float: left;">
+
+                  <ng-select2 formControlName="parAddThana" [options]="options" [data]="parThnList" [allowClear]="true"
+                    id="parAddThana" name="parAddThana" [placeholder]="'Select Thana'"
+                    [ngClass]="{ 'is-invalid': parAddThana.invalid && (formSubmitted || parAddThana.touched) }">
+                  </ng-select2>
+                  <div *ngIf="parAddThana.invalid && (formSubmitted || parAddThana.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="parAddThana.errors.required">Thana is required.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-11 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="parAddPostOffice" class="address-title control-label">Post: <span
+                  class="text-danger"></span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-plane" style="padding: 0px;   font-size: 13px; float: left;">
+
+                  <input formControlName="parAddPostOffice" type="text"
+                    class=" form-control form-control-sm input-sm input-sm-*" id="parAddPostOffice" placeholder=""
+                    name="parAddPostOffice">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-11 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="parAddVillage" class="address-title control-label">Village: <span
+                  class="text-danger"></span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-plane"
+                  style="padding: 0px;  height: 80%;  font-size: 13px; float: left;">
+                  <input formControlName="parAddVillage" type="text"
+                    class=" form-control form-control-sm input-sm input-sm-*" id="parAddVillage" placeholder=""
+                    name="parAddVillage">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" col-xl-2 col-lg-2 col-11 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+              <label for="parAddDetai" class="address-title control-label">Full Address : <span
+                  class="text-danger">*</span></label>
+              <div class="col-sm-11 p-0 m-0" style="float: left;">
+                <div class="address-input address-plane" style="padding: 0px;  font-size: 13px; float: left;">
+
+                  <textarea formControlName="parAddDetai" type="text"
+                    class=" form-control form-control-sm input-sm input-sm-*" id="parAddDetai" placeholder=""
+                    name="parAddDetai" rows="1"
+                    [ngClass]="{ 'is-invalid': parAddDetai.invalid && (parAddDetai.dirty || parAddDetai.touched) }"></textarea>
+
+                  <div *ngIf="parAddDetai.invalid && (parAddDetai.dirty || parAddDetai.touched)"
+                    class="text-danger mt-1 fs-4">
+                    <small *ngIf="parAddDetai.errors.required">Address Detail is required.</small>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+      <div class="container-fluid p-2 containers">
+        <div class="card">
+          <div class="card-header p-2 bg-info text-white ">
+            <h6 class="mb-0 text-center">Academic Qualification</h6>
+          </div>
+
+          <div class="card-body p-2">
+            <div formArrayName="academicQualifications">
+              <div *ngFor="let qualification of academicQualifications.controls; let i = index" [formGroupName]="i"
+                class="mb-3 border-bottom pb-2">
+                <div class="academic-card">
+                  <div class="row ">
+
+
+
+                    <div class="col-lg-2 col-11  mb-2">
+                      <label [for]="'degree'+i">Exam Type-{{i+1}}<span class="text-danger">*</span></label>
+                      <div style="width: 94%;">
+                        <ng-select2 class="main-input custom-select-width" formControlName="degree" [options]="options"
+                          [allowClear]="true" [id]="'degree'+i" name="degree" [data]="degreeList"
+                          [placeholder]="'Select degree '"
+                          [ngClass]="{ 'is-invalid': (formSubmitted || qualification.get('degree')?.touched) && qualification.get('degree')?.invalid }">
+                        </ng-select2>
+
+
+                        <!-- <ng-select2  
+                 formControlName="bloodGroup" [data]="bloodGroupList"  [options]="{ placeholder: 'Select Blood Group', allowClear: true }"  class="main-input" id="bloodGroup" name="bloodGroup">
+                 </ng-select2>   -->
+
+
+                      </div>
+
+
+                      <div
+                        *ngIf="(formSubmitted || qualification.get('degree')?.touched) && qualification.get('degree')?.invalid"
+                        class="invalid-feedback">
+                        Degree is required
+                      </div>
+                    </div>
+
+
+
+                    <!-- University/Board -->
+                    <div class="col-lg-2 col-11  mb-2">
+                      <label [for]="'board'+i">University/Board-{{i+1}} <span class="text-danger">*</span></label>
+                      <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                        formControlName="board" [id]="'board'+i" placeholder=""
+                        [ngClass]="{ 'is-invalid': (formSubmitted || qualification.get('board')?.touched) && qualification.get('board')?.invalid }">
+                      <div
+                        *ngIf="(formSubmitted || qualification.get('board')?.touched) && qualification.get('board')?.invalid"
+                        class="invalid-feedback">
+                        Board is required
+                      </div>
+                    </div>
+
+                    <!-- Institution -->
+                    <div class="col-lg-2 col-11  mb-2">
+                      <label [for]="'institution'+i">Institution-{{i+1}} <span class="text-danger">*</span></label>
+                      <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                        formControlName="institution" [id]="'institution'+i" placeholder=""
+                        [ngClass]="{ 'is-invalid': (formSubmitted || qualification.get('institution')?.touched) && qualification.get('institution')?.invalid }">
+                      <div
+                        *ngIf="(formSubmitted || qualification.get('institution')?.touched) && qualification.get('institution')?.invalid"
+                        class="invalid-feedback">
+                        Institution is required
+                      </div>
+                    </div>
+
+                    <!-- Major -->
+                    <div class="col-lg-1 col-11  mb-2">
+                      <label [for]="'major'+i">Major-{{i+1}} <span class="text-danger">*</span></label>
+                      <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                        formControlName="major" [id]="'major'+i" placeholder=""
+                        [ngClass]="{ 'is-invalid': (formSubmitted || qualification.get('major')?.touched) && qualification.get('major')?.invalid }">
+                      <div
+                        *ngIf="(formSubmitted || qualification.get('major')?.touched) && qualification.get('major')?.invalid"
+                        class="invalid-feedback">
+                        Major is required
+                      </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="col-lg-1 col-11  mb-2">
+                      <label [for]="'result'+i">Result-{{i+1}} <span class="text-danger">*</span></label>
+                      <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                        formControlName="result" [id]="'result'+i" placeholder=""
+                        [ngClass]="{ 'is-invalid': (formSubmitted || qualification.get('result')?.touched) && qualification.get('result')?.invalid }">
+                      <div
+                        *ngIf="(formSubmitted || qualification.get('result')?.touched) && qualification.get('result')?.invalid"
+                        class="invalid-feedback">
+                        Result is required
+                      </div>
+                    </div>
+
+                    <!-- Passing Year -->
+                    <div class="col-lg-1 col-11  mb-2">
+                      <label [for]="'passingyear'+i">Passing Year-{{i+1}}<span class="text-danger">*</span></label>
+                      <input style="width: 90.5%;" type="number" class="form-control form-control-sm"
+                        formControlName="passingyear" [id]="'passingyear'+i" placeholder=""
+                        [ngClass]="{ 'is-invalid': (formSubmitted || qualification.get('passingyear')?.touched) && qualification.get('passingyear')?.invalid }">
+                      <div
+                        *ngIf="(formSubmitted || qualification.get('passingyear')?.touched) && qualification.get('passingyear')?.invalid"
+                        class="invalid-feedback">
+                        Passing Year is required
+                      </div>
+                    </div>
+
+                    <div class="col-lg-1 col-5  mb-2">
+                      <label [for]="'isLastDegree'+i">Is Last Degree-{{i+1}}<span class="text-danger">*</span></label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="isLastDegree" formControlName="isLastDegree"
+                          [value]="'1'" (change)="onLastDegreeChange(i)">
+                      </div>
+
+                    </div>
+
+
+
+
+                    <!-- File Upload -->
+                    <div class="col-lg-2 col-11 mb-2">
+                      <label [for]="'document'+i">Upload Certificate-{{i+1}}</label>
+                      <input style="width: 90.5%;" type="file" class="form-control form-control-sm" [id]="'document'+i"
+                        (change)="onAccQlfDoc($event, i)" />
+                    </div>
+
+                    <div class="col-lg-1 col-11 mb-2">
+                      <label [for]="'document'+i">Show Document-{{i+1}}</label>
+                      <div *ngIf="qualification.get('docVPath')?.value">
+                        <a [href]="qualification.get('docVPath')?.value" target="_blank">
+                          <button type="button" class="btn btn-primary">
+                            <span><i style="color: white;" class="fa fa-eye"></i></span>
+                            Document
+                          </button>
+                        </a>
+                      </div>
+                      <div *ngIf="!qualification.get('docVPath')?.value">
+                        <button type="button" class="btn btn-warning">
+                          <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                        </button>
+                      </div>
+                    </div>
+
+
+
+
+                    <!-- Remove Button -->
+                    <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
+                      <button type="button" class="btn btn-danger btn-sm  remove-btn"
+                        (click)="removeAcademicQualification(i)" [disabled]="academicQualifications.length <= 1">
+                        <i class="fa fa-minus"></i> Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Button -->
+            <div class="row mt-3">
+              <div class="col-lg-2 col-11">
+                <button type="button" class="btn btn-primary btn-sm" (click)="addAcademicQualification()"
+                  [disabled]="academicQualifications.length >= qualificationType.length">
+                  <i class="fa fa-plus"></i> Add More
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="container-fluid p-2 containers mt-2">
+        <div class="card">
+          <div class="card-header p-2 bg-info text-white">
+            <h6 class="mb-0 text-center">Work Experience</h6>
+          </div>
+
+          <div class="card-body p-2">
+            <div formArrayName="workExperiences">
+              <div *ngFor="let experience of workExperiences.controls; let i = index" [formGroupName]="i"
+                class="mb-3 border-bottom pb-2">
+                <div class="row">
+                  <!-- Company Name & Type -->
+                  <div class="col-lg-2 col-11 col-md-6 mb-2">
+                    <label [for]="'companyName'+i">Company Name: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      formControlName="companyName" [id]="'companyName'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('companyName')?.touched) && experience.get('companyName')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || experience.get('companyName')?.touched) && experience.get('companyName')?.invalid"
+                      class="invalid-feedback">
+                      Company Name is required
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-11 col-md-6 mb-2">
+                    <label [for]="'companyType'+i">Company Type: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      formControlName="companyType" [id]="'companyType'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('companyType')?.touched) && experience.get('companyType')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || experience.get('companyType')?.touched) && experience.get('companyType')?.invalid"
+                      class="invalid-feedback">
+                      Company Type is required
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-1 col-11 col-md-6 mb-2">
+                    <label [for]="'salary'+i">Salary: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      formControlName="salary" [id]="'salary'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('salary')?.touched) && experience.get('salary')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || experience.get('salary')?.touched) && experience.get('salary')?.invalid"
+                      class="invalid-feedback">
+                      Salary is required
+                    </div>
+                  </div>
+
+                  <!-- Date Period -->
+                  <div class="col-lg-2 col-11 col-md-6 mb-2">
+                    <label [for]="'priodFromDate'+i">Period From Date: - {{i+1}} <span
+                        class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="date" class="form-control form-control-sm"
+                      formControlName="priodFromDate" [id]="'priodFromDate'+i" (change)="getFromDate($event,i)"
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('priodFromDate')?.touched) && experience.get('priodFromDate')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || experience.get('priodFromDate')?.touched) && experience.get('priodFromDate')?.invalid"
+                      class="invalid-feedback">
+                      Period From Date is required
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-lg-2 col-11 col-md-6 mb-2">
+                    <label [for]="'priodToDate'+i">Period To Date: - {{i+1}}</label>
+                    <input style="width: 90.5%;" type="date" class="form-control form-control-sm"
+                      formControlName="priodToDate" [id]="'priodToDate'+i"
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('priodToDate')?.touched) && experience.get('priodToDate')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || experience.get('priodToDate')?.touched) && experience.get('priodToDate')?.invalid"
+                      class="invalid-feedback">
+                      Period To Date is required
+                    </div>
+                  </div> -->
+
+
+
+                  <div class="col-lg-2 col-11 col-md-6 mb-2">
+                    <div style=" display: flex;" class="priodandtext">
+                      <label [for]="'priodToDate'+i">To Date:-{{i+1}} <span class="text-danger"></span></label>
+                      <div style="align-items: end; margin-left: 10px;" class="form-check">
+                        <label>
+                          <input (click)="isJobRunning($event, i)" type="checkbox"
+                            [checked]="experience.get('isRunning')?.value === 'Continuing'"> Currently Working? <span
+                            class="text-danger"></span>
+                        </label>
+                      </div>
+                    </div>
+                    <input *ngIf="!experience.get('isRunning')?.value" style="width: 90.5%;" type="date"
+                      (change)="getToDate($event,i)" class="form-control form-control-sm" formControlName="priodToDate"
+                      [id]="'priodToDate'+i"
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('priodToDate')?.touched) && experience.get('priodToDate')?.invalid }">
+
+                    <input *ngIf="experience.get('isRunning')?.value" type="text" style="width: 90.5%;"
+                      formControlName="isRunning" class="form-control form-control-sm" value="Continuing" disabled>
+                    <div
+                      *ngIf="(formSubmitted || experience.get('priodToDate')?.touched) && experience.get('priodToDate')?.invalid"
+                      class="invalid-feedback">
+                      Period To Date is required
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-1 col-5  mb-2">
+                    <label [for]="'isLastExperience'+i">Is Last Experience-{{i+1}}<span
+                        class="text-danger">*</span></label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="isLastExperience"
+                        formControlName="isLastExperience" [value]="'1'" (change)="onLastExperience(i)">
+                    </div>
+                  </div>
+
+
+
+                  <!-- Department & Designation -->
+                  <div class="col-lg-2 col-11 col-md-6 mb-2">
+                    <label [for]="'department'+i">Department: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      formControlName="department" [id]="'department'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('department')?.touched) && experience.get('department')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || experience.get('department')?.touched) && experience.get('department')?.invalid"
+                      class="invalid-feedback">
+                      Department is required
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-11 col-md-6 mb-2">
+                    <label [for]="'designation'+i">Designation: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      formControlName="designation" [id]="'designation'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('designation')?.touched) && experience.get('designation')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || experience.get('designation')?.touched) && experience.get('designation')?.invalid"
+                      class="invalid-feedback">
+                      Designation is required
+                    </div>
+                  </div>
+
+                  <!-- Location & Description -->
+                  <div class="col-lg-1 col-11 mb-2">
+                    <label [for]="'jobLocation'+i">Job Location: - {{i+1}} <span class="text-danger"></span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      formControlName="jobLocation" [id]="'jobLocation'+i" placeholder="">
+                  </div>
+
+                  <div class="col-lg-3 col-11 mb-3">
+                    <label [for]="'jobDescription'+i">Job Description: - {{i+1}} <span
+                        class="text-danger">*</span></label>
+                    <textarea style="width: 90.5%;" class="form-control form-control-sm"
+                      formControlName="jobDescription" [id]="'jobDescription'+i" rows="1" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || experience.get('jobDescription')?.touched) && experience.get('jobDescription')?.invalid }"></textarea>
+                    <div
+                      *ngIf="(formSubmitted || experience.get('jobDescription')?.touched) && experience.get('jobDescription')?.invalid"
+                      class="invalid-feedback">
+                      Job Description is required
+                    </div>
+                  </div>
+
+                  <!-- File Upload -->
+                  <div class="col-lg-2 col-11 mb-2">
+                    <label [for]="'document'+i">Experience Certificate-{{i+1}}</label>
+                    <input style="width: 90.5%;" type="file" class="form-control form-control-sm" [id]="'document'+i"
+                      (change)="onExperienceDoc($event, i)" />
+                  </div>
+
+                  <div class="col-lg-1 col-11 mb-2">
+                    <label [for]="'document'+i">Show Document-{{i+1}}</label>
+                    <div *ngIf="experience.get('docVPath')?.value">
+                      <a [href]="experience.get('docVPath')?.value" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                          <span><i style="color: white;" class="fa fa-eye"></i></span>
+                          Document
+                        </button>
+                      </a>
+                    </div>
+                    <div *ngIf="!experience.get('docVPath')?.value">
+                      <button type="button" class="btn btn-warning">
+                        <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Remove Button -->
+                  <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
+                    <button type="button" class="btn  btn-danger btn-sm  remove-btn" (click)="removeExperience(i)">
+                      <i class="fa fa-minus"></i> Remove
+                    </button>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Button -->
+            <div class="row mt-3">
+              <div class="col-lg-2 col-11 ">
+                <button type="button" class="btn btn-primary btn-sm" (click)="addExperience()">
+                  <i class="fa fa-plus"></i> Add Experience
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="container-fluid p-2 mt-2 containers">
+        <div class="card">
+          <div class="card-header p-2 bg-info text-white">
+            <h6 class="mb-0 text-center">Professional Certification</h6>
+          </div>
+
+          <div class="card-body p-2">
+            <div formArrayName="professionalCirtificate">
+              <div *ngFor="let profCirtificate of professionalCirtificate.controls; let i = index" [formGroupName]="i"
+                class="mb-3">
+                <div class="row ">
+                  <!-- Course Name -->
+                  <div class="col-lg-2 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'courseName'+i">Course Name: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'courseName'" [id]="'courseName'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || profCirtificate.get('courseName')?.touched) && profCirtificate.get('courseName')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || profCirtificate.get('courseName')?.touched) && profCirtificate.get('courseName')?.invalid"
+                      class="invalid-feedback">
+                      Course Name is required
+                    </div>
+                  </div>
+
+                  <!-- Institution -->
+                  <div class="col-lg-2 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'instution'+i">Institution: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm fixed-input"
+                      [formControlName]="'instution'" [id]="'instution'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || profCirtificate.get('instution')?.touched) && profCirtificate.get('instution')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || profCirtificate.get('instution')?.touched) && profCirtificate.get('instution')?.invalid"
+                      class="invalid-feedback">
+                      Institution is required
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'startDate'+i">Start Date: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="date" class="form-control form-control-sm"
+                      [formControlName]="'startDate'" [id]="'startDate'+i"
+                      [ngClass]="{ 'is-invalid': (formSubmitted || profCirtificate.get('startDate')?.touched) && profCirtificate.get('startDate')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || profCirtificate.get('startDate')?.touched) && profCirtificate.get('startDate')?.invalid"
+                      class="invalid-feedback">
+                      Start Date Required
+                    </div>
+                  </div>
+
+                  <!-- Achievement Date -->
+                  <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'achievementDate'+i">End Date: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="date" class="form-control form-control-sm"
+                      [formControlName]="'achievementDate'" [id]="'achievementDate'+i"
+                      [ngClass]="{ 'is-invalid': (formSubmitted || profCirtificate.get('achievementDate')?.touched) && profCirtificate.get('achievementDate')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || profCirtificate.get('achievementDate')?.touched) && profCirtificate.get('achievementDate')?.invalid"
+                      class="invalid-feedback">
+                      Achievement Date required
+                    </div>
+                  </div>
+
+
+
+                  <!-- File Upload -->
+                  <div class="col-lg-2 col-11 mb-2">
+                    <label [for]="'document'+i">Upload Certificate-{{i+1}}</label>
+                    <input style="width: 90.5%;" type="file" class="form-control form-control-sm" [id]="'document'+i"
+                      (change)="onProfCirDoc($event, i)" />
+                  </div>
+
+                  <div class="col-lg-1 col-11 mb-2">
+                    <label [for]="'document'+i">Show Document-{{i+1}}</label>
+                    <div *ngIf="profCirtificate.get('docVPath')?.value">
+                      <a [href]="profCirtificate.get('docVPath')?.value" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                          <span><i style="color: white;" class="fa fa-eye"></i></span>
+                          Document
+                        </button>
+                      </a>
+                    </div>
+                    <div *ngIf="!profCirtificate.get('docVPath')?.value">
+                      <button type="button" class="btn btn-warning">
+                        <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                      </button>
+                    </div>
+                  </div>
+
+
+
+
+
+
+                  <!-- Remove Button -->
+                  <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
+                    <button style="" type="button" class="btn btn-danger btn-sm  remove-btn"
+                      (click)="removeProfCirtificate(i)">
+                      <i class="fa fa-minus"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Button -->
+            <div class="row mt-3">
+              <div class="col-1g-1 col-11">
+                <button type="button" class="btn btn-primary btn-sm" (click)="addProfCirtificate()">
+                  <i class="fa fa-plus"></i> Add Certificate
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container-fluid p-2 mt-2 containers">
+        <div class="card">
+          <div class="card-header p-2 bg-info text-white">
+            <h6 class="mb-0 text-center">Training </h6>
+          </div>
+
+          <div class="card-body p-2">
+            <div formArrayName="training">
+              <div *ngFor="let tran of training.controls; let i = index" [formGroupName]="i" class="mb-3">
+                <div class="row ">
+                  <!-- Course Name <div class="row align-items-center"> -->
+                  <div class="col-lg-2 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'courseName'+i">Course Name: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'courseName'" [id]="'courseName'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('courseName')?.touched) && tran.get('courseName')?.invalid }">
+                    <div *ngIf="(formSubmitted || tran.get('courseName')?.touched) && tran.get('courseName')?.invalid"
+                      class="invalid-feedback">
+                      Course Name is required
+                    </div>
+                  </div>
+
+                  <!-- Institution -->
+                  <div class="col-lg-2 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'instution'+i">Institution: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm fixed-input"
+                      [formControlName]="'instution'" [id]="'instution'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('instution')?.touched) && tran.get('instution')?.invalid }">
+                    <div *ngIf="(formSubmitted || tran.get('instution')?.touched) && tran.get('instution')?.invalid"
+                      class="invalid-feedback">
+                      Institution is required
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'startDate'+i">Start Date: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="date" class="form-control form-control-sm"
+                      [formControlName]="'startDate'" [id]="'startDate'+i"
+                      [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('startDate')?.touched) && tran.get('startDate')?.invalid }">
+                    <div *ngIf="(formSubmitted || tran.get('startDate')?.touched) && tran.get('startDate')?.invalid"
+                      class="invalid-feedback">
+                      Start Date Required
+                    </div>
+                  </div>
+
+                  <!-- Achievement Date -->
+                  <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                    <label [for]="'achievementDate'+i">End Date: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="date" class="form-control form-control-sm"
+                      [formControlName]="'achievementDate'" [id]="'achievementDate'+i"
+                      [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('achievementDate')?.touched) && tran.get('achievementDate')?.invalid }">
+                    <div
+                      *ngIf="(formSubmitted || tran.get('achievementDate')?.touched) && tran.get('achievementDate')?.invalid"
+                      class="invalid-feedback">
+                      Achievement Date required
+                    </div>
+                  </div>
+
+                  <!-- File Upload -->
+                  <div class="col-lg-2 col-11 mb-2">
+                    <label [for]="'document'+i">Upload Certificate-{{i+1}}</label>
+                    <input style="width: 90.5%;" type="file" class="form-control form-control-sm" [id]="'document'+i"
+                      (change)="onTrainingDoc($event, i)" />
+                  </div>
+
+                  <div class="col-lg-1 col-11 mb-2">
+                    <label [for]="'document'+i">Show Doc-{{i+1}}</label>
+                    <div *ngIf="tran.get('docVPath')?.value">
+                      <a [href]="tran.get('docVPath')?.value" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                          <span><i style="color: white;" class="fa fa-eye"></i></span>
+                          Document
+                        </button>
+                      </a>
+                    </div>
+                    <div *ngIf="!tran.get('docVPath')?.value">
+                      <button type="button" class="btn btn-warning">
+                        <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                      </button>
+                    </div>
+                  </div>
+
+
+                  <!-- Remove Button -->
+                  <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
+                    <button style="" type="button" class="btn btn-danger btn-sm  remove-btn"
+                      (click)="removeTraining(i)">
+                      <i class="fa fa-minus"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Button -->
+            <div class="row mt-3">
+              <div class="col-1g-1 col-11">
+                <button type="button" class="btn btn-primary btn-sm" (click)="addTraining()">
+                  <i class="fa fa-plus"></i> Add Training
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="container-fluid p-2 mt-2 containers">
+        <div class="card">
+          <div class="card-header p-2 bg-info text-white">
+            <h6 class="mb-0 text-center">Reference </h6>
+          </div>
+
+          <div class="card-body p-2">
+            <div formArrayName="reference">
+              <div *ngFor="let ref of reference.controls; let i = index" [formGroupName]="i" class="mb-3">
+                <div class="row ">
+                  <!-- Course Name -->
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'Name'+i">Name: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'Name'" [id]="'Name'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || ref.get('Name')?.touched) && ref.get('Name')?.invalid }">
+                    <div *ngIf="(formSubmitted || ref.get('Name')?.touched) && ref.get('Name')?.invalid"
+                      class="invalid-feedback">
+                      Name is required
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'fatherName'+i">Father Name: - {{i+1}} <span class="text-danger"></span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'fatherName'" [id]="'fatherName'+i" placeholder="">
+                  </div>
+
+                  <!-- Institution -->
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'Organization'+i">Organization: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'Organization'" [id]="'Organization'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || ref.get('Organization')?.touched) && ref.get('Organization')?.invalid }">
+                    <div *ngIf="(formSubmitted || ref.get('Organization')?.touched) && ref.get('Organization')?.invalid"
+                      class="invalid-feedback">
+                      Organization is required
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'designation'+i">Designation: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'designation'" [id]="'designation'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || ref.get('designation')?.touched) && ref.get('designation')?.invalid }">
+                    <div *ngIf="(formSubmitted || ref.get('designation')?.touched) && ref.get('designation')?.invalid"
+                      class="invalid-feedback">
+                      Designation is required
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'email'+i">Email: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'email'" [id]="'email'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || ref.get('email')?.touched) && ref.get('email')?.invalid }">
+                    <div *ngIf="(formSubmitted || ref.get('email')?.touched) && ref.get('email')?.invalid"
+                      class="invalid-feedback">
+                      Email is required
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'mobile'+i">Mobile: - {{i+1}} <span class="text-danger">*</span></label>
+                    <input style="width: 90.5%;" type="text" class="form-control form-control-sm"
+                      [formControlName]="'mobile'" [id]="'mobile'+i" placeholder=""
+                      [ngClass]="{ 'is-invalid': (formSubmitted || ref.get('mobile')?.touched) && ref.get('mobile')?.invalid }">
+                    <div *ngIf="(formSubmitted || ref.get('mobile')?.touched) && ref.get('mobile')?.invalid"
+                      class="invalid-feedback">
+                      Mobile is required
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'Name'+i">Relation: - {{i+1}} <span class="text-danger">*</span></label>
+                    <div style="width: 94%;">
+                      <ng-select2 class="main-input custom-select-width" formControlName="relation" [options]="options"
+                        [allowClear]="true" [id]="'relation'+i" name="relation" [data]="relationList"
+                        [placeholder]="'Select Relation '"
+                        [ngClass]="{ 'is-invalid': (formSubmitted || ref.get('relation')?.touched) && ref.get('relation')?.invalid }">
+                      </ng-select2>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-2 col-md-5 col-sm-11 mb-2 mb-md-0">
+                    <label [for]="'address'+i">Address: - {{i+1}} <span class="text-danger"></span></label>
+                    <textarea style="width: 90.5%;" type="text" class="form-control form-control-sm" rows="1"
+                      [formControlName]="'address'" [id]="'address'+i" placeholder=""></textarea>
+                  </div>
+
+
+
+
+                  <!-- Remove Button -->
+                  <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
+                    <button style="" type="button" class="btn btn-danger btn-sm  remove-btn"
+                      (click)="removeReference(i)">
+                      <i class="fa fa-minus"></i> Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add Button -->
+            <div class="row mt-3">
+              <div class="col-1g-1 col-11">
+                <button type="button" class="btn btn-primary btn-sm" (click)="addReference()">
+                  <i class="fa fa-plus"></i> Add Reference
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <div class="container-fluid p-2 containers mt-2">
+        <div class="card">
+          <div class="card-header p-2 bg-info text-white">
+            <h6 class="mb-0 text-center">Document Upload</h6>
+          </div>
+
+          <div class="card-body">
+            <div class="row g-3 justify-content-start"> <!-- Added justify-content-center -->
+              <!-- Upload Image -->
+              <div class="col-11 col-lg-2 col-md-4 mb-3">
+                <div class="form-group text-center">
+                  <label class="form-label d-block">Upload Photo <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control form-control-sm" (change)="onFileChange($event)"
+                    accept="image/png, image/jpeg, image/jpg,image/gif,image/bmp,image/x-png">
+                </div>
+                <div *ngIf="docPhotoVPath else noImages">
+                  <div>
+                    <img [src]="docPhotoVPath" alt="Uploaded Image" style="max-width: 200px; margin: 10px;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Upload Signature -->
+              <div class="col-11 col-lg-2 col-md-4 mb-3">
+                <div class="form-group text-center">
+                  <label class="form-label d-block">Upload Signature <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control form-control-sm" (change)="OnSignatureChange($event)"
+                    accept="image/png, image/jpeg, image/jpg,image/gif,image/bmp,image/x-png">
+                </div>
+                <div *ngIf="docsignatureVPath else noImages">
+                  <div>
+                    <img [src]="docsignatureVPath" alt="No Found Signature " style="max-width: 200px; margin: 10px;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Upload NID FRONT-->
+              <div class="col-11 col-lg-2 col-md-4 mb-3">
+                <div class="form-group text-center">
+                  <label class="form-label d-block">Upload NID (Front) <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control form-control-sm" (change)="onNIDChange($event)"
+                    accept=".pdf,image/*">
+                </div>
+                <div *ngIf="docNidFntVPath">
+                  <a [href]="docNidFntVPath" target="_blank">
+                    <button type="button" class="btn btn-primary">Download NID (Front)</button>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Upload NID BACK -->
+              <div class="col-11 col-lg-2 col-md-4 mb-3">
+                <div class="form-group text-center">
+                  <label class="form-label d-block">Upload NID (Back) <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control form-control-sm" (change)="onNIDBackChange($event)"
+                    accept=".pdf,image/*">
+                </div>
+                <div *ngIf="docNidBckVPath">
+                  <a [href]="docNidBckVPath" target="_blank">
+                    <button type="button" class="btn btn-primary">Download NID (Back)</button>
+                  </a>
+                </div>
+
+              </div>
+
+              <!-- Upload TIN -->
+              <div class="col-11 col-lg-2 col-md-4 mb-3">
+                <div class="form-group text-center">
+                  <label class="form-label d-block">Upload TIN <span class="text-danger"></span></label>
+                  <input type="file" class="form-control form-control-sm" (change)="onTINChange($event)"
+                    accept=".pdf,image/*">
+                </div>
+                <!-- <div *ngIf="this.downloadTinPath">
+                  <button type="button" class="btn btn-primary" (click)="downloadTIN()">Download TIN</button>
+                </div> -->
+                <div *ngIf="docTinVPath">
+                  <a [href]="docTinVPath" target="_blank">
+                    <button type="button" class="btn btn-primary">Download TIN</button>
+                  </a>
+                </div>
+
+              </div>
+
+              <!-- Upload CV -->
+              <div class="col-11 col-lg-2 col-md-4 mb-3">
+                <div class="form-group text-center">
+                  <label class="form-label d-block">Upload CV <span class="text-danger"></span></label>
+                  <input type="file" class="form-control form-control-sm" (change)="OnCvChange($event)"
+                    accept=".pdf, .doc, .docx">
+                </div>
+                <!-- <div *ngIf="this.downloadCvPath">
+                  <button type="button" class="btn btn-primary" (click)="downloadFile()">Download CV</button>
+                </div> -->
+                <div *ngIf="docCVVPath">
+                  <a [href]="docCVVPath" target="_blank">
+                    <button type="button" class="btn btn-primary">Download CV</button>
+                  </a>
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <!-- <button *ngIf="!updateOidEdit" (click)="onFormSubmit()" type="submit"
+        class="SubmitButton  btn btnb btn-primary btn-lg btn-block">Submit</button>
+         <button *ngIf="updateOidEdit" (click)="onSubmit()" type="submit"
+        class="SubmitButton  btn btnb btn-primary btn-lg btn-block">Update</button> -->
+
+      <button *ngIf="!updateOidEdit" (click)="onSubmitFileForm()" type="submit"
+        class="SubmitButton  btn btnb btn-primary btn-lg btn-block">Submit</button>
+
+      <button *ngIf="updateOidEdit" (click)="onSubmitFileForm()" type="submit"
+        class="SubmitButton  btn btnb btn-primary btn-lg btn-block">Update</button>
+
+
+    </form>
+
+  </div>
+
+
+
+
+
+  <div *ngIf="cmnEntity.isShow" class="card-body pl-0 pr-4 pt-2 ml-2  table-responsive-custom"
+    style="min-height: 460px; margin-bottom: -20px; margin-top: 5px;">
+
+    <div class="row" style="margin-bottom: 10px;">
+      <div class="col-md-12">
+        <pager-top (setPage)="getListByPage($event)" (sendList)="sendToList($event)" [loggedUserId]="loggedUserId"
+          [pageSize]="pageSize" [IsSearchOnServer]="true" [responseTag]="responseTag" [apiUrl]="_listByPageUrl">
+        </pager-top>
+      </div>
+    </div>
+
+
+    <div style="margin-top: -30px;" class="form-group clearfix d-flex justify-content-center align-items-center">
+      <div class="col-sm-1 p-0 m-0">
+        <div style="padding-left: 10px; width: 100%; font-size: 13px;">
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row pr-2 ">
+      <div class="col-md-12">
+        <div class="table-responsive" style="height:400px; overflow:auto;">
+          <table id="table" class="table table-striped table-sm table-bordered p-0">
+            <thead class="table-dark"
+              style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+              <tr class="banglaTitle myCustomTableHeaderText">
+
+                <th hidden style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                  Job Title </th>
+                <th hidden style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                  Company</th>
+                <th hidden style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                  Department</th>
+                <th hidden style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                  Post</th>
+                <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                  Full Name</th>
+                <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                  Email</th>
+                <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                  Mobile Number</th>
+
+
+                <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: center; width: 10%;">
+                  Action</th>
+
+
+
+
+              </tr>
+            </thead>
+            <tbody class="banglaTitle p-0" style="padding-bottom: 0px; margin-bottom: 0px;">
+              <tr *ngFor="let item of applicationLists;let sl = index">
+
+
+
+                <td hidden class="pl-2 pr-1 pt-1 pb-1">
+                  <span title="Quotation Reference">
+
+                    <a title="Quotation Reference">{{item.jobtitle}}</a>
+                  </span>
+                </td>
+                <td hidden class="pl-2 pr-1 pt-1 pb-1">{{item.company}}</td>
+
+                <td hidden class="pl-2 pr-1 pt-1 pb-1">{{item.department}}</td>
+                <td hidden class="pl-2 pr-1 pt-1 pb-1">{{item.post}}</td>
+                <td class="pl-2 pr-1 pt-1 pb-1">{{item.fullName}}</td>
+                <td class="pl-2 pr-1 pt-1 pb-1">{{item.email}}</td>
+                <td class="pl-2 pr-1 pt-1 pb-1">{{item.mobileNumber}}</td>
+
+
+
+
+                <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center; width: 12%;">
+                  <common-button-option #cmnbuttonoption style="float: left;" (executeSubmit)="cmnbtnAction($event)"
+                    [cmnEntity]="cmnEntity" [model]="item" [itemName]="item.oid">
+                  </common-button-option>
+
+                  <a hidden mat-button [matMenuTriggerFor]="actionMenu" aria-label="hidden"
+                    style="z-index: 0; float: left;">
+                    <mat-icon>arrow_drop_down</mat-icon>
+
+                  </a>
+
+                  <mat-menu hidden #actionMenu="matMenu">
+                    <button mat-menu-item (click)="loadReports(item, '_P_R_');">
+                      <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                          class="fa fa-file-pdf-o"></i></mat-icon>
+                      <span>Report Regular</span>
+                    </button>
+
+                    <button mat-menu-item title="Click to forward" (click)="getcandidateDetail(item.oid);"
+                      [disabled]="item.workOrderID">
+                      <mat-icon class="text-info">send</mat-icon>
+                      {{ item.workOrderID ? 'WorkOrder Done' : 'Get Details Data' }}
+
+
+                    </button>
+
+                  </mat-menu>
+                </td>
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large devices: Show table -->
+    <!-- <div class="table-responsive d-none d-md-block" style="height: 400px; overflow:auto;">
+    <table class="table table-striped table-sm table-bordered">
+        <thead class="table-dark sticky-top">
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th style="text-align: center; width: 10%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of applicationLists">
+                <td>{{ item.fullName }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.mobileNumber }}</td>
+                <td style="text-align: center;">
+                    <common-button-option 
+                        (executeSubmit)="cmnbtnAction($event)"
+                        [cmnEntity]="cmnEntity"
+                        [model]="item"
+                        [itemName]="item.oid">
+                    </common-button-option>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<div class="d-block d-md-none">
+    <div *ngFor="let item of applicationLists" class="card mb-2">
+        <div class="card-body p-2">
+            <p><strong>Full Name:</strong> {{ item.fullName }}</p>
+            <p><strong>Email:</strong> {{ item.email }}</p>
+            <p><strong>Mobile:</strong> {{ item.mobileNumber }}</p>
+            <div style="text-align: left;">
+                <common-button-option 
+                    (executeSubmit)="cmnbtnAction($event)"
+                    [cmnEntity]="cmnEntity"
+                    [model]="item"
+                    [itemName]="item.oid">
+                </common-button-option>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+    <div class="row pr-2">
+      <div class="col-md-12">
+        <pager-bottom #cmnpager (setPage)="getListByPage($event)" (sendList)="sendToList($event)"
+          [loggedUserId]="loggedUserId" [responseTag]="responseTag" [apiUrl]="_listByPageUrl">
+        </pager-bottom>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+<!-- <div>
+  <h1>image show here</h1>
+  <img [src]="docPhotoVPath" (error)="onImgError($event)" alt="Applicant photo" class="photo">
+</div>
+
+<div>
+  <h2> Download CV file </h2>
+  <a [href]="docCVVPath" target="_blank" download="nid_back.jpg">
+    <button type="button">Download File</button>
+  </a>
+
+</div>
+
+<div>
+  <h2> Download Img file </h2>
+  <a [href]="docPhotoVPath" target="_blank" download="nid_back.jpg">
+    <button type="button">Download File</button>
+  </a>
+
+</div> -->

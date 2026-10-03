@@ -1,0 +1,906 @@
+
+//   .showImage {
+
+//      background-image: url("../../../assets/img/citygroup/background-image.jpg"); 
+//      background-repeat: no-repeat; 
+//      background-size: cover;
+// }
+
+
+
+
+// body {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 1200px;
+//   margin: 0;
+//   box-sizing: border-box;
+  
+// }
+
+// #subForm {
+//   height: 1200px;  
+//   overflow-y: auto; 
+//   overflow-x: hidden; 
+// }
+
+.first-column{
+  width: 120px;
+  
+}
+.workExperience{
+  margin-top: 10px;
+ 
+}
+
+.dropDown{
+  margin-left: 30px;
+}
+
+
+.outer{
+ 
+  background: linear-gradient(to top,rgb(98, 104, 103) 50%, #706e6f 90%) no-repeat;
+ height: 1000;
+
+}
+.container{
+  /* border: 2px solid gray; */
+  /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
+  background: white;
+  border-radius: 10px;
+  padding-bottom: 40px;
+  
+}
+.containers{
+  border: 2px solid gray; 
+  /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
+  background: #B8DAFF;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+
+  
+  
+}
+
+
+.container-details{
+  padding-top: 20px;
+ 
+ 
+}
+.inner{
+background-color: white;
+
+width: 30%;
+align-items: center;
+         border-radius: 2%;
+         padding: 15px;
+  
+}
+
+.btnb{
+ 
+  background-color: #0056b3;
+  width: 80%;
+  
+  text-align: center;
+  border-radius: 5px;
+  color:white ;
+  transition:  0.5s;
+  margin-top: 20px;
+  margin-left: 120px;
+
+ 
+}
+.btnb:hover {
+  background-color: blue; /* Background color on hover */
+}
+
+
+.font-weight-bold{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.name_show{
+  padding-left: 40%;
+  padding-top: 10px;
+  color: white;
+}
+
+.persentAddressLen{
+  width: 30px;
+} 
+
+.AppliedPost{
+  background-color: #508bfc;
+  margin-bottom: 0px;
+  padding-left: 40%;
+  padding-top: 20px;
+
+  
+} 
+.leftDate{
+  margin-bottom: 0px;
+  padding-top: 1%;
+   color: white; 
+ 
+} 
+.postRadio label{
+  color: white;
+}
+
+.postRadio{
+  padding-left: 40%;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.first-Row td{
+  text-align: center;
+
+  /* padding-left: 20px; */
+}
+.addButton{
+  padding-left: 9.5%;
+}
+
+
+.first-Row .clm{
+  /* background-color: gray; */
+  background-color: #2e7cbb;
+  border-radius: 3px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid lightblue;
+  width: 15%;
+ 
+ 
+}
+
+
+
+.textSize{
+  font-size: 14px;
+}
+
+.first-Row{
+  margin-left: 8%;
+
+}
+
+.first-Row .first-column{
+  width: 10%;
+}
+
+.startleftDate{
+  color:red
+}
+.timeoVER{
+  color:red;
+
+  
+}
+.leftDate{
+color: blue;
+}
+
+
+
+
+.logoutButton{
+  padding-right: 5%;
+  padding-bottom: .5%;
+  padding-top: .5%;
+}
+
+
+
+.Personal_Information{
+  margin-bottom: 10px;
+}
+
+
+.title_box #title {
+  position: relative;
+  top: -01em;
+  margin-left: 1em;
+  display: inline;
+  background-color: white;
+  
+}
+
+.requirementForm #title {
+  position: relative;
+  top: -0.6em;
+  margin-left: 1em;
+  display: inline;
+  background-color: white;
+ 
+}
+
+.requirementForm{
+
+  border: 1px  solid black;
+}
+
+
+.maritalStatus{
+  margin-bottom: 15px;
+}
+
+.EmployeeAddress{
+  margin-bottom: 10px;
+}
+
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+}
+.dropdown-item i {
+  margin-right: 5px;
+}
+.dropdown-menu{
+width: 100px;
+}
+
+  .dropdown{
+      padding-right: 5%;
+      padding-bottom: .5%;
+      padding-top: .5%;
+  }
+
+  .dropdown-item:hover {
+      /* background-color: gray !important; */
+       color: white; 
+    }
+
+    /* .BackButton{
+      margin-left: -2225%;
+  } */
+    .backgroundColor{
+      /* background: linear-gradient(90deg,#411212,#791717,#cc3c3c,#471010,#411212,#791717,#cc3c3c,#471010); */
+      background-color: #143460;
+    }
+    .backgroundColor img{
+      /* Style the header image as desired */
+      width: 35px; /* Adjust width/height as needed */
+      height: 35px;
+      margin-right: 10px; 
+      margin-left: 30px;
+   }
+
+ 
+  
+
+
+
+   .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Each column should be at least 200px wide, but can expand */
+      grid-gap: 10px; /* Gap between grid items */
+  }
+  
+  .grid-item {
+      padding: 5px;
+      border: 1px solid #ccc;
+  }
+  
+  .first-row {
+      font-weight: bold;
+  }
+  
+
+
+
+
+
+
+
+  /* For small devices, display one column per row */
+@media screen and (max-width: 767px) {
+  .work-experience-item {
+      display: block;
+      margin-bottom: 20px;
+  }
+ .remove-btn {
+    width: 95%;
+  }
+  .main-input{
+    margin-left: 5px;
+  }
+  .main-title{
+margin-left: 5px;
+}
+
+.imgPosition{
+   text-align: left;
+}
+
+
+
+ 
+}
+
+
+/* For larger devices, display all data in one row */
+@media screen and (min-width: 768px) {
+  .work-experience-item {
+      display: inline-block;
+     
+      width: 13%; 
+      margin-right: 01%; 
+     
+  }
+.remove-btn {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+.academicQlification{
+  padding-top: 25px;
+}
+
+.main-title{
+margin-left: 24px;
+}
+.address-title{
+  margin-left: 10%;
+}
+
+.address-input{
+  margin-left: 10%;
+}
+.addressMstrTitle{
+  margin-left: 25px;
+}
+
+.imgPosition{
+   text-align: right;
+}
+
+}
+
+
+
+.academic-qualification-item {
+  display: block; /* Display one column per row by default */
+}
+
+@media screen and (min-width: 768px) {
+  .academic-qualification-item {
+      display: grid;
+      grid-column-gap: 1%;
+      grid-template-columns: repeat(8, 1fr); 
+  }
+}
+
+.job-experience-item {
+  display: block; /* Display one column per row by default */
+}
+
+@media screen and (min-width: 768px) {
+  .job-experience-item {
+      display: grid;
+      grid-column-gap: 1%;
+      grid-template-columns: repeat(5, 1fr); 
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .smallDeviceTopCol {
+     color: white;
+    margin-top: 5px;
+    background-color: #428bca;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-radius: 2%;
+    width: 200%;
+
+    
+  }
+  .smallDeviceTopColButton {
+      margin-top: 5px;
+      width: 100%;
+      margin-left: 6px;
+  
+  }
+}
+@media screen and (max-width: 767px) {
+.SubmitButton{
+ width: 80%;
+ margin-left: 10%;
+}
+}
+@media screen and (min-width: 768px) {
+  .Qulification_index{
+   margin-top: 30px;
+  }
+}
+
+
+
+.academic-qualification-item div{
+  margin-left: 5%;
+  margin-left: 5px;
+  width: 100%;
+  
+}
+
+.job-experience-item div{
+  margin-left: 5%;
+  margin-left: 5px;
+  width: 100%;
+  
+}
+
+/* for header section */
+@media (max-width: 767px) {
+  .citygroup-container {
+    justify-content: center;
+  }
+
+  .citygroup-name {
+    margin-top: 8px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+   
+  }
+}
+@media (max-width: 767px) {
+  .UploadAllDocument .row{
+      margin-left: -30%;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 40px;
+  
+
+  }
+  .BackButton{
+      margin-right: 1300px;  
+  }
+}
+
+@media (max-width: 767px) {
+  .citygroup-container{
+    /* margin-left: 13%; */
+  }
+}
+@media (max-width: 767px) {
+  .BackButtonClasd{
+    margin-left: 0%;
+  }
+}
+
+
+.form-group {
+  //margin-bottom: 15px; /* Adjust the spacing as needed */
+}
+
+.academic-qualification-item {
+  //margin-bottom: 30px; /* Creates gap between qualifications */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Mimic Bootstrap 5 form-switch styles */
+.form-switch {
+  display: flex;
+  align-items: center;
+  padding-left: 2.5rem;
+  position: relative;
+}
+
+.form-switch .form-check-input {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 1.5rem;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.form-switch .form-check-input::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #0d6efd;
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translateX(1.5rem);
+}
+
+.form-switch .form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-check-label {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+
+
+// @media (max-width: 767px) { 
+// .preandparAddress {
+//    width:  100%;
+//    margin-left: 12%;
+//   }
+// }
+
+@media (min-width: 768px) { 
+  .preandparAddress {
+     width:  10%;
+    }
+  }
+
+  @media (max-width: 767px) { 
+    .accInput {
+      width: 95%; /* Full width for small devices */
+    }
+  }
+  
+  @media (min-width: 768px) { 
+    .accInput {
+      width: 80%; /* 80% width for large devices */
+    }
+  }
+
+  @media (max-width: 767px) { 
+    .accInputWorkExp {
+      width: 95%; /* Full width for small devices */
+    }
+ 
+  }
+  
+  @media (min-width: 768px) { 
+    .accInputWorkExp {
+      width: 260px; /* 80% width for large devices */
+    }
+ 
+   
+  }
+
+
+
+  @media (max-width: 767px) { 
+    .workexperienceDetails {
+      //width: 200%; /* Full width for small devices */
+    }
+    .fixedMainHeader{
+     padding-bottom: 35%;
+    }
+  }
+  
+  @media (min-width: 768px) { 
+   .workexperienceDetails {
+     margin-left: 150px; /* 80% width for large devices */
+    }
+    .fixedMainHeader{
+    padding-bottom: 6%;
+    }
+  }
+  /* Optional: for custom apps not using Bootstrap */
+.is-invalid {
+  border: 1px solid red;
+}
+.text-danger{
+  font-size: 20px;
+}
+
+.table-responsive-custom {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+
+
+
+//extra added here 
+.button-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+/* Responsive: Stack buttons vertically on small screens */
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+    align-items: stretch;
+   margin-right: 5%;
+  }
+
+  .button-container button {
+    width: 100%;
+ 
+  }
+
+  .jobDetails{
+    background-color: wheat;
+    padding-bottom: 2%;
+      padding-left: 1%;
+    color: white;
+  }
+}
+
+
+// .priodandtext {
+//   display: flex;
+//   align-items: center;
+//   gap: 50px;
+// }
+
+// .priodandtext .lebel,
+// .priodandtext .textbox {
+//   display: flex;
+//   align-items: end;
+// }
+
+
+// ADD LETER FOR FIXED  start fixed head
+.fixedHeader {
+  position: fixed;
+  top: 8%;             
+  left: 17.75%;
+  width: 69.25%;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+@media (max-width: 1501px) {
+  .fixedHeader {
+    left: 25%;
+    width: 62%;
+  }
+}
+
+@media (max-width: 1201px) {
+  .fixedHeader {
+    left: 10%;
+    width: 76%;
+  }
+}
+
+
+
+
+@media (max-width: 767px) {
+  .fixedHeader {
+    top: 12%; 
+    left: 4.5%;
+    width: 83%; 
+    display: flex;
+  justify-content: space-between;         
+ 
+    padding: 10px;
+  }
+}
+//fiseed header change ja 
+
+
+   @media (max-width: 767px) { 
+    .address-plane {
+     width: 97.5%;
+    }
+    .input-right{
+    width: 94.5%;
+    }
+    .input-right-drop{
+      width: 98.5%;
+    }
+  }
+  
+  @media (min-width: 768px) { 
+   .address-plane {
+     width: 90.5%;
+    }
+    .input-right{
+      width: 90.5%;
+    }
+    .input-right-drop{
+      width: 94.5%;
+    }
+  }
+
+
+
+
+
+
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Ensure the input's width is truly fixed regardless of validation state */
+.col-lg-2 .form-control.is-invalid,
+.col-11 .form-control.is-invalid,
+.col-md-5 .form-control.is-invalid {
+  /* Set box-sizing explicitly to ensure padding/border are included in the width */
+  box-sizing: border-box;
+
+  /* If Bootstrap adds a border-width, ensure it doesn't cause expansion */
+  /* This often isn't needed if box-sizing is correct, but can be a fallback */
+  border-width: 1px; /* Ensure a consistent border width */
+  border-color: #dc3545; /* Bootstrap's invalid red color */
+
+  /* Remove any extra padding/margin that might be implicitly added by Bootstrap's invalid state */
+  /* Often, the issue is with box-shadow or an outline, not direct padding. */
+  padding-right: var(--bs-gutter-x, 0.75rem); /* Example: If Bootstrap's invalid adds icon padding */
+  background-image: none; /* Remove validation icon if it affects width */
+}
+
+/* Ensure consistent width for the specific input */
+input[id^="instution"] {
+  width: 90.5% !important; /* Use !important if Bootstrap's default is overriding */
+  box-sizing: border-box; /* Crucial for consistent sizing */
+}
+
+/* This helps if the validation icon is causing the issue */
+.form-control.is-invalid {
+    background-image: none !important; /* Remove the background SVG icon */
+    padding-right: var(--bs-border-width, 1px) !important; /* Reset padding used for the icon */
+}
+
+/* Optional: To maintain vertical alignment if validation icons were present */
+.form-control.is-invalid ~ .invalid-feedback {
+    /* Adjust as needed if the feedback message shifts due to icon removal */
+}
+
+
+
+
+
+//card
+.job-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  color: red;
+  animation: marquee 10s linear infinite;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(510%); }
+}
+
+/* Adjust marquee for small devices */
+@media (max-width: 768px) {
+  .marquee {
+    font-size: 14px; /* smaller text */
+    animation: marquee-small 15s linear infinite; /* slower scroll */
+  }
+
+  @keyframes marquee-small {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+}
+
+.academic-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.academic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+.scroll-area {
+  height: 850px;
+  overflow-y: scroll; /* allow vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.scroll-area::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+
+
+
+
+
+#main.apply-scroll-container {
+  height: 850px;
+  overflow: hidden;
+}
+
+/* Use the browser's touch scrolling on phones. The desktop perfect-scrollbar
+   behavior remains unchanged. */
+@media screen and (max-width: 767px) {
+  #main.apply-scroll-container {
+    height: calc(100vh - 112px);
+    max-height: calc(100dvh - 112px);
+    min-height: 0;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+}

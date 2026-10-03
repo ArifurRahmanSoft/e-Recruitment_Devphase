@@ -1,0 +1,636 @@
+
+
+
+
+
+  
+ 
+    <section   class="vh-8000" style=" background-color:  #6bd5f7; overflow-y: auto; height: 910px;">
+<div  class="container-details">
+
+
+    <form id="subForm" [formGroup]="requirementForm" #f="ngForm" class="form-horizontal"
+    style="width: 60%;   background-color: #ffffe0" class="container formBackgraound shadow-lg p-3 bg rounded  col-sm-10"
+                  
+                 #form="ngForm"   >
+                 
+                    <div class="containers title_box my-3" style="padding-left: 30px;" >
+                        <h5 id="title" class="mb-3 h5 text-center">Recruitment Form </h5>
+                       
+                        <hr>
+                        <p>  আবেদনের আগ্রহ প্রকাশ করার জন্য আপনাকে ধন্যবাদ জানাচ্ছি।
+                          ফর্ম পুরনের কিছু নিয়ম নিচে দেওয়া হল। </p>
+                         
+                          <ul>
+                            <li>১.সব তথ্য ইংরেজিতে পুরন করতে হবে।</li>
+                            <li>২. ফর্মের তথ্য গুলা এন আই ডি কার্ডের বানানের সাথে মিল রেখে পুরন করতে হবে।</li>
+              
+                            <li>৩. ইন্টারভিউ এর দিনে আপডেটেড সিভি শিক্ষাগত সার্টিফিকেট এর কপি নিয়ে আসতে হবে।</li>
+                            <hr>
+                            <li>৪. আপনি যদি সিলেক্টেড হন তাহলে জয়েন করার দিন এন আই ডি কার্ডের অরজিনাল কপি সাথে নিয়ে আসতে হবে।</li>
+                          </ul>
+                        
+                    </div>
+
+
+                    <div class="Personal_Information title_box containers my-3">
+    <h5 id="title" class="mb-3 h5 text-center">Personal Information </h5>
+   
+   
+
+
+
+    <div class="col-md-12 pl-0 pr-0 pt-2 pb-0 m-0 ">
+    <div class="row p-0 m-0">
+
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="jobTitle"
+                    style="float: left;">Job Title: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="jobTitle" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="jobTitle"
+                            placeholder="Job Title:" name="jobTitle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="department"
+                    style="float: left;">Department: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="department" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="department"
+                            placeholder="Department" name="department">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="mobileNumber"
+                    style="float: left;">Mobile No: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="mobileNumber" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="mobileNumber"
+                            placeholder="Mobile No" name="mobileNumber">
+                    </div>
+                </div>
+            </div>
+
+
+        
+            
+
+
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="name"
+                    style="float: left;">Full Name: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="name" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="name"
+                            placeholder="Full Name" name="name">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="motherName"
+                    style="float: left;">Mother Name: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="motherName" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="motherName"
+                            placeholder="Mother Name" name="motherName">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="dateOfBirth"
+                    style="float: left;">Date Of Birth: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="dateOfBirth" type="date"
+                            class="form-control form-control-sm input-sm input-sm-*" id="dateOfBirth"
+                            placeholder="Date Of Birth" name="dateOfBirth">
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="relegion" style="float: left;">Religion:  </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                  <div style="padding: 0; width: 96.5%; font-size: 13px; float: left;">
+                    <select formControlName="relegion" class="form-control form-control-sm dropDown"  id="relegion" name="relegion" required>
+                      <option value="">Select</option>
+                      <option *ngFor="let relegion of religionList" [value]="relegion"> {{ relegion }}  </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="gender" style="float: left;">Gender:  </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                  <div style="padding: 0; width: 96.5%; font-size: 13px; float: left;">
+                    <select formControlName="gender" class="form-control form-control-sm dropDown"  id="gender" name="gender" required>
+                      <option value="">Select</option>
+                      <option *ngFor="let gender of genderList" [value]="gender"> {{ gender }}  </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+      
+
+        
+
+        </div>
+
+
+
+
+
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="company"
+                    style="float: left;">Company: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="company" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="company"
+                            placeholder="Company" name="company">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="appliedPost"
+                    style="float: left;">Post: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="appliedPost" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="appliedPost"
+                            placeholder="Post" name="appliedPost">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="email"
+                    style="float: left;">Email: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="email" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="email"
+                            placeholder="Email" name="email">
+                    </div>
+                </div>
+            </div>
+
+
+        
+            
+
+
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="fatherName"
+                    style="float: left;">Father Name: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="fatherName" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="fatherName"
+                            placeholder="Father Name" name="fatherName">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="nid"
+                    style="float: left;">NID: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="nid" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="nid"
+                            placeholder="NID" name="nid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="dateOfBirth"
+                    style="float: left;">Birth Place: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="dateOfBirth" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="dateOfBirth"
+                            placeholder="Birth Place" name="dateOfBirth">
+                    </div>
+                </div>
+            </div>
+
+    
+
+          <div class="form-group clearfix">
+            <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="bloodGroup" style="float: left;">
+              Blood Group:
+            </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0; width: 96.5%; font-size: 13px; float: left;">
+                <select formControlName="bloodGroup" class="form-control form-control-sm dropDown" id="bloodGroup" name="bloodGroup" required>
+                  <option value="">Select</option>
+                  <option *ngFor="let bloodGroup of bloodGroupList" [value]="bloodGroup">
+                    {{ bloodGroup }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+
+         
+
+          <div class="form-group clearfix">
+            <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="maritialStatus" style="float: left;">Maritial Status:  </label>
+            <div class="col-sm-9 p-0 m-0" style="float: left;">
+              <div style="padding: 0; width: 96.5%; font-size: 13px; float: left;">
+                <select formControlName="maritialStatus" class="form-control form-control-sm dropDown"  id="maritialStatus" name="maritialStatus" required>
+                  <option value="">Select</option>
+                  <option *ngFor="let maritialStatus of maritialStatusList" [value]="maritialStatus"> {{ maritialStatus }}  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+       
+      
+        
+
+        </div>
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;"*ngIf="requirementForm.controls['maritialStatus'].value=== 'Married'">
+            <div class="form-group clearfix">
+                <label class="control-label col-lg-2 col-sm-2 ml-4 p-0 m-0 pt-1" for="spouseName"
+                    style="float: left;">Spouse Name: </label>
+                <div class="col-sm-9 p-0 m-0" style="float: left;">
+                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                        <input formControlName="spouseName" type="text"
+                            class="form-control form-control-sm input-sm input-sm-*" id="spouseName"
+                            placeholder="Spouse Name:" name="spouseName">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+
+  
+        </div>
+    </div>
+
+   
+        <div class="EmployeeAddress  title_box containers my-3">
+            <!-- <h5 id="title">Employee Address</h5> -->
+            <h5 id="title" class="mb-3 h5 text-center">Employee Address </h5>
+            <hr>
+            <h6>Present Address</h6>
+        <div class="row">
+            <!-- Pres Division -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-10 mb-2">
+              <div class="form-group">
+                <label for="preAddDivision" class="control-label">Division:</label>
+                <input formControlName="preAddDivision" type="text" class="form-control form-control-sm" id="preAddDivision" placeholder="Division">
+              </div>
+            </div>
+          
+            <!-- Pres District -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="preAddDistrict" class="control-label">District:</label>
+                <input formControlName="preAddDistrict" type="text" class="form-control form-control-sm" id="preAddDistrict" placeholder="District">
+              </div>
+            </div>
+          
+            <!-- Pres Thana -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="preAddThana" class="control-label">Thana:</label>
+                <input formControlName="preAddThana" type="text" class="form-control form-control-sm" id="preAddThana" placeholder="Thana">
+              </div>
+            </div>
+          
+            <!-- Pres Post -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="preAddPostOffice" class="control-label">Post:</label>
+                <input formControlName="preAddPostOffice" type="text" class="form-control form-control-sm" id="preAddPostOffice" placeholder="Post">
+              </div>
+            </div>
+          
+            <!-- Pres Village -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="preAddVillage" class="control-label">Village:</label>
+                <input formControlName="preAddVillage" type="text" class="form-control form-control-sm" id="preAddVillage" placeholder="Village">
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox">
+              Same as Present Address
+            </label>
+          </div>
+          <h6>Parmanent Address</h6>
+          <div class="row">
+            <!-- Pres Division -->
+            <div  class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="parAddDivision" class="control-label">Division:</label>
+                <input formControlName="parAddDivision" type="text"  class="form-control form-control-sm" id="parAddDivision" placeholder="Division">
+              </div>
+            </div>
+          
+            <!-- Pres District -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="parAddDistrict" class="control-label">District:</label>
+                <input formControlName="parAddDistrict" type="text" class="form-control form-control-sm" id="parAddDistrict" placeholder="District">
+              </div>
+            </div>
+          
+            <!-- Pres Thana -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="parAddThana" class="control-label">Thana:</label>
+                <input formControlName="parAddThana" type="text" class="form-control form-control-sm" id="parAddThana" placeholder="Thana">
+              </div>
+            </div>
+          
+            <!-- Pres Post -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="parAddPostOffice" class="control-label">Post:</label>
+                <input formControlName="parAddPostOffice" type="text" class="form-control form-control-sm" id="parAddPostOffice" placeholder="Post">
+              </div>
+            </div>
+          
+            <!-- Pres Village -->
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-12 mb-2">
+              <div class="form-group">
+                <label for="parAddVillage" class="control-label">Village:</label>
+                <input formControlName="parAddVillage" type="text" class="form-control form-control-sm" id="parAddVillage" placeholder="Village">
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+      
+          <div class="col-md-12 pl-0 pr-0 pt-2 pb-0 m-0 ">
+            <div class="row p-0 m-0">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 ml-0 p-0 m-0 pt-1" for="name"
+                            style="float: left;">Expected Salary: </label>
+                        <div class="col-sm-9 p-0 m-0" style="float: left;">
+                            <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                                <input formControlName="expectedSelery" type="number"
+                                    class="form-control form-control-sm input-sm input-sm-*" id="expectedSelery"
+                                    placeholder="Expected Salary" name="expectedSelery">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-2 ml-0 p-0 m-0 pt-1" for="appliedBy"
+                            style="float: left;">AppliedBy: </label>
+                        <div class="col-sm-9 p-0 m-0" style="float: left;">
+                            <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                                <input formControlName="appliedBy" type="text"
+                                    class="form-control form-control-sm input-sm input-sm-*" id="appliedBy"
+                                    placeholder="AppliedBy" name="appliedBy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+
+
+                </div>
+            </div>
+
+
+
+<!-- Academic Qualification Section -->
+<h5 class="mb-3 h5 text-center">Academic Qualification</h5>
+<hr>
+
+ <div formArrayName="academicQualifications">
+    <div *ngFor="let qualification of academicQualifications.controls; let i = index" [formGroupName]="i" class="academic-qualification-item">
+      <div class="smallDeviceTopCol Qulification_index qualification-type">{{ qualificationType[i] }}</div>
+        <div class="form-group">
+            <label for="degree{{i}}">Exam:</label>
+            <input type="text" formControlName="degree" class="form-control"
+                [ngClass]="{ 'is-invalid': requirementForm.submitted && qualification.get('degree').invalid }">
+            <div *ngIf="requirementForm.submitted && qualification.get('degree').invalid" class="invalid-feedback">
+                Degree is required
+            </div>
+        </div>
+
+   
+
+
+        <div class="form-group" >
+            <label for="board{{i}}">University / Board:</label>
+            <input type="text" formControlName="board" class="form-control"
+                [ngClass]="{ 'is-invalid': requirementForm.submitted && qualification.get('board').invalid }">
+            <div *ngIf="requirementForm.submitted && qualification.get('board').invalid" class="invalid-feedback">
+                University / Board is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="institution{{i}}">Institution:</label>
+            <input type="text" formControlName="institution" class="form-control"
+                [ngClass]="{ 'is-invalid': requirementForm.submitted && qualification.get('institution').invalid }">
+            <div *ngIf="requirementForm.submitted && qualification.get('institution').invalid" class="invalid-feedback">
+                Institution is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="major{{i}}">Major:</label>
+            <input type="text" formControlName="major" class="form-control"
+                [ngClass]="{ 'is-invalid': requirementForm.submitted && qualification.get('major').invalid }">
+            <div *ngIf="requirementForm.submitted && qualification.get('major').invalid" class="invalid-feedback">
+                Major is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="result{{i}}">Result:</label>
+            <input type="number" formControlName="result" class="form-control"
+                [ngClass]="{ 'is-invalid': requirementForm.submitted && qualification.get('result').invalid }">
+            <div *ngIf="requirementForm.submitted && qualification.get('result').invalid" class="invalid-feedback">
+                Result is required and must be a number
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="passingyear{{i}}">Passing Year:</label>
+            <input type="number" formControlName="passingyear" class="form-control"
+                [ngClass]="{ 'is-invalid': requirementForm.submitted && qualification.get('passingyear').invalid }">
+            <div *ngIf="requirementForm.submitted && qualification.get('passingyear').invalid" class="invalid-feedback">
+                Passing Year is required and must be a 4-digit number
+            </div>
+        </div>
+
+        <button type="button" (click)="removeAcademicQualification(i)" class="btn btn-danger form-control"
+            [disabled]="academicQualifications.length <= 3">Remove</button>
+    </div>
+</div> 
+
+
+
+
+
+<!-- Button to Add More Qualifications -->
+<button type="button" (click)="addAcademicQualification()" class="btn btn-primary"
+    [disabled]="academicQualifications.length >= qualificationType.length">Add More++</button>
+   
+
+
+
+</div>
+
+
+
+
+
+ <div class="workExperience title_box containers my-3">
+  <h5 id="title" class="mb-3 h5 text-center">Work Experience</h5>
+  <hr>
+
+  <div formArrayName="workExperiences" *ngFor="let experience of workExperiences.controls; let i = index">
+    <div [formGroupName]="i" class="academic-qualification-item">
+      <div>
+        <label>Post:{{ i + 1 }}</label>
+        <input type="text" formControlName="post" class="form-control" [ngClass]="{ 'is-invalid': form.submitted && !experience.get('post').valid }" required>
+        <div *ngIf="form.submitted && !experience.get('post').valid" class="invalid-feedback">Post is required</div>
+      </div>
+
+      <div>
+        <label>Organization:{{ i + 1 }}</label>
+        <input type="text" formControlName="organization" class="form-control" [ngClass]="{ 'is-invalid': form.submitted && !experience.get('organization').valid }" required>
+        <div *ngIf="form.submitted && !experience.get('organization').valid" class="invalid-feedback">Organization is required</div>
+      </div>
+
+      <div>
+        <label>Job Location:{{ i + 1 }}</label>
+        <input type="text" formControlName="jobLocation" class="form-control" [ngClass]="{ 'is-invalid': form.submitted && !experience.get('jobLocation').valid }" required>
+        <div *ngIf="form.submitted && !experience.get('jobLocation').valid" class="invalid-feedback">Job Location is required</div>
+      </div>
+
+      <div>
+        <label>Salary:{{ i + 1 }}</label>
+        <input type="text" formControlName="salary" class="form-control" [ngClass]="{ 'is-invalid': form.submitted && !experience.get('salary').valid }" required>
+        <div *ngIf="form.submitted && !experience.get('salary').valid" class="invalid-feedback">Salary is required</div>
+      </div>
+
+      <div>
+        <label>Reporting to:{{ i + 1 }}</label>
+        <input type="text" formControlName="reportingTo" class="form-control" [ngClass]="{ 'is-invalid': form.submitted && !experience.get('reportingTo').valid }" required>
+        <div *ngIf="form.submitted && !experience.get('reportingTo').valid" class="invalid-feedback">Reporting To is required</div>
+      </div>
+
+      <div>
+        <label>Default Product:{{ i + 1 }}</label>
+        <input type="text" formControlName="defaultProduct" class="form-control" [ngClass]="{ 'is-invalid': form.submitted && !experience.get('defaultProduct').valid }" required>
+        <div *ngIf="form.submitted && !experience.get('defaultProduct').valid" class="invalid-feedback">Default Product is required</div>
+      </div>
+
+      <div>
+        <button type="button" (click)="removeExperience(i)" class="btn btn-danger form-control">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary smallDeviceTopColButton" (click)="addExperience()">Add Experience ++</button>
+</div>
+
+
+
+
+<div style="margin-left: 150px;" class="UploadAllDocument">
+  <div class="row">
+    <div class="col-sm-12 col-md-3 mb-3">
+      <div>
+        <div><label>Upload Image</label></div>
+        <input type="file"  (change)="onFileChange($event)" >
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-3 mb-3">
+      <div>
+        <div><label>Upload Signature</label></div>
+        <input type="file" (change)="OnSignatureChange($event)">
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-3 mb-3">
+      <div>
+        <div><label>Upload CV</label></div>
+        <input type="file" (change)="OnCvChange($event)">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+(click)="onSubmit()"
+<button  (click)="onSubmitFileForm()"     type="submit" class="SubmitButton  btn btnb btn-primary btn-lg btn-block">Submit</button>  
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</section> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

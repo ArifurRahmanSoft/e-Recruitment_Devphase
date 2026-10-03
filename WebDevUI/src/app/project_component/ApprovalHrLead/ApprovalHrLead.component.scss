@@ -1,0 +1,841 @@
+
+//   .showImage {
+
+//      background-image: url("../../../assets/img/citygroup/background-image.jpg"); 
+//      background-repeat: no-repeat; 
+//      background-size: cover;
+// }
+
+
+//ue
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1200px;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+
+.first-column{
+  width: 120px;
+  
+}
+.workExperience{
+  margin-top: 10px;
+ 
+}
+
+.dropDown{
+  margin-left: 30px;
+}
+
+
+.outer{
+ 
+  background: linear-gradient(to top,rgb(98, 104, 103) 50%, #706e6f 90%) no-repeat;
+ height: 1000;
+
+}
+.container{
+  /* border: 2px solid gray; */
+  /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
+  background: white;
+  border-radius: 10px;
+  padding-bottom: 40px;
+  
+}
+.containers{
+  border: 2px solid gray; 
+  /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
+  background: white;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  
+}
+
+
+.container-details{
+  padding-top: 20px;
+ 
+ 
+}
+.inner{
+background-color: white;
+
+width: 30%;
+align-items: center;
+         border-radius: 2%;
+         padding: 15px;
+  
+}
+
+.btnb{
+ 
+  background-color: #0056b3;
+  width: 80%;
+  
+  text-align: center;
+  border-radius: 5px;
+  color:white ;
+  transition:  0.5s;
+  margin-top: 20px;
+  margin-left: 120px;
+
+ 
+}
+.btnb:hover {
+  background-color: blue; /* Background color on hover */
+}
+
+
+.font-weight-bold{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.name_show{
+  padding-left: 40%;
+  padding-top: 10px;
+  color: white;
+}
+
+.persentAddressLen{
+  width: 30px;
+} 
+
+.AppliedPost{
+  background-color: #508bfc;
+  margin-bottom: 0px;
+  padding-left: 40%;
+  padding-top: 20px;
+
+  
+} 
+.leftDate{
+  margin-bottom: 0px;
+  padding-top: 1%;
+   color: white; 
+ 
+} 
+.postRadio label{
+  color: white;
+}
+
+.postRadio{
+  padding-left: 40%;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.first-Row td{
+  text-align: center;
+
+  /* padding-left: 20px; */
+}
+.addButton{
+  padding-left: 9.5%;
+}
+
+
+.first-Row .clm{
+  /* background-color: gray; */
+  background-color: #2e7cbb;
+  border-radius: 3px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid lightblue;
+  width: 15%;
+ 
+ 
+}
+
+
+
+.textSize{
+  font-size: 14px;
+}
+
+.first-Row{
+  margin-left: 8%;
+
+}
+
+.first-Row .first-column{
+  width: 10%;
+}
+
+.startleftDate{
+  color:red
+}
+.timeoVER{
+  color:red;
+
+  
+}
+.leftDate{
+color: blue;
+}
+
+
+
+
+.logoutButton{
+  padding-right: 5%;
+  padding-bottom: .5%;
+  padding-top: .5%;
+}
+
+
+
+.Personal_Information{
+  margin-bottom: 10px;
+}
+
+
+.title_box #title {
+  position: relative;
+  top: -01em;
+  margin-left: 1em;
+  display: inline;
+  background-color: white;
+  
+}
+
+.requirementForm #title {
+  position: relative;
+  top: -0.6em;
+  margin-left: 1em;
+  display: inline;
+  background-color: white;
+ 
+}
+
+.requirementForm{
+
+  border: 1px  solid black;
+}
+
+
+.maritalStatus{
+  margin-bottom: 15px;
+}
+
+.EmployeeAddress{
+  margin-bottom: 10px;
+}
+
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+}
+.dropdown-item i {
+  margin-right: 5px;
+}
+.dropdown-menu{
+width: 100px;
+}
+
+  .dropdown{
+      padding-right: 5%;
+      padding-bottom: .5%;
+      padding-top: .5%;
+  }
+
+  .dropdown-item:hover {
+      /* background-color: gray !important; */
+       color: white; 
+    }
+
+    /* .BackButton{
+      margin-left: -2225%;
+  } */
+    .backgroundColor{
+      /* background: linear-gradient(90deg,#411212,#791717,#cc3c3c,#471010,#411212,#791717,#cc3c3c,#471010); */
+      background-color: #143460;
+    }
+    .backgroundColor img{
+      /* Style the header image as desired */
+      width: 35px; /* Adjust width/height as needed */
+      height: 35px;
+      margin-right: 10px; 
+      margin-left: 30px;
+   }
+
+ 
+  
+
+
+
+   .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Each column should be at least 200px wide, but can expand */
+      grid-gap: 10px; /* Gap between grid items */
+  }
+  
+  .grid-item {
+      padding: 5px;
+      border: 1px solid #ccc;
+  }
+  
+  .first-row {
+      font-weight: bold;
+  }
+  
+
+
+
+
+
+
+
+  /* For small devices, display one column per row */
+@media screen and (max-width: 767px) {
+  .work-experience-item {
+      display: block;
+      margin-bottom: 20px;
+  }
+}
+
+
+/* For larger devices, display all data in one row */
+@media screen and (min-width: 768px) {
+  .work-experience-item {
+      display: inline-block;
+     
+      width: 13%; 
+      margin-right: 01%; 
+     
+  }
+}
+
+
+
+.academic-qualification-item {
+  display: block; /* Display one column per row by default */
+}
+
+@media screen and (min-width: 768px) {
+  .academic-qualification-item {
+      display: grid;
+      grid-column-gap: 1%;
+      grid-template-columns: repeat(8, 1fr); 
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .smallDeviceTopCol {
+     color: white;
+    margin-top: 5px;
+    background-color: #428bca;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-radius: 2%;
+
+    
+  }
+  .smallDeviceTopColButton {
+      margin-top: 5px;
+      width: 100%;
+      margin-left: 6px;
+  
+  }
+}
+@media screen and (max-width: 767px) {
+.SubmitButton{
+ width: 80%;
+ margin-left: 10%;
+}
+}
+@media screen and (min-width: 768px) {
+  .Qulification_index{
+   margin-top: 30px;
+  }
+}
+
+
+
+.academic-qualification-item div{
+  margin-left: 5%;
+  margin-left: 5px;
+  width: 100%;
+  
+}
+
+/* for header section */
+@media (max-width: 767px) {
+  .citygroup-container {
+    justify-content: center;
+  }
+
+  .citygroup-name {
+    margin-top: 8px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+   
+  }
+}
+@media (max-width: 767px) {
+  .UploadAllDocument .row{
+      margin-left: -30%;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 40px;
+  
+
+  }
+  .BackButton{
+      margin-right: 1300px;  
+  }
+}
+
+@media (max-width: 767px) {
+  .citygroup-container{
+    /* margin-left: 13%; */
+  }
+}
+@media (max-width: 767px) {
+  .BackButtonClasd{
+    margin-left: 0%;
+  }
+}
+
+
+.form-group {
+  margin-bottom: 15px; /* Adjust the spacing as needed */
+}
+
+.academic-qualification-item {
+  margin-bottom: 30px; /* Creates gap between qualifications */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Mimic Bootstrap 5 form-switch styles */
+.form-switch {
+  display: flex;
+  align-items: center;
+  padding-left: 2.5rem;
+  position: relative;
+}
+
+.form-switch .form-check-input {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 1.5rem;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.form-switch .form-check-input::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 0.15rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #0d6efd;
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translateX(1.5rem);
+}
+
+.form-switch .form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-check-label {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+
+
+
+
+// .custom-modal-backdrop {
+//   position: fixed;
+//   top: -28%;
+//   left:-4%;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0,0,0,0.4);
+//   display: flex;
+//   justify-content: right;
+//   align-items: center;
+//   z-index: 999;
+// }
+
+// @media (max-width: 767px) {
+//   .custom-modal-backdrop {
+//     top: -10%;
+//     left: 1%;
+//   }
+//   .custom-modal {
+ 
+//   padding: 20px;
+//   width: 150px;
+ 
+ 
+// }
+// }
+
+// .custom-modal {
+//   background-color: white;
+//   padding: 20px;
+//   width: 420px;
+//   border-radius: 8px;
+//   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+// }
+
+// .modal-buttons {
+//   margin-top: 15px;
+//   text-align: right;
+  
+// }
+
+.modal-buttons button {
+  margin-left: 10px;
+}
+
+
+
+/* In your component's CSS file */
+.custom-tab-group ::ng-deep .mat-tab-label {
+  color: white; 
+  opacity: 1;
+}
+
+.custom-tab-group ::ng-deep .mat-tab-label-active {
+  color: white; 
+  font-weight: bold;
+}
+
+/* Optional: Change ink bar color */
+.custom-tab-group ::ng-deep .mat-ink-bar {
+  background-color: white !important;
+}
+
+.table-responsive-custom {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+
+
+
+
+
+
+//for text area
+.custom-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex; /* Keep flex for centering or other alignment if needed */
+  justify-content: right; /* To align the modal to the right */
+  align-items: flex-start; /* Or remove if you use absolute positioning only */
+  z-index: 999;
+}
+
+/* Backdrop covering entire screen */
+.custom-modal-backdrop-test {
+  position: fixed;
+  top: 1%;
+  left: 5%;
+  width: 100vw;        /* Full viewport width */
+  height: 100vh;       /* Full viewport height */
+  //background-color: rgba(0, 0, 0, 0.4);
+  background-color: gray;
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: flex-start;  /* Start from top */
+  z-index: 999;
+  overflow-y: auto;         /* Scroll if modal taller than viewport */
+}
+
+/* Modal itself */
+.custom-modal-test {
+  position: relative;        /* Relative inside fixed backdrop */
+  top: 10px;                 /* Optional padding from top */
+  width: 90vw;               /* Almost full width */
+  max-width: 1200px;         /* Optional max width */
+  height: 90vh;              /* Almost full height */
+  background-color: rgb(226, 224, 224);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;          /* Scroll content if too tall */
+}
+
+@media screen and (min-width: 768px) and (max-width: 1366px) {
+  .custom-modal-test {
+    max-width: 750px;
+  }
+}
+/* Responsive adjustments for medium devices */
+@media (max-width: 992px) {
+  .custom-modal-test {
+    width: 95vw;
+    height: 85vh;
+    padding: 15px;
+  }
+}
+
+/* Responsive adjustments for small devices */
+@media (max-width: 576px) {
+  .custom-modal-test {
+    width: 98vw;
+    height: 80vh;
+    padding: 10px;
+  }
+}
+
+
+.custom-modal {
+  position: absolute; /* <<< CHANGE THIS: Position the modal absolutely */
+  top: 10%; /* <<< SET YOUR DESIRED TOP POSITION HERE */
+  right: 10%; /* To position it from the right edge */
+  /* Or use 'left' if you want it from the left and adjust justify-content */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */ /* For horizontal centering if using left: 50% */
+
+  background-color: white;
+  padding: 20px;
+  width: 420px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+
+  max-height: 90vh; /* Important for scrollable content */
+  overflow-y: auto; /* Important for scrollable content */
+}
+
+@media (max-width: 767px) {
+  .custom-modal-backdrop {
+    /* Keep backdrop covering full screen */
+    justify-content: center;
+    align-items: center;
+    left: -6%;
+    top: 5%;
+    //top: 0;
+    //left: 0;
+  }
+  .custom-modal {
+    top: 5%; /* Adjust for mobile top position */
+    right: 5%; /* Adjust for mobile right position */
+    width: 90%; /* Make it more responsive on small screens */
+    max-width: 300px; /* Limit max width */
+    left: auto; /* Reset left if it was used for desktop */
+    transform: none; /* Reset transform if it was used for desktop */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+}
+
+.modal-buttons {
+  margin-top: 15px;
+  text-align: right;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+
+.custom-modal-width {
+  max-width: 60%;
+  padding-top: 2%;  /* or set to 1000px, etc. */
+}
+
+.mailfromTo{
+  padding-right: 2%;
+}
+
+
+//html view start
+@media (max-width: 767px) {
+  .custom-modal-html-backdrop {
+    /* Keep backdrop covering full screen */
+    justify-content: center;
+    align-items: center;
+    left: -6%;
+    top: 5%;
+    //top: 0;
+    //left: 0;
+  }
+  .custom-modal-html {
+    top: 5%; /* Adjust for mobile top position */
+    right: 5%; /* Adjust for mobile right position */
+    width: 90%; /* Make it more responsive on small screens */
+    max-width: 300px; /* Limit max width */
+    left: auto; /* Reset left if it was used for desktop */
+    transform: none; /* Reset transform if it was used for desktop */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+}
+//html view End
+
+//for spinner 
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #1F935C;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-overlay p {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #1F935C;
+}
+
+//date
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+
+.remove-btn {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+
+
+
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+  .work-experience-item {
+      display: block;
+      margin-bottom: 20px;
+  }
+ .remove-btn {
+    width: 95%;
+  }
+  .main-input{
+    margin-left: 5px;
+  }
+  .main-title{
+margin-left: 5px;
+}
+
+.imgPosition{
+   text-align: left;
+}
+.is-invalid {
+  border: 1px solid red;
+}
+}
+
+/* This helps if the validation icon is causing the issue */
+.form-control.is-invalid {
+    background-image: none !important; /* Remove the background SVG icon */
+    padding-right: var(--bs-border-width, 1px) !important; /* Reset padding used for the icon */
+}
+
+/* Optional: To maintain vertical alignment if validation icons were present */
+.form-control.is-invalid ~ .invalid-feedback {
+    /* Adjust as needed if the feedback message shifts due to icon removal */
+}
+
+
+.col-lg-2 .form-control.is-invalid,
+.col-11 .form-control.is-invalid,
+.col-md-5 .form-control.is-invalid {
+  /* Set box-sizing explicitly to ensure padding/border are included in the width */
+  box-sizing: border-box;
+
+  /* If Bootstrap adds a border-width, ensure it doesn't cause expansion */
+  /* This often isn't needed if box-sizing is correct, but can be a fallback */
+  border-width: 1px; /* Ensure a consistent border width */
+  border-color: #dc3545; /* Bootstrap's invalid red color */
+
+  /* Remove any extra padding/margin that might be implicitly added by Bootstrap's invalid state */
+  /* Often, the issue is with box-shadow or an outline, not direct padding. */
+  padding-right: var(--bs-gutter-x, 0.75rem); /* Example: If Bootstrap's invalid adds icon padding */
+  background-image: none; /* Remove validation icon if it affects width */
+}
+
+
+::ng-deep  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 12px;
+}
+

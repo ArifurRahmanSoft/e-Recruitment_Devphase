@@ -1,0 +1,2542 @@
+<div *ngIf="RoleUser !== 'Applicant' && !htmlView &&!showRecruitmentApproval" class="col-12 p-0 m-0">
+    <div class="d-flex justify-content-center p-0 m-0">
+        <div class="col-12 pl-0 pr-0 pb-0 pt-1 m-0" style="background-color: #fff;">
+
+            <mat-tab-group class="custom-tab-group" mat-align-tabs="center" style="background-color: #138496;"
+                color="accent">
+
+
+
+                <mat-tab class="custom-group" label="Approval List">
+
+                    <form [formGroup]="candidateForm">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card "
+                            style="border: 1px solid #ccc; background-color: #B8DAFF;">
+
+
+                            <div class="row p-0 mt-3">
+
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">Job Title:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left; ">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+
+                                                <ng-select2 formControlName="jobTitle" [options]="options"
+                                                    [allowClear]="true" id="jobTitle" name="job" [data]="jobPostList"
+                                                    [placeholder]="'Select Job Title'">
+
+                                                </ng-select2>
+                                                <!-- (valueChanged)="onJobTitleChanged($event)" -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="mailType"
+                                            style="float: left;">Status:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <select (change)="getApplicantType($event.target.value)"
+                                                    style="line-height: 2.5;width: 100%; height: auto; padding: 5px;">
+                                                    <option value="">Select Status</option>
+                                                    <option *ngFor="let list of applicantStatusType"
+                                                        [value]="list.value">
+                                                        {{ list.label }}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">From Exp:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <input formControlName="fromExperience" style="width: 93%;"
+                                                    type="number"
+                                                    class="form-control form-control-sm input-sm input-sm-*"
+                                                    id="fromExperience" placeholder="Enter From Experience Year"
+                                                    name="fromExperience">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">To Experience:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <input formControlName="toExperience" style="width: 93%;" type="number"
+                                                    class="form-control form-control-sm input-sm input-sm-*"
+                                                    id="toExperience" placeholder="Enter From Experience Year"
+                                                    name="toExperience">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <button class="btn btn-primary btn-sm"
+                                                    (click)="getApplicantListByExperience()"><i
+                                                        class="fa fa-search mr-2"></i>Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                            <div hidden class="row p-0 mt-3">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="mailType"
+                                            style="float: left;">Status:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <select (change)="getApplicantType($event.target.value)"
+                                                    style="line-height: 2.5;width: 100%; height: auto; padding: 5px;">
+                                                    <option value="">Select Status</option>
+                                                    <option *ngFor="let list of applicantStatusType"
+                                                        [value]="list.value">
+                                                        {{ list.label }}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">Date:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 93%; font-size: 13px; float: left;">
+
+                                                <input ngModel="mailDate" formControlName="mailDate"
+                                                    (change)="getMAilDate($event)" style="width: 100%;" type="date"
+                                                    class="form-control form-control-sm input-sm input-sm-*"
+                                                    id="startDate" placeholder="Enter mailDate..." name="mailDate">
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-2 p-0 m-0 pt-1" for="mailType"
+                                            style="float: left;">Time:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 93%; font-size: 13px; float: left;">
+                                                <input #timeInput ngModel="examTime" type="time"
+                                                    formControlName="examTime" (change)="getMAilTime($event)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div hidden class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <button class="btn btn-primary" (click)="SendAllMail()"><i
+                                                        class="fa fa-envelope mr-2"></i>Send</button>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </form>
+
+
+
+
+
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+
+
+<!-- *ngIf="!htmlView" -->
+<div *ngIf="!showRecruitmentApproval" class="card-body pl-0 pr-4 pt-2"
+    style="min-height: 460px; margin-bottom: -20px; margin-top: 5px;">
+
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-12">
+            <pager-top (setPage)="getListByPage($event)" (sendList)="sendToList($event)" [loggedUserId]="loggedUserId"
+                [pageSize]="pageSize" [IsSearchOnServer]="true" [responseTag]="responseTag" [apiUrl]="_listByPageUrl"
+                [company]="company" [JobTitle]="JobTitle" [department]="department" [post]="post" [sDate]="sDate"
+                [eDate]="eDate" [Role]="Role" [fromDate]="fromDate" [toDate]="toDate" [Status]="Status"
+                [approvalProcess]="approvalProcess">
+            </pager-top>
+        </div>
+    </div>
+
+
+    <div style="margin-top: -30px;" class="form-group clearfix d-flex justify-content-center align-items-center">
+        <div class="col-sm-1 p-0 m-0">
+            <div style="padding-left: 10px; width: 100%; font-size: 13px;">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row pr-2">
+        <div class="col-md-12">
+            <div class="table-responsive" style="height:600px;   overflow: auto; ">
+                <table id="table" class="table table-striped table-sm table-bordered p-0">
+                    <thead class="table-dark"
+                        style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                        <tr class="banglaTitle myCustomTableHeaderText">
+                            <!-- <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                S/L </th> -->
+                            <th hidden *ngIf="RoleUser!=='Applicant'" style="position:sticky;justify-content: center; align-items: flex-start; 
+                                 min-width: 30px; top:-1.5px; z-index:1; cursor: pointer; text-align: center;">
+                                <input type="checkbox" [checked]="isAllChecked">
+                            </th>
+
+                            <th hidden style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Emp_ID </th>
+
+                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Name </th>
+                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Mobile Number</th>
+                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Email</th>
+                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Job Title</th>
+                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Exp(Years)</th>
+                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Download All File</th>
+                            <!-- <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Status </th>
+                                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Is Joining </th> -->
+                            <th hidden
+                                style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Set Info </th>
+
+                            <th 
+                                style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Status </th>
+
+                            <!-- <th *ngIf="roleName==='Verify' || roleName==='Admin' "
+                                style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Verify </th>
+                            <th *ngIf="roleName==='Approve' || roleName==='Admin' "
+                                style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Approve </th> -->
+
+                            <th 
+                                style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                                Action </th>
+
+
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody class="banglaTitle p-0" style="padding-bottom: 0px; margin-bottom: 0px;">
+                        <ng-container *ngFor="let list of joApplicationLists;let sl = index">
+                            <tr >
+
+                                <!-- <td class="pl-2 pr-1 pt-1 pb-1">{{sl+1}}</td> -->
+                                <td hidden *ngIf="RoleUser!=='Applicant'" style="text-align: center;"><input
+                                        type="checkbox" [checked]="list.checked"></td>
+
+                                <td hidden class="pl-2 pr-1 pt-1 pb-1">
+                                    <span title="Quotation Reference">
+                                        <a title="Quotation Reference">{{list.empOid}}</a>
+                                    </span>
+                                </td>
+
+                                <td class="pl-2 pr-1 pt-1 pb-1">
+                                    <span title="Quotation Reference">
+
+                                        <a title="Quotation Reference">{{list.name}}</a>
+                                    </span>
+                                </td>
+                                <td class="pl-2 pr-1 pt-1 pb-1">{{list.mobileNumber}}</td>
+
+                                <td class="pl-2 pr-1 pt-1 pb-1">{{list.email}}</td>
+                                <td class="pl-2 pr-1 pt-1 pb-1">{{list.jobTitle}}</td>
+                                <td style="text-align: center;" class="pl-2 pr-1 pt-1 pb-1">{{list.totalYear}}</td>
+
+                                <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center; width: 12%;">
+
+
+                                    <a mat-button [matMenuTriggerFor]="actionMenu" aria-label="hidden"
+                                        style="z-index: 0; float: left;">
+                                        <mat-icon>arrow_drop_down</mat-icon>
+                                        <span>Report</span>
+                                        <!-- <span>Action</span>
+                                                    <mat-icon>arrow_drop_down</mat-icon> -->
+                                    </a>
+                                    <mat-menu #actionMenu="matMenu">
+
+                                        <!-- <button [disabled]="!list.cvPath" mat-menu-item
+                                        (click)="getcandidateDetail(list.applicantOid);">
+                                        <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                class="fa fa-file-pdf-o"></i></mat-icon>
+                                        <span>Download CV</span>
+                                    </button> -->
+
+                                        <!-- When CV path exists -->
+                                        <a *ngIf="list.docCvVPath" [href]="list.docCvVPath" target="_blank">
+                                            <button mat-menu-item>
+                                                <mat-icon class="text-danger" style="margin-top: -10px;">
+                                                    <i class="fa fa-file-pdf-o"></i>
+                                                </mat-icon>
+                                                <span>Download CV</span>
+                                            </button>
+                                        </a>
+
+                                        <!-- When CV path is missing -->
+                                        <button *ngIf="!list.docCvVPath" mat-menu-item disabled>
+                                            <mat-icon class="text-danger" style="margin-top: -10px;">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                            </mat-icon>
+                                            <span>Download CV</span>
+                                        </button>
+
+
+
+
+
+
+
+                                        <button hidden mat-menu-item (click)="loadRacReports(list.applicantOid);">
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-pdf-o"></i></mat-icon>
+                                            <span>RAC</span>
+                                        </button>
+
+
+                                        <button mat-menu-item (click)="loadReports(list.applicantOid);">
+
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-pdf-o"></i></mat-icon>
+                                            <span>Generated CV</span>
+                                        </button>
+
+                                        <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                            (click)="loadCandidateParticulars(list.applicantOid);">
+
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-pdf-o"></i></mat-icon>
+                                            <span>Candidate Particular</span>
+                                        </button>
+
+                                        <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                            (click)="loadCandidatePersonalInfo(list.applicantOid);">
+
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-pdf-o"></i></mat-icon>
+                                            <span>Personal Info</span>
+                                        </button>
+
+                                        <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                            (click)="loadIdentityCardInfo(list.applicantOid);">
+
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-pdf-o"></i></mat-icon>
+                                            <span>Identity Card</span>
+                                        </button>
+
+                                        <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                            (click)="getcandidateDetail(list.profileId);">
+
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-code-o"></i></mat-icon>
+                                            <span>Generated CV(HTML)</span>
+                                        </button>
+
+                                    </mat-menu>
+
+                                </td>
+
+
+                                <td hidden *ngIf="RoleUser!=='Applicant'" class="pl-2 pr-1 pt-1 pb-1">
+                                    <!-- <button *ngIf="!list.salary" style="color: #1F935C;" mat-menu-item
+                                    (click)="OpenModal(list.applicantOid)">
+                                    <i class="fa fa-save"></i> Set
+                                </button>
+                                <button *ngIf="list.salary" style="color: #FFA327;" class="btn btn-primary"
+                                    mat-menu-item (click)="updateModal(list.applicantOid)">
+                                    <i class="fa fa-edit"></i> Edit
+
+
+                                </button > -->
+
+
+
+
+                                    <button *ngIf="!list.isVerify" style="color: #1F935C;"
+                                        (click)=ShowRecruuitmentApproval(1,list) mat-menu-item>
+                                        <i class="fa fa-save"></i> Set
+                                    </button>
+                                    <button [disabled]="list.isApprove" *ngIf="list.isVerify" style="color: #FFA327;"
+                                        (click)=showRequsition(1,list) mat-menu-item>
+                                        <i class="fa fa-save"></i> Edit
+                                    </button>
+                                </td>
+
+
+                                <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center;" width="5%">
+                                    <!-- <h6>
+                                        <span class="badge badge-pill badge-{{ 
+                                            list.isApprove ? 'success' : 
+                                            list.isApDecline ? 'danger' :
+                                            list.isVerify ? 'primary' :
+                                            list.isVerifyDecline ? 'danger' :
+                                            list.isJoining=='1' ? 'secondary':''
+                                        }}">
+                                            {{
+                                            list.isApprove ? 'Approved' :
+                                            list.isApDecline ? 'Decline' :
+                                            list.isVerify ? 'Verified' :
+                                            list.isVerifyDecline ? 'Decline' :
+                                            list.isJoining=='1'?'Pending': ''
+                                            }}
+                                        </span>
+
+                                    </h6> -->
+
+                                        <h6>
+        <span
+            class="badge badge-pill badge-{{
+              
+                list.isAprvHRBP == '1' ? 'primary' :
+                list.isVerify == '1' ? 'info' :
+                list.isRevisedFrmHRBp == '1' ? 'warning' :
+                ''
+            }}"
+        >
+            {{
+       
+                list.isAprvHRBP == '1' ? 'Approved' :
+                list.isVerify == '1' ? 'Pending' :
+                list.isRevisedFrmHRBp == '1' ? 'Revised' :
+                ''
+
+
+                
+            }}
+        </span>
+    </h6>
+                                </td>
+
+
+                              
+
+
+                                <td  class="pl-2 pr-1 pt-1 pb-1">
+                          
+
+
+                                    <!-- <button
+                                        *ngIf="list.isAprvHRBP=='0'  && list.isRevisedFrmHRBp=='0'  && list.isVerify=='1'  "
+                                        style=" border-radius: 5px; color: white; background-color: #1F935C;"
+                                        class="btn btn-primary btn-sm" (click)="getRequsitionById(list)"
+                                        (click)="openModalEntryDialog('WorkOrder')">
+                                        <i class="fa fa-check-circle"></i> Approve
+                                    </button> -->
+
+                                     <button
+                                        *ngIf="list.approvalStatus=='1' && list.isAprvHRBP=='0'  && list.isRevisedFrmHRBp=='0' && list.isRevisedFrmHeadofBsnsUnit=='0' && list.isRevisedFrmHRLead=='0' && list.isRevisedFrmHRDirector=='0'"
+                                        style=" border-radius: 5px; color: white; background-color: #1F935C;"
+                                        class="btn btn-primary btn-sm" (click)="getRequsitionById(list)"
+                                        (click)="openModalEntryDialog('WorkOrder')">
+                                        <i class="fa fa-check-circle"></i> Approve
+                                    </button>
+
+
+
+
+                                </td>
+
+
+
+
+                            </tr>
+                        </ng-container>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row pr-2">
+        <div class="col-md-12">
+            <pager-bottom #cmnpager (setPage)="getListByPage($event)" (sendList)="sendToList($event)"
+                [loggedUserId]="loggedUserId" [pageSize]="pageSize" [IsSearchOnServer]="true"
+                [responseTag]="responseTag" [apiUrl]="_listByPageUrl" [company]="company" [JobTitle]="JobTitle"
+                [department]="department" [post]="post" [sDate]="sDate" [eDate]="eDate" [Role]="Role"
+                [fromDate]="fromDate" [toDate]="toDate" [Status]="Status" [approvalProcess]="approvalProcess">
+            </pager-bottom>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div>
+
+</div>
+
+
+
+
+
+
+<div class="custom-modal-backdrop" *ngIf="showModal">
+    <div class="custom-modal">
+        <h5 *ngIf="RoleUser!=='Applicant'" style="text-align: center;">Set Joining Applicant Info</h5>
+        <h5 *ngIf="RoleUser==='Applicant'" style="text-align: center;">My Message</h5>
+
+
+
+        <br />
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 m-0 card "
+            style="border: 1px solid #ccc; background-color: #B8DAFF;">
+
+
+            <div class="row p-0 mt-3">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                    <div class=" clearfix">
+                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID" style="float: left;">Salary:
+                        </label>
+                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                <input [(ngModel)]="Salary" style="width: 93%;" type="number"
+                                    class="form-control form-control-sm input-sm input-sm-*" id="fromExperience"
+                                    placeholder="Enter Applicant Salary" name="fromExperience">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row p-0 mt-3">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                    <div class="form-group clearfix">
+                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID" style="float: left;">Joining
+                            Date:
+                        </label>
+                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                <input [(ngModel)]="joiningDate" style="width: 93%;" type="date"
+                                    class="form-control form-control-sm input-sm input-sm-*" id="fromExperience"
+                                    placeholder="Enter Joining Date" name="fromExperience">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button class="btn btn-primary" (click)="submitModal()">Submit</button>
+            <button class="btn btn-warning" (click)="closeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- verify modal -->
+
+<div class="custom-modal-backdrop" *ngIf="showVerifyModal">
+    <div class="custom-modal">
+        <h6 *ngIf="RoleUser!=='Applicant'" style="text-align: center;">Verify Details</h6>
+        <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="isVerify"
+                    [(ngModel)]="selectedVerifyOption" value="isVerify">
+
+                <label class="form-check-label" for="isVerify">Verify</label>
+            </div>
+            <div style="color: red;" class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="isVerifyDecline"
+                    [(ngModel)]="selectedVerifyOption" value="isVerifyDecline">
+                <label class="form-check-label" for="isVerifyDecline">Decline</label>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 m-0 card "
+            style="border: 1px solid #ccc; background-color: #B8DAFF;">
+            <div class="row pb-3 mt-3 ">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                    <div class=" clearfix">
+                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID" style="float: left;">Verify
+                            Note:
+                        </label>
+                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                <textarea [(ngModel)]="verifyNote" rows="3" style="width: 93%;"
+                                    class="form-control form-control-sm" id="fromExperience"
+                                    placeholder="Enter Verify or decline note" name="fromExperience">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="modal-buttons">
+            <button class="btn btn-primary" (click)="submitVerifyModal()">Submit</button>
+            <button class="btn btn-warning" (click)="closeVerifyModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- APPROVE MODAL START FROM HERE  -->
+<div class="custom-modal-backdrop" *ngIf="showApproveModal">
+    <div class="custom-modal">
+        <h6 *ngIf="RoleUser!=='Applicant'" style="text-align: center;">Approve Details</h6>
+
+        <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="isApprove"
+                    [(ngModel)]="selectedApproveOption" value="isApprove">
+                <label class="form-check-label" for="isApprove">Approve</label>
+            </div>
+            <div style="color: red;" class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="isApproveDecline"
+                    [(ngModel)]="selectedApproveOption" value="isApproveDecline">
+                <label class="form-check-label" for="isApproveDecline">Decline</label>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-4 m-0 card "
+            style="border: 1px solid #ccc; background-color: #B8DAFF;">
+            <div class="row pb-3 mt-3">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                    <div class=" clearfix">
+                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID" style="float: left;">Verify
+                            Note:
+                        </label>
+                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                <!-- <h6 style="color: #1F935C;">{{showVerifyNote}}</h6> -->
+                                <textarea [(ngModel)]="showVerifyNote" rows="3" style="width: 93%;"
+                                    class="form-control form-control-sm" id="fromExperience"
+                                    placeholder="Enter Approve or decline note" name="fromExperience">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pb-3 mt-3">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                    <div class=" clearfix">
+                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID" style="float: left;">Approval
+                            Note:
+                        </label>
+                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                <textarea [(ngModel)]="approveNote" rows="3" style="width: 93%;"
+                                    class="form-control form-control-sm" id="fromExperience"
+                                    placeholder="Enter Approve or decline note" name="fromExperience">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-buttons">
+            <button class="btn btn-primary" (click)="submitApproveModal()">Submit</button>
+            <button class="btn btn-warning" (click)="closeApproveModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+
+
+<reportviewer></reportviewer>
+
+
+
+
+
+
+<div class="loader-overlay" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Sending mail, please wait...</p>
+</div>
+
+
+<!-- //HTML View -->
+
+
+
+<div class="container mt-4 " *ngIf="htmlView">
+    <div class="custom-modal-backdrop-test">
+        <div class="custom-modal-test">
+
+            <!-- Resume Header -->
+            <div class="row align-items-center ml-2 mb-4" style="width: 95%;  background-color: #ffffff;  padding: 15px;  border-radius: 8px;  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1); 
+                             justify-content: space-between;  align-items: center;  margin-top: 30px;">
+                <div class="col-md-8 col-12">
+                    <h4 class="fw-bold">Resume of</h4>
+                    <h6>{{ candidateMaster.name }}</h6>
+                    <p>
+                        <strong>Mobile:</strong> {{ candidateMaster.mobile_number }}<br />
+                        <strong>Email:</strong> {{ candidateMaster.email }}
+                    </p>
+                </div>
+
+
+                <div class="imgPosition col-md-3 col-12 text-md-end  mt-3 mt-md-0">
+                    <img [src]="candidateMaster.docPhotoVPath" alt="Applicant Photo" class="img-thumbnail"
+                        style="max-width: 120px;" />
+                </div>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Personal Information</div>
+                <div class="card-body row">
+                    <div class="col-md-5 col-12 mb-2"><strong>Father Name:</strong> {{ candidateMaster.father_name }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>NID:</strong> {{ candidateMaster.nid }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>TIN:</strong> {{ candidateMaster.tin }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Date of Birth:</strong> {{ candidateMaster.date_of_birth |
+                        date:'dd-MM-yyyy'}}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Birth Place:</strong> {{ candidateMaster.birth_place }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Blood Group:</strong> {{ BGtxt }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Religion:</strong> {{
+                        candidateMaster?.religion==='1'?'Muslim':
+                        candidateMaster?.religion==='1'?'Islam':candidateMaster?.religion==='2'?'Shonaton':candidateMaster?.religion==='3'?'Buddhist':
+                        candidateMaster?.religion==='4'?'Christian':candidateMaster?.religion==='5'?'Other':'Not
+                        sepecific' }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Gender:</strong> {{ candidateMaster?.gender === 'M' ?
+                        'Male' :
+                        candidateMaster?.gender === 'F' ? 'Female' : candidateMaster?.gender === 'O' ? 'Other' : 'Not
+                        Specified' }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Expected Salary:</strong> {{
+                        candidateMaster.expected_selery }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Source From:</strong> {{ candidateMaster.sourceFrom }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Last Update:</strong>
+                        {{(candidateMaster.updateon?candidateMaster.updateon : candidateMaster.apply_date) |
+                        date:'dd-MM-yyyy'}}
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Address Details -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Address Details</div>
+                <div class="card-body table-responsive d-none d-md-block">
+                    <!-- Table for large/medium devices -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Address</th>
+                                <th>Division</th>
+                                <th>District</th>
+                                <th>Thana</th>
+                                <th>Post Office</th>
+                                <th>Village</th>
+                                <th>Address Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Present Address</td>
+                                <td>{{ candidateMaster.pre_add_division_Text }}</td>
+                                <td>{{ candidateMaster.pre_add_district_Text }}</td>
+                                <td>{{ candidateMaster.pre_add_Thana_Text }}</td>
+                                <td>{{ candidateMaster.pre_add_post_office }}</td>
+                                <td>{{ candidateMaster.pre_add_village }}</td>
+                                <td>{{ candidateMaster.pre_add_detail }}</td>
+                            </tr>
+                            <tr>
+                                <td>Permanent Address</td>
+                                <td>{{ candidateMaster.par_add_division_Text }}</td>
+                                <td>{{ candidateMaster.par_add_district_Text }}</td>
+                                <td>{{ candidateMaster.par_add_Thana_Text }}</td>
+                                <td>{{ candidateMaster.par_add_post_office }}</td>
+                                <td>{{ candidateMaster.par_add_village }}</td>
+                                <td>{{ candidateMaster.par_add_detail }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile layout -->
+                <div class="card-body d-block d-md-none">
+                    <!-- Present Address -->
+                    <div class="mb-3 border p-2 rounded shadow-sm">
+                        <strong>Present Address</strong>
+                        <div><b>Division:</b> {{ candidateMaster.pre_add_division_Text }}</div>
+                        <div><b>District:</b> {{ candidateMaster.pre_add_district_Text }}</div>
+                        <div><b>Thana:</b> {{ candidateMaster.pre_add_Thana_Text }}</div>
+                        <div><b>Post Office:</b> {{ candidateMaster.pre_add_post_office }}</div>
+                        <div><b>Village:</b> {{ candidateMaster.pre_add_village }}</div>
+                        <div><b>Address Details:</b> {{ candidateMaster.pre_add_detail }}</div>
+                    </div>
+
+                    <!-- Permanent Address -->
+                    <div class="mb-3 border p-2 rounded shadow-sm">
+                        <strong>Permanent Address</strong>
+                        <div><b>Division:</b> {{ candidateMaster.par_add_division_Text }}</div>
+                        <div><b>District:</b> {{ candidateMaster.par_add_district_Text }}</div>
+                        <div><b>Thana:</b> {{ candidateMaster.par_add_Thana_Text }}</div>
+                        <div><b>Post Office:</b> {{ candidateMaster.par_add_post_office }}</div>
+                        <div><b>Village:</b> {{ candidateMaster.par_add_village }}</div>
+                        <div><b>Address Details:</b> {{ candidateMaster.par_add_detail }}</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Academic Qualification -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Academic Qualification</div>
+
+                <!-- Table layout for large/medium devices -->
+                <div class="card-body table-responsive d-none d-md-block">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Degree</th>
+                                <th>Board/University</th>
+                                <th>Institution</th>
+                                <th>Major</th>
+                                <th>Result</th>
+                                <th>Passing Year</th>
+                                <th>Cirtificate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let degree of accQlfList">
+                                <!-- <td>{{ degree.degree }}</td> -->
+                                <td>
+                                    <ng-container *ngIf="degree.docVPath; else noDoc">
+                                        <a [href]="degree.docVPath" target="_blank">
+                                            {{ degree.degree_text }}
+                                        </a>
+                                    </ng-container>
+                                    <ng-template #noDoc>
+                                        {{ degree.degree_text }}
+                                    </ng-template>
+                                </td>
+
+                                <td>{{ degree.board }}</td>
+                                <td>{{ degree.institution }}</td>
+                                <td>{{ degree.major }}</td>
+                                <td>{{ degree.result }}</td>
+                                <td>{{ degree.passingyear }}</td>
+                                <td>
+                                    <div *ngIf="degree.docVPath">
+                                        <a [href]="degree.docVPath" target="_blank">
+                                            <button type="button" class="btn btn-primary">
+                                                <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                Document
+                                            </button>
+                                        </a>
+                                    </div>
+
+                                    <div *ngIf="!degree.docVPath">
+                                        <button type="button" class="btn btn-warning">
+                                            <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Stacked card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let degree of accQlfList" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">{{ degree.degree }}</strong>
+                        <div><b>Board/University:</b> {{ degree.board }}</div>
+                        <div><b>Institution:</b> {{ degree.institution }}</div>
+                        <div><b>Major:</b> {{ degree.major }}</div>
+                        <div><b>Result:</b> {{ degree.result }}</div>
+                        <div><b>Passing Year:</b> {{ degree.passingyear }}</div>
+                        <div><b>Passing Year:</b>
+                            <div *ngIf="degree.docVPath">
+                                <a [href]="degree.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!degree.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Work  Experience -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Work Experience</div>
+
+                <!-- Table layout for large/medium devices -->
+                <div class="card-body d-none d-md-block">
+                    <div *ngFor="let experience of wrkExpList; let i = index" class="mb-3">
+                        <h6 style="font-weight: bold;">Experience-{{ i + 1 }}</h6>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 200px; padding-left: 2px; border: 1px solid black;">
+                                        <strong>Company
+                                            Name:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">
+
+                                        <ng-container *ngIf="experience.docVPath; else noDoc">
+                                            <a [href]="experience.docVPath" target="_blank">
+                                                {{ experience.company_name }}
+                                            </a>
+                                        </ng-container>
+                                        <ng-template #noDoc>
+                                            {{ experience.company_name }}
+                                        </ng-template>
+                                    </td>
+
+                                    <!-- <td style="border: 1px solid black; padding-left: 2px;">{{ experience.company_name
+                                        }}</td> -->
+                                </tr>
+                                <tr hidden>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Company
+                                            Type:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.company_type
+                                        }}</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td style="width: 200px; padding-left: 2px; border: 1px solid black;">
+                                        <strong>Document
+                                            :</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">
+                                        <div *ngIf="experience.docVPath">
+                                            <a [href]="experience.docVPath" target="_blank">
+                                                <button type="button" class="btn btn-primary">
+                                                    <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                    Document
+                                                </button>
+                                            </a>
+                                        </div>
+
+                                        <div *ngIf="!experience.docVPath">
+                                            <button type="button" class="btn btn-warning">
+                                                <span style="color:white"><i style="color: white;"
+                                                        class=""></i>Empty</span>
+
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+
+
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Salary:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.salary }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Department:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.department }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Designation:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.designation }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;"><strong>Start
+                                            Date:</strong></td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{
+                                        experience.priod_from_date |
+                                        date:
+                                        'dd-MM-yyyy' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;"><strong>End
+                                            Date:</strong></td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{experience.isRunning ?
+                                        'Continuing' :
+                                        experience.priod_to_date | date: 'dd-MM-yyyy' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;"><strong>Job
+                                            Description:</strong>
+                                    </td>
+                                    <td
+                                        style="border: 1px solid black; padding-left: 2px; padding-right: 4px; text-align: justify;">
+                                        {{
+                                        experience.job_description }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let experience of wrkExpList; let i = index" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">Experience-{{ i + 1 }}</strong>
+                        <div><b>Company Name:</b> {{ experience.company_name }}</div>
+                        <div><b>Document:</b>
+                            <div *ngIf="experience.docVPath">
+                                <a [href]="experience.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!experience.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+                        <div><b>Company Type:</b> {{ experience.company_type }}</div>
+                        <div><b>Department:</b> {{ experience.department }}</div>
+                        <div><b>Designation:</b> {{ experience.designation }}</div>
+                        <div><b>Start Date:</b> {{ experience.priod_from_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>End Date:</b> {{ experience.priod_to_date | date: 'dd-MM-yyyy' }}</div>
+                        <div style="padding-left: 2px; padding-right: 2px; text-align: justify;"><b>Job Description:</b>
+                            {{
+                            experience.job_description }}</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Professional Certificate -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Professional Certificate</div>
+
+                <!-- Table for medium & large devices -->
+                <div class="card-body table-responsive d-none d-md-block">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Institution</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Documnet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cert of proCirtificateList">
+                                <!-- <td>{{ cert.course_name }}</td> -->
+                                <td>
+                                    <ng-container *ngIf="cert.docVPath; else noDoc">
+                                        <a [href]="cert.docVPath" target="_blank">
+                                            {{ cert.course_name }}
+                                        </a>
+                                    </ng-container>
+                                    <ng-template #noDoc>
+                                        {{ cert.course_name }}
+                                    </ng-template>
+                                </td>
+                                <td>{{ cert.institution }}</td>
+                                <td>{{ cert.start_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>{{ cert.achievment_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>
+                                    <div *ngIf="cert.docVPath">
+                                        <a [href]="cert.docVPath" target="_blank">
+                                            <button type="button" class="btn btn-primary">
+                                                <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                Document
+                                            </button>
+                                        </a>
+                                    </div>
+
+                                    <div *ngIf="!cert.docVPath">
+                                        <button type="button" class="btn btn-warning">
+                                            <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let cert of proCirtificateList" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">{{ cert.course_name }}</strong>
+                        <div><b>Institution:</b> {{ cert.institution }}</div>
+                        <div><b>Start Date:</b> {{ cert.start_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>End Date:</b> {{ cert.achievment_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>Document:</b>
+                            <div *ngIf="cert.docVPath">
+                                <a [href]="cert.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!cert.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRAINING START FROM HERE  -->
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Training</div>
+
+                <!-- Table for medium & large devices -->
+                <div class="card-body table-responsive d-none d-md-block">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Institution</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Document</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tran of hTrainingList">
+                                <!-- <td>{{ tran.training_name }}</td> -->
+                                <td>
+                                    <ng-container *ngIf="tran.docVPath; else noDoc">
+                                        <a [href]="tran.docVPath" target="_blank">
+                                            {{ tran.training_name }}
+                                        </a>
+                                    </ng-container>
+                                    <ng-template #noDoc>
+                                        {{ tran.training_name }}
+                                    </ng-template>
+                                </td>
+                                <td>{{ tran.institution }}</td>
+                                <td>{{ tran.start_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>{{ tran.achievment_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>
+                                    <div *ngIf="tran.docVPath">
+                                        <a [href]="tran.docVPath" target="_blank">
+                                            <button type="button" class="btn btn-primary">
+                                                <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                Document
+                                            </button>
+                                        </a>
+                                    </div>
+
+                                    <div *ngIf="!tran.docVPath">
+                                        <button type="button" class="btn btn-warning">
+                                            <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let tran of hTrainingList" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">{{ tran.training_name }}</strong>
+                        <div><b>Institution:</b> {{ tran.institution }}</div>
+                        <div><b>Start Date:</b> {{ tran.start_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>End Date:</b> {{ tran.achievment_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>Documenr:</b>
+                            <div *ngIf="tran.docVPath">
+                                <a [href]="tran.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!tran.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRAINING END HERE  -->
+
+            <!-- REFERENCE START FROM HERE  -->
+
+            <div style="" class="master  container mt-4">
+                <div class="row">
+                    <div class="col-md-5 mb-3 d-flex" *ngFor="let ref of hReferenceList; let i=index">
+                        <div class="card job-card" style="width: 20rem;">
+                            <div class="card-body">
+                                <div style="font-size: medium;" class="card-header bg-dark text-white">Reference:
+                                    {{i+1}}</div>
+                                <!-- <h5 style="color: white; height: 40px; padding: 5px;" class="card-title card-header bg-dark">Reference: {{i+1}}</h5> -->
+                                <hr>
+                                <p class="card-text"><strong>Name</strong> {{ ref.reference_name }}</p>
+                                <p class="card-text"><strong>Organization</strong> {{ ref.orgazination }}</p>
+                                <p class="card-text"><strong>Designation:</strong> {{ ref.designation }}</p>
+                                <p class="card-text"><strong>Email:</strong> {{ ref.email }}</p>
+                                <p class="card-text"><strong>Mobile No:</strong> {{ ref.mobile }}</p>
+                                <p class="card-text"><strong>Relation</strong> {{ ref.relation }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Signature Bottom-Left -->
+            <!-- <div class="row mt-5 mb-3">
+                <div class="col-6 text-start">
+                    <div>
+                        <img [src]="candidateMaster.docSignatureVPath" alt="No Signature"
+                            style="max-width: 80px; margin: 10px;">
+                    </div>
+
+                    <p class="mt-1">{{(candidateMaster.updateon?candidateMaster.updateon:candidateMaster.apply_date ) |
+                        date:
+                        'dd-MM-yyyy'}}</p>
+                    <p class="mt-1"><strong>Signature</strong></p>
+                </div>
+
+                <div class="col-6 text-end">
+                    <div class="button-container" style="text-align: center;">
+                        <button (click)="backToListShow()"
+                            style="margin-right: 10px; background-color:black; color: white; font-weight: bold; border: none; 
+                                padding: 10px 20px; border-radius: 4px; font-size: 14px; cursor: pointer; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+                            Close
+                        </button>
+                    </div>
+
+                </div>
+            </div> -->
+
+
+            <div class="row mt-5 mb-3">
+                <!-- Left: Image, Date, Signature stacked -->
+                <div class="col-6 text-start d-flex flex-column">
+                    <img [src]="candidateMaster.docSignatureVPath" alt="No Signature"
+                        style="max-width: 80px; margin-bottom: 10px;">
+                    <p class="mb-1">{{ (candidateMaster.updateon ? candidateMaster.updateon :
+                        candidateMaster.apply_date) | date:'dd-MM-yyyy' }}</p>
+                    <p class="mb-0"><strong>Signature</strong></p>
+                </div>
+
+                <!-- Right: Button, aligned to bottom of left column -->
+                <div class="col-6 d-flex align-items-end justify-content-end">
+                    <button (click)="backToListShow()" class="btn btn-danger">
+                        Close
+                    </button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- //HTML View -->
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--// RECRUITMENT APPROVAL CHECKLIST ADD FROM HEERE -->
+
+<div id="headerSection" *ngIf="showRecruitmentApproval && !finalApproval" style=" margin-right: 20px; margin-top: 2px;">
+
+    <form style="background-color: white; " id="subForm" [formGroup]="recruitmentApprovalForm" #f="ngForm"
+        class="form-horizontal">
+
+
+
+        <div class="container-fluid p-2 mt-2 containers">
+            <div class="card">
+                <div class="card-header p-2 bg-info text-white">
+                    <h6 class="mb-0 text-center">Interview Committee </h6>
+                </div>
+
+                <div class="card-body p-2">
+                    <div formArrayName="recExam">
+                        <div *ngFor="let tran of recExam.controls; let i = index" [formGroupName]="i" class="mb-3">
+                            <div class="row align-items-center">
+                                <!-- Course Name -->
+                                <div class="col-lg-2 col-11 col-md-5 mb-2 mb-md-0">
+                                    <label [for]="'examType'+i">Exam Type <span class="text-danger">*</span></label>
+
+                                    <div style="width: 94%;">
+                                        <ng-select2 class="main-input" formControlName="examType" [options]="options"
+                                            [allowClear]="true" [id]="'examType'+i" name="examType"
+                                            [data]="examTypeList" [placeholder]="'Select Exam Type '"
+                                            [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('examType')?.touched) && tran.get('examType')?.invalid }">
+                                        </ng-select2>
+                                    </div>
+                                    <div *ngIf="(formSubmitted || tran.get('examType')?.touched) && tran.get('examType')?.invalid"
+                                        class="invalid-feedback">
+                                        Course Name is required
+                                    </div>
+                                </div>
+
+                                <!-- Institution -->
+                                <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                                    <label [for]="'isAttend'+i">Is Attend <span class="text-danger">*</span></label>
+                                    <ng-select2 class="main-input" formControlName="isAttend" [options]="options"
+                                        [allowClear]="true" [id]="'isAttend'+i" name="isAttend" [data]="dropDownType"
+                                        [placeholder]="'Please Select '"
+                                        [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('isAttend')?.touched) && tran.get('isAttend')?.invalid }">
+                                    </ng-select2>
+
+                                    <div *ngIf="(formSubmitted || tran.get('isAttend')?.touched) && tran.get('isAttend')?.invalid"
+                                        class="invalid-feedback">
+                                        Institution is required
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                                    <label [for]="'locationId'+i">Location <span class="text-danger">*</span></label>
+
+                                    <ng-select2 class="main-input" formControlName="locationId" [options]="options"
+                                        [allowClear]="true" [id]="'locationId'+i" name="locationId"
+                                        [data]="locationList" [placeholder]="'Select Location  '"
+                                        [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('locationId')?.touched) && tran.get('locationId')?.invalid }">
+                                    </ng-select2>
+
+                                    <div *ngIf="(formSubmitted || tran.get('locationId')?.touched) && tran.get('locationId')?.invalid"
+                                        class="invalid-feedback">
+                                        Start Date Required
+                                    </div>
+                                </div>
+
+                                <!-- Achievement Date     -->
+                                <div class="col-lg-2 col-11 col-md-5 mb-2 mb-md-0">
+                                    <label [for]="'examinarIdLst'+i">Examinar Name <span
+                                            class="text-danger">*</span></label>
+
+                                    <ng-select2 class="main-input" formControlName="examinarIdLst" [data]="examinarLst"
+                                        [id]="'examinarIdLst'+i" [options]="optionMulti"
+                                        [placeholder]="'Select Examiner'"
+                                        [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('examinarIdLst')?.touched) && tran.get('examinarIdLst')?.invalid }">
+                                    </ng-select2>
+
+
+
+
+
+
+
+                                    <div *ngIf="(formSubmitted || tran.get('examinarIdLst')?.touched) && tran.get('examinarIdLst')?.invalid"
+                                        class="invalid-feedback">
+                                        Achievement Date required
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                                    <label [for]="'examDate'+i">Exam Date <span class="text-danger">*</span></label>
+                                    <input style="width: 90.5%;" type="date" class="form-control form-control-sm"
+                                        [formControlName]="'examDate'" [id]="'examDate'+i"
+                                        [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('examDate')?.touched) && tran.get('examDate')?.invalid }">
+                                    <div *ngIf="(formSubmitted || tran.get('examDate')?.touched) && tran.get('examDate')?.invalid"
+                                        class="invalid-feedback">
+                                        Achievement Date required
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                                    <label [for]="'examMarks'+i">Exam Marks <span class="text-danger"></span></label>
+                                    <input style="width: 90.5%;" type="number" class="form-control form-control-sm"
+                                        [formControlName]="'examMarks'" [id]="'examMarks'+i"
+                                        [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('examMarks')?.touched) && tran.get('examMarks')?.invalid }">
+                                </div>
+
+
+
+                                <div class="col-lg-1 col-11 col-md-5 mb-2 mb-md-0">
+                                    <label [for]="'isSelected'+i">is Selected <span class="text-danger">*</span></label>
+
+                                    <ng-select2 class="main-input" formControlName="isSelected" [multiple]="true"
+                                        [options]="options" [allowClear]="true" [id]="'isSelected'+i" name="isSelected"
+                                        [data]="dropDownType" [placeholder]="'Please Select '"
+                                        [ngClass]="{ 'is-invalid': (formSubmitted || tran.get('isSelected')?.touched) && tran.get('isSelected')?.invalid }">
+                                    </ng-select2>
+
+                                    <div *ngIf="(formSubmitted || tran.get('isSelected')?.touched) && tran.get('isSelected')?.invalid"
+                                        class="invalid-feedback">
+                                        Achievement Date required
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <!-- Remove Button -->
+                                <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
+                                    <button style="" type="button" class="btn btn-danger btn-sm  remove-btn"
+                                        (click)="removRecExam(i)">
+                                        <i class="fa fa-minus"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Button -->
+                    <div class="row mt-3">
+                        <div class="col-1g-1 col-11">
+                            <button type="button" class="btn btn-primary btn-sm" (click)="addRecExam()">
+                                <i class="fa fa-plus"></i> Add Exam Type
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!---- // OFFICIAL INFORAMATION ADDED HEERE--------->
+
+        <div class="container-fluid p-2 mt-2 containers">
+            <div class="card">
+                <div class="card-header p-2 bg-info text-white">
+                    <h6 class="mb-0 text-center">Official Information </h6>
+                </div>
+                <div class="card-body p-2">
+
+
+
+                    <div class="col-xl-4 col-lg-4 col-11 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="salary"
+                                style="float: left;">Salary : </label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <input formControlName="salary" type="number"
+                                        class="main-input form-control form-control-sm input-sm input-sm-*" id="salary"
+                                        placeholder="Enter Salary..." name="salary">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="jobType"
+                                style="float: left;">Job Type</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="jobType" [data]="jobTypeList"
+                                        [options]="options" [id]="'jobType'+i" [placeholder]="'Select job type'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <div class="col-xl-4 col-lg-4 col-11 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="salary"
+                                style="float: left;">Designation : </label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+
+                                    <ng-select2 class="main-input" formControlName="designation"
+                                        [data]="designationList" [options]="options" [id]="'designation'+i"
+                                        [placeholder]="'Select Designation'">
+                                    </ng-select2>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="salary"
+                                style="float: left;">Line Manager</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="lineManager" [data]="examinarLst"
+                                        [options]="options" [id]="'lineManager'+i"
+                                        [placeholder]="'Select Line Manager'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="col-xl-4 col-lg-4 col-11 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="salaryGrade"
+                                style="float: left;">Grade : </label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <input formControlName="salaryGrade" type="text"
+                                        class="main-input form-control form-control-sm input-sm input-sm-*"
+                                        id="salaryGrade" placeholder="Enter Grade..." name="salaryGrade">
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="joiningDate"
+                                style="float: left;">Joining Date</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <input formControlName="joiningDate" type="date"
+                                        class="main-input form-control form-control-sm input-sm input-sm-*"
+                                        id="joiningDate" placeholder="Enter Joinning Date..." name="joiningDate">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <!---------------------SECOND ROW START HERE ------------------->
+
+                    <div class="col-xl-4 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+
+
+
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="salary"
+                                style="float: left;">Festival Bonus</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="festivalBonusType"
+                                        [data]="festivalBonusList" [options]="options" [id]="'festivalBonusType'+i"
+                                        [placeholder]="'Select Festival Bonus type'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="salary"
+                                style="float: left;">Salary Review By</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="salaryReviewer" [data]="examinarLst"
+                                        [options]="options" [id]="'salaryReviewer'+i"
+                                        [placeholder]="'Select Salary Review By'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="headOfUnit"
+                                style="float: left;">Head of Unit</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="headOfUnit" [data]="examinarLst"
+                                        [options]="options" [id]="'headOfUnit'+i" [placeholder]="'Select Head of Unit'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="col-xl-1 col-lg-1 col-11 col-md-2 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="salary"
+                                style="float: left;">PF? </label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isPF" type="checkbox" name="isPF" checked id="isPF"
+                                            (change)="setCheckboxValue($event, 'isPF')" class="custom-control-input">
+                                        <label class="custom-control-label" for="isPF"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-xl-1 col-lg-1 col-11 col-md-2 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-8  p-0  pt-1" for="salary"
+                                style="float: left;">Increament?</label>
+                            <div class="col-sm-3 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isIncrement" type="checkbox" name="isIncrement" checked
+                                            (change)="setCheckboxValue($event, 'isIncrement')" id="isIncrement"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="isIncrement"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-xl-1 col-lg-1 col-11 col-md-2 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-7  p-0  pt-1" for="salary"
+                                style="float: left;">Medical?</label>
+                            <div class="col-sm-4 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isMedical" type="checkbox" name="isMedical" checked
+                                            (change)="setCheckboxValue($event, 'isMedical')" id="isMedical"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="isMedical"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="col-xl-1 col-lg-1 col-11 col-md-3 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-8  p-0  pt-1" for="salary"
+                                style="float: left;">Dormitory? </label>
+                            <div class="col-sm-3 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isDormitory" type="checkbox" name="isDormitory" checked
+                                            (change)="setCheckboxValue($event, 'isDormitory')" id="isDormitory"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="isDormitory"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="col-xl-1 col-lg-1 col-11 col-md-3 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-7  p-0  pt-1" for="salary"
+                                style="float: left;">Transport?</label>
+                            <div class="col-sm-4 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isTransport" type="checkbox" name="isTransport" checked
+                                            (change)="setCheckboxValue($event, 'isTransport')" id="isTransport"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="isTransport"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="col-xl-1 col-lg-1 col-11 col-md-3 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-7  p-0  pt-1" for="salary"
+                                style="float: left;">Sim? </label>
+                            <div class="col-sm-4 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isSim" type="checkbox" name="isSim" checked id="isSim"
+                                            (change)="setCheckboxValue($event, 'isSim')" class="custom-control-input">
+                                        <label class="custom-control-label" for="isSim"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="col-xl-1 col-lg-1 col-11 col-md-3 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-7  p-0  pt-1" for="salary"
+                                style="float: left;">Insurance ? </label>
+                            <div class="col-sm-4 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isInsurance" type="checkbox" name="isInsurance" checked
+                                            (change)="setCheckboxValue($event, 'isInsurance')" id="isInsurance"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="isInsurance"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="col-xl-4 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="preparedBy"
+                                style="float: left;">Prepared By </label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="preparedBy" [data]="examinarLst"
+                                        [options]="options" [id]="'preparedBy'+i" [placeholder]="'Select Prepared By'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="hrBP"
+                                style="float: left;">HR BP</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="hrBP" [data]="examinarLst"
+                                        [options]="options" [id]="'hrBP'+i" [placeholder]="'Select HR BP'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="headOfBusiness"
+                                style="float: left;">Head Of Business</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="headOfBusiness" [data]="examinarLst"
+                                        [options]="options" [id]="'headOfBusiness'+i"
+                                        [placeholder]="'Select Head of Business'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                            <label class="main-title control-label col-sm-4  p-0  pt-1" for="finalAprvHR"
+                                style="float: left;">Final Approve By</label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
+                                    <ng-select2 class="main-input" formControlName="finalAprvHR" [data]="examinarLst"
+                                        [options]="options" [id]="'finalAprvHR'+i"
+                                        [placeholder]="'Select Final Approve'">
+                                    </ng-select2>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-----  <button class="btn-btn-secondary" (click)=ShowRecruuitmentApproval(0,list) style="color: #1F935C;"
+                        mat-menu-item>
+                        Back
+                    </button>  --->
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid mt-3">
+            <div class="card">
+                <div class="card-body text-right p-2">
+
+                    <!-- Save Button -->
+                    <button *ngIf="!isUpdate" type="button" class="btn btn-success btn-sm mr-2" (click)="onSubmit()">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+
+                    <button *ngIf="isUpdate" type="button" class="btn btn-info btn-sm mr-2" (click)="onSubmit()">
+                        <i class="fa fa-edit"></i> Update
+                    </button>
+
+                    <!-- Back Button -->
+                    <button type="button" class="btn btn-secondary btn-sm" (click)="ShowRecruuitmentApproval(0,list)">
+                        <i class="fa fa-arrow-left"></i> Back
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!------ APPRVAL PROCESS ADDED HERE ================================  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!------ <ng-template #modalEntry  style="overflow: hidden; margin-top: -20%;">  -->
+
+<ng-template #modalEntry style="max-height: 70vh; overflow-y: auto; margin-top: -20%;">
+    <div class="mat-dialog-header border-bottom">
+        <ng-container hidden *ngIf="modalLabelName !== 'Quotation'; else searchTemplate">
+            <h2 class="pull-left" mat-dialog-title class="mb-0">{{modalLabelName}} Entry </h2>
+        </ng-container>
+        <ng-template #searchTemplate>
+            <h2 class="pull-left" mat-dialog-title class="mb-0"> Approval Form</h2>
+            <!--   <h2 class="pull-left" mat-dialog-title class="mb-0">Approval Process</h2>-->
+
+        </ng-template>
+
+        <div class="pull-right" style="margin-top: -7%;" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+            <button class="pull-right" mat-icon-button matDialogClose tabindex="-1">
+                <mat-icon aria-label="Close dialog">close</mat-icon>
+            </button>
+        </div>
+    </div>
+    <form #modalForms="ngForm" [formGroup]="modalForm" role="form" novalidate name="modalForm"
+        (ngSubmit)="modalSubmit(modalForm)">
+        <mat-dialog-content>
+
+            <!------------  <mat-dialog-content style="overflow: hidden;"> -->
+
+
+
+
+            <div style="padding: 20px; border: 1px solid #ccc; border-radius: 8px; background: white;">
+                <!--  <div class="card-header"
+                    style="background-color: #2b8c90; color: white; padding: 10px; font-weight: bold; margin-bottom: 15px;">
+                    Approval Form
+                </div> -->
+
+             
+
+            <div *ngIf="revisedHeadOfBsnsNote" class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-header"
+                    style=" background-color: #e9d502;  color: black; padding: 8px; margin-bottom: 0px; font-weight: bold;">
+                    Head Of Business Unit Comment
+                </div>
+                <div style="font-weight:bold; color:red; border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
+                    {{revisedHeadOfBsnsNote}}
+                </div>
+            </div>
+
+            <div *ngIf="revisedHRLeadNote" class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-header"
+                    style=" background-color: #e9d502;  color: black; padding: 8px; margin-bottom: 0px; font-weight: bold;">
+                    HR Lead Comment
+                </div>
+                <div style="font-weight:bold; color:red; border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
+                    {{revisedHRLeadNote}}
+                </div>
+            </div>
+
+        
+
+
+
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded"
+                    style=" border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; ">
+                    <div class="card-header"
+                        style="background-color: #2b8c90; color: white; padding: 10px; font-weight: bold; margin-bottom: 15px; ">
+                        Candidate Official Information
+                    </div>
+
+
+
+
+                    <div class="row" style="margin-left: 2%;">
+                        <div class=" col-xl-4 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0"
+                            style="float: left;">
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Name : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{applicationMstr?.name}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Designation : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{recruitmentApproval?.designationText}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class=" col-xl-4 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0"
+                            style="float: left;">
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Company : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{applicationMstr?.companyName}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Job Type : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{recruitmentApproval?.jobType==1?'Parmanent':'Contractual'}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" col-xl-4 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0"
+                            style="float: left;">
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Department : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{applicationMstr?.departmentName}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Salary : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{ recruitmentApproval?.salary }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+                <div  class="card shadow-lg p-3 mb-5 bg-white rounded"
+                    style=" border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; ">
+                    <div hidden class="card-header"
+                        style="background-color: #2b8c90; color: white; padding: 10px; font-weight: bold; margin-bottom: 15px; ">
+                        Candidate Exam Information
+                    </div>
+
+
+
+
+                    <!------  <div *ngFor="let xm of recExam.controls" class="row" style="margin-left: 2%;">
+                        <div class=" col-xl-3 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0"
+                            style="float: left;">
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Exam Type : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{ getExamTypeName(xm.get('examType')?.value) }}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class=" col-xl-3 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0"
+                            style="float: left;">
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Exam Date : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{ xm.get('examDate')?.value | date:'dd MMM yy' }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" col-xl-3 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0"
+                            style="float: left;">
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Total Marks : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                        <p>{{ xm.get('examMarks')?.value }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" col-xl-3 col-lg-6 col-12 col-md-6 col-sm-12 col-xs-12 m-0 p-0"
+                            style="float: left;">
+                            <div class="form-group clearfix">
+                                <label class="main-title control-label col-sm-3  p-0  pt-1" for="headOfBusiness"
+                                    style="float: left;font-size: 15px;">Selected ? : </label>
+                                <div class="col-sm-8 p-0 m-0 pt-1" style="float: left;">
+                                    <div style="padding: 0px; width: 94.5%; font-size: 15px; float: left;">
+                                                 <p [ngStyle]="{
+                                                        'background-color': xm.get('isSelected')?.value == '1' ? '#d4edda' : '#f8d7da',
+                                                        'color': xm.get('isSelected')?.value == '1' ? '#155724' : '#721c24',
+                                                        'padding': '5px 10px',
+                                                        'border-radius': '5px',
+                                                        'display': 'inline-block'
+                                                    }">
+                                            <i class="fa"
+                                                [ngClass]="xm.get('isSelected')?.value == '1' ? 'fa-check' : 'fa-times'">
+                                            </i>
+
+                                            {{ xm.get('isSelected')?.value == '1' ? 'Yes' : 'No' }}
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div> --->
+
+
+
+
+                 <table hidden class="table table-striped table-sm table-bordered p-0                     "
+                        style="margin-left:0%;">
+
+                        <!-- Header Row -->
+                        <thead style="background-color:#56aaad; color:white;">
+                            <tr>
+                                <th>Exam Type</th>
+                                <th>Exam Date</th>
+                                <th>Total Marks</th>
+                                <th>Selected?</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Data Rows -->
+                        <tbody>
+                            <tr *ngFor="let xm of approvalXmlist">
+
+                                <td>
+                                    {{ getExamTypeName(xm?.examType) }}
+                                </td>
+
+                                <td>
+                                    {{ xm?.examDate | date:'dd MMM yy'}}
+                                </td>
+
+                                <td>
+                                    {{ xm?.examMarks }}
+                                </td>
+
+                                <td>
+                                    <span [ngStyle]="{
+            'background-color': xm.isSelected == '1' ? '#d4edda' : '#f8d7da',
+            'color': xm?.isSelected == '1' ? '#155724' : '#721c24',
+            'padding': '4px 8px',
+            'border-radius': '4px',
+            'display': 'inline-block'
+          }">
+
+                                        <i class="fa" [ngClass]="xm.isSelected == '1' ? 'fa-check' : 'fa-times'">
+                                        </i>
+
+                                        {{ xm?.isSelected == '1' ? 'Yes' : 'No' }}
+                                    </span>
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>    
+                   
+
+
+
+
+
+
+    <div class="card-header p-2 bg-info text-white">
+                    <h6 class="mb-0 text-center">Exam Marks Details </h6>
+                </div>
+
+
+
+
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded"
+                    style=" border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; ">
+
+                    <table class="table table-striped table-sm table-bordered p-0                     "
+                        style="margin-left:0%;">
+
+                        <!-- Header Row -->
+                        <thead style="background-color:#56aaad; color:white;">
+                            <tr>
+                                <th>Exam Type</th>
+                                <th>Examinar Name</th>
+                                <th>Exam Date</th>
+                                <th>Total Marks</th>
+                                <th>Out of Marks?</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Data Rows -->
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <p>Written</p>
+                                </td>
+                                <td></td>
+                                <td> {{ writtenXmDtl?.writtenDate | date:'dd MMM yy'}} </td>
+                                <td> {{ writtenXmDtl?.writtenMarks }} </td>
+                                <td> {{ writtenXmDtl?.outOfMarks }} </td>
+                            </tr>
+
+                            <tr *ngFor="let dtl of vivaExmXmDtl;">
+                                <td>Viva</td>
+                                <td>
+                                    {{ dtl?.interviewerName }} </td>
+
+                                <td> {{ dtl?.vivaDate | date:'dd MMM yy'}} </td>
+                                <td> {{ dtl?.marking }} </td>
+                                <td> {{ dtl?.outofmarking }} </td>
+                                <td class="text-center">
+
+
+                                    <small class="performance-label" [ngClass]="{
+            'fail-text': dtl?.marking >= 0 && dtl?.marking <= 8,
+            'pass-low-text': dtl?.marking >= 9 && dtl?.marking <= 12,
+            'acceptable-text': dtl?.marking >= 13 && dtl?.marking <= 17,
+            'good-text': dtl?.marking >= 18 && dtl?.marking <= 21,
+            'excellent-text': dtl?.marking >= 22 && dtl?.marking <= 25
+        }">
+
+                                        {{
+                                        dtl?.marking >= 0 && dtl?.marking <= 8 ? 'Fail' : dtl?.marking>= 9 &&
+                                            dtl?.marking <= 12 ? 'Pass - Low' : dtl?.marking>= 13 && dtl?.marking <= 17
+                                                    ? 'Acceptable' : dtl?.marking>= 18 && dtl?.marking <= 21 ? 'Good' :
+                                                        dtl?.marking>= 22 && dtl?.marking <= 25 ? 'Excellent' : '' }}
+                                                            </small>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td colspan="3" style="text-align: left;">Total Viva Marks: {{ vivaExmXmMstr?.totalMarks
+                                    }}</td>
+                                <td>
+                                    Average Viva Marks {{ vivaExmXmMstr?.averageMarks }}
+                                </td>
+                                <td> {{outofMarks}} </td>
+                                <td class="text-center">
+
+
+                                    <small class="performance-label" [ngClass]="{
+            'fail-text': vivaExmXmMstr?.averageMarks >= 0 && vivaExmXmMstr?.averageMarks <= 8,
+            'pass-low-text': vivaExmXmMstr?.averageMarks >= 9 && vivaExmXmMstr?.averageMarks <= 12,
+            'acceptable-text': vivaExmXmMstr?.averageMarks >= 13 && vivaExmXmMstr?.averageMarks <= 17,
+            'good-text': vivaExmXmMstr?.averageMarks >= 18 && vivaExmXmMstr?.averageMarks <= 21,
+            'excellent-text': vivaExmXmMstr?.averageMarks >= 22 && vivaExmXmMstr?.averageMarks <= 25
+        }">
+
+                                        {{
+                                        vivaExmXmMstr?.averageMarks >= 0 && vivaExmXmMstr?.averageMarks <= 8 ? 'Fail' :
+                                            vivaExmXmMstr?.averageMarks>= 9 && vivaExmXmMstr?.averageMarks <= 12
+                                                ? 'Pass - Low' : vivaExmXmMstr?.averageMarks>= 13 &&
+                                                vivaExmXmMstr?.averageMarks <= 17 ? 'Acceptable' :
+                                                    vivaExmXmMstr?.averageMarks>= 18 && vivaExmXmMstr?.averageMarks <=
+                                                        21 ? 'Good' : vivaExmXmMstr?.averageMarks>= 22 &&
+                                                        vivaExmXmMstr?.averageMarks <= 25 ? 'Excellent' : '' }} </small>
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+
+
+
+
+
+                </div>
+
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+
+                    <div class="card-header"
+                        style="background-color: #2b8c90; color: white; padding: 8px; margin-bottom: 0px; font-weight: bold;">
+                        Verifier Comment
+                    </div>
+                    <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
+                        {{ recruitmentApproval.preparedNote }}
+                    </div>
+
+                </div>
+
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+
+                    <div style="font-weight: bold; margin-bottom: 10px;">Approval Status:</div>
+                    <div class="mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" formControlName="selectedApprovalOption" type="radio"
+                                name="status" id="approve" [value]="'A'">
+                            <label class="form-check-label" for="approve">Approve</label>
+                        </div>
+                        <div hidden class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="selectedApprovalOption"
+                                name="status" id="reject" [value]="'R'">
+                            <label class="form-check-label" for="reject">Reject</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="selectedApprovalOption"
+                                name="status" id="revision" [value]="'B'">
+                            <label class="form-check-label" for="revision">Send Back for Revision</label>
+                        </div>
+                    </div>
+
+                    <textarea class="form-control mb-3" formControlName="approvalNote" name="approvalNote"
+                        placeholder="Add comments..." rows="3"></textarea>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </mat-dialog-content>
+        <mat-dialog-actions class="border-top" style="overflow:hidden;" align="end">
+            <button [disabled]="!modalForm.get('selectedApprovalOption')?.value" class="btn btn-success btn-sm mr-2"
+                (click)="submitApproval()">
+                <i class="fa fa-check"></i> Approve
+            </button>
+
+            <button class="btn btn-danger btn-sm mr-2" matDialogClose (click)="closeApproval('REJECT')">
+                <i class="fa fa-times"></i> Close
+            </button>
+
+
+
+
+
+
+            <button *ngIf="modalType!='WorkOrder'" type="submit" mat-raised-button color="primary"
+                [disabled]="!modalForm.valid">Save
+                changes</button>
+        </mat-dialog-actions>
+    </form>
+</ng-template>

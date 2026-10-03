@@ -1,0 +1,239 @@
+ <div style="height: 100%;">
+    <mat-sidenav-container class="h-100 overlay"
+        style="background: url(./assets/img/eRequirement/E-Req1.png); background-repeat: no-repeat; background-size: 100% 100%;">
+ 
+
+          
+
+        <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 25vh; margin-bottom: 25vh;">
+
+            
+            <div class="col-md-3 col-sm-10  mat-elevation-z6 contentBody"
+                style="text-align: center; padding-top: 10px;  border-radius: 25px; background-image: radial-gradient( circle farthest-corner at 50.4% 50.5%,  rgba(251,32,86,1) 0%, rgba(135,2,35,1) 90% );">
+
+                <div class="col-md-12 col-sm-10" style="display: inline-block; padding: 0px; margin: 0px;">
+                    <div class="">
+                        <div class="" style="color: #ffffff; font-weight: bold; text-align: center; font-size: 25px;">
+                            <i class="fa fa-align-justify"></i>
+                            e-Recruitment
+                        </div>
+                        <div class="card-body" style="margin: 0px; padding: 0px;">
+
+                            <div class="col-md-12" style="padding: 0px; margin: 0px;">
+
+                                <div class="container-fluid" style="padding: 10px;">
+
+
+                                    <form #userForm="ngForm" [formGroup]="form" (ngSubmit)="onLogin()">
+
+                                         <div style="" class="formInput">
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3 inputField"
+                                                style=" ">
+
+                                                <input id="userid" type="text" aria-label="Small"
+                                                    aria-describedby="inputGroup-sizing-sm" autofocus
+                                                    [(ngModel)]="userModel.user_id" #userid required
+                                                    class="form-control " placeholder="{{usrPlaceHolder}}"
+                                                    name="userid" formControlName="userid">
+
+                                                <small style="width: 100%; color: #ffffff !important;"
+                                                    class="text-danger"
+                                                    *ngIf="form.controls['userid'].touched && form.controls['userid'].errors?.required">
+                                                    {{usrPlaceMsgs}} ID is required</small>
+
+                                                <small style="width: 100%; color: #ffffff !important;"
+                                                    class="text-danger"
+                                                    *ngIf="form.controls['userid'].hasError('minlength')">
+                                                    Employee ID must be 5 digits</small>
+
+                                            </div>
+
+                                        </div>
+                                        
+
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm mb-3 inputField"
+                                                style=" ">
+
+                                                <input [type]="showPassword ? 'text' : 'password'"
+                                                    id="password" type="password" class="form-control"
+                                                    aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                                                    [(ngModel)]="userModel.user_password" #password required
+                                                    name="password" placeholder="Password" formControlName="password">
+
+                                                       <div style="background-color: #E8F0FE;" class="input-group-append">
+                                                            <button  type="button"
+                                                                    class="btn "
+                                                                    (click)="togglePassword()"
+                                                                    tabindex="-1"
+                                                                    >
+                                                            <i [class]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                                                            </button>
+                                                        </div>
+
+                                              <small style="width: 100%; color: #ffffff !important;"
+                                                    class="text-danger"
+                                                    *ngIf="form.controls['password'].touched && form.controls['password'].errors?.required">
+                                                    Password is required</small>
+
+                                                <small style="width: 100%; color: #ffffff !important;"
+                                                    class="text-danger"
+                                                    *ngIf="form.controls['password'].hasError('minlength')">
+                                                    Password must be at least 4 digits</small> 
+
+                                            </div>
+                                        </div>
+
+
+                                       
+
+
+
+                                        <div class="form-group">
+                                            <div class="input-group input-group-sm inputField"
+                                                style="">
+                                                <button class="btn mat-elevation-z6 w-100"
+                                                    [disabled]="userForm.form.invalid"
+                                                    style="background-image: linear-gradient( 179.7deg,  rgba(197,214,227,1) 2.9%, rgba(144,175,202,1) 97.1% ); color:darkblue; font-weight:bold;"
+                                                    type="submit">Login</button>
+                                                   
+                                            <div class="d-flex ">
+                                                <div class="mr-auto p-2">
+                                                    <a id="Register" routerLink="/register"
+                                                        style="color: white; ;"
+                                                        onmouseover="this.style.color='yellow'"
+                                                        onmouseout="this.style.color='white'">
+                                                        Not Register Yet ? Register
+                                                        </a>
+                                                </div>
+                                                      
+                                                         <br>  
+                                                <div class="p-2">
+                                                         <a id="Register" routerLink="/forgotpassword"
+                                                        style="color: rgb(139, 216, 139); ;"
+                                                        onmouseover="this.style.color='blue'"
+                                                        onmouseout="this.style.color=' rgb(139, 216, 139)'">
+                                                        Forgot Password?
+                                                        </a>
+                                                </div> 
+                                                     
+
+                                            </div> 
+
+
+
+
+
+
+ 
+                                            </div>
+                                        </div>
+
+                                         </div>
+
+
+
+
+
+
+                        </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-container>
+
+  
+
+</div> 
+
+
+
+
+
+
+
+<!-- <div style="height: 100%;">
+  <mat-sidenav-container class="h-100 overlay"
+    style="background: url(./assets/img/eRequirement/E-Req1.png); background-repeat: no-repeat; background-size: cover;">
+    
+    <div class="container h-100 d-flex align-items-center justify-content-center">
+      <div class="row w-100 justify-content-center">
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 mat-elevation-z6 p-3"
+          style="border-radius: 25px; background-image: radial-gradient(circle farthest-corner at 50.4% 50.5%, rgba(251,32,86,1) 0%, rgba(135,2,35,1) 90%); text-align: center; color: white;">
+          
+          <h4><i class="fa fa-align-justify"></i> e-Recruitment</h4>
+
+          <form #userForm="ngForm" [formGroup]="form" (ngSubmit)="onLogin()">
+            
+          
+            <div class="form-group input-group input-group-sm">
+              <input id="userid" type="text" [(ngModel)]="userModel.user_id"
+                name="userid" formControlName="userid"
+                class="form-control form-control-sm w-100"
+                placeholder="{{usrPlaceHolder}}" required autofocus>
+              <small class="text-danger d-block"
+                *ngIf="form.controls['userid'].touched && form.controls['userid'].errors?.required">
+                {{usrPlaceMsgs}} ID is required
+              </small>
+              <small class="text-danger d-block"
+                *ngIf="form.controls['userid'].hasError('minlength')">
+                Employee ID must be 5 digits
+              </small>
+            </div>
+
+            <div class="form-group input-group input-group-sm">
+              <input [type]="showPassword ? 'text' : 'password'" id="password"
+                [(ngModel)]="userModel.user_password"
+                name="password" formControlName="password"
+                class="form-control" placeholder="Password" required>
+              <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">
+                  <i [class]="showPassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                </button>
+              </div>
+            </div>
+            <small class="text-danger d-block"
+              *ngIf="form.controls['password'].touched && form.controls['password'].errors?.required">
+              Password is required
+            </small>
+            <small class="text-danger d-block"
+              *ngIf="form.controls['password'].hasError('minlength')">
+              Password must be at least 4 digits
+            </small>
+
+
+            <div class="form-group">
+              <button type="submit"
+                class="btn w-100 mat-elevation-z6"
+                [disabled]="userForm.form.invalid"
+                style="background-image: linear-gradient(179.7deg, rgba(197,214,227,1) 2.9%, rgba(144,175,202,1) 97.1%); color:darkblue; font-weight:bold;">
+                Login
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <a routerLink="/register" style="color: white;"
+                onmouseover="this.style.color='yellow'"
+                onmouseout="this.style.color='white'">
+                Not Registered? Register
+              </a>
+              <a routerLink="/forgotpassword" style="color: rgb(139, 216, 139);"
+                onmouseover="this.style.color='blue'"
+                onmouseout="this.style.color='rgb(139, 216, 139)'">
+                Forgot Password?
+              </a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-container>
+</div> -->
