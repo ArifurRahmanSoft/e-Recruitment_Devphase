@@ -1,0 +1,107 @@
+//for viva add filr hre 
+/* =========================================================
+   INTERVIEW TABLE DESIGN (UPDATED FOR PERFECT SPACING)
+   ========================================================= */
+
+/* Wrapper card */
+.jp-interview-table-wrapper {
+    background: #ffffff;
+    border: 1px solid #d9dee5;
+    border-radius: 8px;
+    overflow: hidden; /* Keeps the table corners rounded */
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+
+/* Table base */
+.jp-interview-table {
+    border-collapse: collapse !important;
+    width: 100%;
+    background-color: #ffffff;
+    margin: 0 !important;
+}
+
+/* Table Header */
+.jp-interview-table .jp-th {
+    background-color: #0f6a7d !important; /* Standardized Teal */
+    color: #ffffff !important;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 8px !important; /* Balanced padding */
+    border: none !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    vertical-align: middle;
+}
+
+.jp-interview-table .jp-th:last-child {
+    border-right: none !important;
+}
+
+/* Table Body Cells */
+.jp-interview-table .jp-td {
+    padding: 8px 8px !important; /* Balanced padding so gaps are equal */
+    vertical-align: middle;
+    border: 1px solid #e5e9ef !important;
+    font-size: 13px;
+    color: #2d3748;
+    box-sizing: border-box !important; /* Forces cell to respect its width */
+}
+
+/* Remove top border for the first row to avoid double lines */
+.jp-interview-table tbody tr:first-child .jp-td {
+    border-top: none !important;
+}
+
+/* =========================================================
+   STANDARDIZED INPUTS INSIDE TABLE (THE FIX)
+   ========================================================= */
+.jp-interview-table .jp-input-sm {
+    display: block !important;
+    width: 100% !important; /* Takes exactly the cell width minus padding */
+    max-width: 100% !important;
+    box-sizing: border-box !important; /* Crucial: ensures padding doesn't expand width */
+    margin: 0 !important; /* Removes any hidden bootstrap margins */
+    height: 32px !important;
+    min-height: 32px !important;
+    border: 1px solid #c3cad3 !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    padding: 4px 6px !important; /* Symmetrical padding */
+    box-shadow: none !important;
+    background-color: #ffffff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Focus State */
+.jp-interview-table .jp-input-sm:focus {
+    border-color: #0f6a7d !important;
+    box-shadow: 0 0 0 3px rgba(15, 106, 125, 0.14) !important;
+    outline: none !important;
+}
+
+/* Disabled State */
+.jp-interview-table .jp-input-sm:disabled {
+    background-color: #f3f4f6 !important;
+    color: #6b7280 !important;
+    border-color: #d9dee5 !important;
+    cursor: not-allowed;
+}
+
+/* Remove number spinners for a cleaner look */
+.jp-interview-table .jp-input-sm[type=number]::-webkit-inner-spin-button, 
+.jp-interview-table .jp-input-sm[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+/* Read-only text (Expected Salary) */
+.jp-interview-table .jp-readonly-text {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: #0f6a7d;
+    background: #e6f4f7;
+    padding: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #cce9f0;
+}

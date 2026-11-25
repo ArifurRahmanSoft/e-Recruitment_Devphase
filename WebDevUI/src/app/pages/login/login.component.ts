@@ -58,7 +58,7 @@ export class LoginComponent {
     var host=window.location.origin;
     if(host=='https://hr.citygroupbd.com')
     {
-      this.usrPlaceHolder='Email ID...(e.g. emailid@mail.com)';
+      this.usrPlaceHolder='Email ID...(e.g. email@mail.com)';
       this.usrPlaceMsgs='Email';
     }else{
       this.usrPlaceHolder='Employee ID...(e.g. 06739)';

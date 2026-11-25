@@ -111,6 +111,10 @@ import { ApprovalHedofBusinessUnitComponent } from './project_component/Approval
 import { ApprovalHrLeadComponent } from './project_component/ApprovalHrLead/ApprovalHrLead.component';
 import { ApprovalHrDirectorComponent } from './project_component/ApprovalHrDirector/ApprovalHrDirector.component';
 import { AppoinmentComponent } from './project_component/appointment/appoinment.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { ArchiveListComponent } from './project_component/Archive/archiveList.component';
 
 
 //import { ApplicantFormsComponent } from './project_component/applicant/applicant/applicantforms.component';
@@ -153,6 +157,11 @@ import { AppoinmentComponent } from './project_component/appointment/appoinment.
     ,NgxUiLoaderModule
     ,NgxSpinnerModule
     ,ChartsModule
+    //add 
+    ,MatMenuModule
+    ,MatIconModule
+    ,MatButtonModule
+    ,MatDialogModule
 
     
   ],
@@ -182,7 +191,8 @@ import { AppoinmentComponent } from './project_component/appointment/appoinment.
     MenuComponent,
     UserRoleComponent,
     ApprovalRoleComponent,
-    VivaDimensionSetupComponent
+    VivaDimensionSetupComponent,
+    ArchiveListComponent
    
 //,ApplicantFormsComponent
 

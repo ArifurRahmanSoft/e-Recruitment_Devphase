@@ -840,3 +840,435 @@ margin-left: 5px;
     font-size: 12px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+//START STA HRE ========================>>>>>>>>>>>>>>>>-=================
+
+/* Tab header hidden */
+.custom-tab-group ::ng-deep .mat-tab-header {
+  display: none !important;
+}
+.custom-tab-group ::ng-deep .mat-tab-body-wrapper {
+  padding: 0 !important;
+}
+.custom-tab-group {
+  background: transparent !important;
+}
+
+/* Filter bar card */
+.jp-filter-bar {
+  --fb-h: 34px;
+  --fb-r: 6px;
+  --fb-border: #c3cad3;
+  --fb-primary: #0f6a7d;
+  --fb-primary-dark: #0a4c5a;
+  --fb-text: #2d3748;
+
+  background: #fff !important;
+  border: 1px solid #e5e9ef !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px rgba(16,24,40,.06), 0 1px 2px rgba(16,24,40,.04);
+  margin: 8px 0 0 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide any [hidden] ancestor */
+.jp-filter-bar [hidden] { display: none !important; }
+.jp-filter-bar .row[hidden] { display: none !important; }
+
+/* Row: flexbox */
+.jp-filter-bar .row {
+  display: flex !important;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 16px;
+  padding: 12px 16px !important;
+  
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Flatten col wrappers */
+.jp-filter-bar .row > [class*="col-"]:not([hidden]) {
+  display: contents !important;
+}
+
+/* form-groups: don't stretch too wide */
+.jp-filter-bar .form-group.clearfix {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: 0 1 320px;    /* default: grow to 320px max, can shrink */
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Wider for Job Title (first) */
+.jp-filter-bar .row > .col-xl-4 .form-group.clearfix,
+.jp-filter-bar .row > .col-lg-4 .form-group.clearfix {
+  flex: 0 1 580px;
+}
+
+/* Narrower for Status */
+.jp-filter-bar .row > .col-xl-3 .form-group.clearfix,
+.jp-filter-bar .row > .col-lg-3 .form-group.clearfix {
+  flex: 0 1 280px;
+}
+
+/* Search button: auto width */
+.jp-filter-bar .row > .col-xl-1 .form-group.clearfix,
+.jp-filter-bar .row > .col-lg-1 .form-group.clearfix {
+  flex: 0 0 auto;
+}
+
+/* Label */
+.jp-filter-bar .form-group > label.control-label {
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+  padding: 0 6px 0 0 !important;
+  text-align: right;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--fb-text);
+  white-space: nowrap;
+  float: none !important;
+}
+
+/* Field wrapper */
+.jp-filter-bar .form-group > div[class*="col-"] {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+}
+
+.jp-filter-bar .form-group > div[class*="col-"] > div[style] {
+  width: 100% !important;
+  float: none !important;
+  padding: 0 !important;
+  font-size: 13px;
+}
+
+/* Inputs & selects */
+.jp-filter-bar input.form-control,
+.jp-filter-bar select,
+.jp-filter-bar select.form-control,
+.jp-filter-bar .form-control:not(textarea) {
+  width: 100% !important;
+  height: var(--fb-h) !important;
+  min-height: var(--fb-h) !important;
+  padding: 4px 10px !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  color: var(--fb-text);
+  background: #fff;
+  border: 1px solid var(--fb-border) !important;
+  border-radius: var(--fb-r) !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+/* ng-select2 */
+.jp-filter-bar ng-select2 {
+  display: block !important;
+  width: 100% !important;
+  line-height: normal !important;
+}
+.jp-filter-bar ng-select2 .select2-container,
+.jp-filter-bar ng-select2 .select2-container--default,
+.jp-filter-bar ng-select2 .select2-selection--single {
+  height: var(--fb-h) !important;
+  min-height: var(--fb-h) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.jp-filter-bar ng-select2 .select2-selection--single {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 8px !important;
+  background: #fff !important;
+  border: 1px solid var(--fb-border) !important;
+  border-radius: var(--fb-r) !important;
+}
+.jp-filter-bar ng-select2 .select2-selection__rendered {
+  line-height: normal !important;
+  padding: 0 20px 0 2px !important;
+  font-size: 13px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.jp-filter-bar ng-select2 .select2-selection__arrow {
+  height: var(--fb-h) !important;
+  top: 0 !important;
+  right: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.jp-filter-bar ng-select2 .select2-container--focus .select2-selection--single,
+.jp-filter-bar ng-select2 .select2-container--open .select2-selection--single {
+  border-color: var(--fb-primary) !important;
+  box-shadow: 0 0 0 3px rgba(15,106,125,.15) !important;
+}
+
+/* Search button */
+.jp-filter-bar .btn.btn-primary {
+  height: var(--fb-h) !important;
+  min-height: var(--fb-h) !important;
+  padding: 0 16px !important;
+  font-size: 13px !important;
+  font-weight: 500;
+  line-height: 1 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--fb-r) !important;
+  background: var(--fb-primary) !important;
+  border-color: var(--fb-primary) !important;
+  color: #fff !important;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .jp-filter-bar .row {
+    flex-wrap: wrap;
+  }
+  .jp-filter-bar .form-group.clearfix,
+  .jp-filter-bar .row > .col-xl-4 .form-group.clearfix,
+  .jp-filter-bar .row > .col-xl-3 .form-group.clearfix {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+}
+
+
+
+/* Hide tab header + pagination (the invisible arrows) */
+.custom-tab-group ::ng-deep .mat-tab-header,
+.custom-tab-group ::ng-deep .mat-tab-header-pagination,
+.custom-tab-group ::ng-deep .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none !important;
+}
+
+/* Kill the scroll at the source */
+.custom-tab-group ::ng-deep .mat-tab-body-wrapper,
+.custom-tab-group ::ng-deep .mat-tab-body,
+.custom-tab-group ::ng-deep .mat-tab-body-content {
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove tab-group's own chrome so the card sits flush */
+.custom-tab-group {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+
+.jp-filter-bar {
+  /* … other vars … */
+  background: #f8fafc !important;   /* ← was #ffffff */
+  /* border, shadow, etc. stay the same */
+}
+
+
+/* Label text left-aligned */
+.jp-filter-bar .form-group > label.control-label {
+  text-align: left !important;
+  padding: 0 8px 0 0 !important;   /* small space between label & field */
+}
+
+.jp-filter-bar .form-group.clearfix {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;                   /* ← the ONLY gap between label & field */
+  /* … other props … */
+}
+
+
+
+
+
+
+
+
+
+
+//for viva add filr hre 
+/* =========================================================
+   INTERVIEW TABLE DESIGN (FLUID / NO SCROLL)
+   ========================================================= */
+
+/* Wrapper card */
+.jp-interview-table-wrapper {
+    background: #ffffff;
+    border: 1px solid #d9dee5;
+    border-radius: 8px;
+    /* Removed overflow: hidden to prevent double-borders, 
+       width: 100% ensures it fits the parent */
+    width: 100%; 
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05);
+}
+
+/* Table base */
+.jp-interview-table {
+    border-collapse: collapse !important;
+    width: 100% !important; /* Forces table to fit container */
+    table-layout: auto; /* Allows columns to shrink based on content */
+    background-color: #ffffff;
+    margin: 0 !important;
+}
+
+/* Table Header */
+.jp-interview-table .jp-th {
+    background-color: #0f6a7d !important;
+    color: #ffffff !important;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 6px !important; /* Slightly reduced padding to save space */
+    border: none !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    vertical-align: middle;
+    
+    /* Allow header text to wrap nicely if it gets too tight */
+    white-space: normal !important; 
+    word-break: break-word;
+    min-width: 0 !important; /* Crucial: allows columns to shrink */
+}
+
+.jp-interview-table .jp-th:last-child {
+    border-right: none !important;
+}
+
+/* Table Body Cells */
+.jp-interview-table .jp-td {
+    padding: 6px 6px !important; 
+    vertical-align: middle;
+    border: 1px solid #e5e9ef !important;
+    font-size: 13px;
+    color: #2d3748;
+    box-sizing: border-box !important;
+    
+    /* Allow cell text to wrap */
+    white-space: normal !important;
+    word-break: break-word;
+    min-width: 0 !important;
+}
+
+/* Remove top border for the first row */
+.jp-interview-table tbody tr:first-child .jp-td {
+    border-top: none !important;
+}
+
+/* =========================================================
+   STANDARDIZED INPUTS (FLUID WIDTH)
+   ========================================================= */
+.jp-interview-table .jp-input-sm {
+    display: block !important;
+    width: 100% !important; 
+    max-width: 100% !important;
+    min-width: 0 !important; /* Forces input to shrink if cell gets too narrow */
+    box-sizing: border-box !important; 
+    margin: 0 !important; 
+    height: 32px !important;
+    border: 1px solid #c3cad3 !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    padding: 4px 4px !important; /* Slightly reduced horizontal padding */
+    box-shadow: none !important;
+    background-color: #ffffff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Focus State */
+.jp-interview-table .jp-input-sm:focus {
+    border-color: #0f6a7d !important;
+    box-shadow: 0 0 0 2px rgba(15, 106, 125, 0.14) !important;
+    outline: none !important;
+}
+
+/* Disabled State */
+.jp-interview-table .jp-input-sm:disabled {
+    background-color: #f3f4f6 !important;
+    color: #6b7280 !important;
+    border-color: #d9dee5 !important;
+    cursor: not-allowed;
+}
+
+/* Remove number spinners */
+.jp-interview-table .jp-input-sm[type=number]::-webkit-inner-spin-button, 
+.jp-interview-table .jp-input-sm[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+/* Read-only text (Expected Salary) */
+.jp-interview-table .jp-readonly-text {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: #0f6a7d;
+    background: #e6f4f7;
+    padding: 5px 4px;
+    border-radius: 4px;
+    border: 1px solid #cce9f0;
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+//written
+/* =========================================================
+   WRITTEN EXAM CUSTOM CARD
+   ========================================================= */
+
+/* The main card container with shadow */
+.jp-custom-card {
+    background: #ffffff;
+    border-radius: 8px;
+    /* This is the shadow you requested */
+    box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08); 
+    border: 1px solid #e5e9ef;
+    overflow: hidden; /* Keeps the header rounded corners inside */
+}
+
+/* The header background color */
+.jp-custom-card .jp-card-header-title {
+    background-color: #0f6a7d; /* Standardized Teal */
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 16px;
+    letter-spacing: 0.3px;
+}
+
+/* Ensure the table wrapper inside doesn't add double borders or shadows */
+.jp-custom-card .jp-interview-table-wrapper {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}

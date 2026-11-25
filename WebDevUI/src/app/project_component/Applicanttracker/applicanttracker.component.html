@@ -10,8 +10,9 @@
                 <mat-tab class="custom-group" label="Application List">
 
                     <form [formGroup]="candidateForm">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card "
-                            style="border: 1px solid #ccc; background-color: #B8DAFF;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card jp-filter-bar"
+                            >
+                            <!-- style="border: 1px solid #ccc; background-color: #B8DAFF;" -->
 
 
                             <div class="row p-0 mt-3">
@@ -428,7 +429,7 @@
                                             <span>Personal Info</span>
                                         </button>
 
-                                        <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                        <button hidden *ngIf="RoleUser!=='Applicant'" mat-menu-item
                                             (click)="loadIdentityCardInfo(list.applicantOid);">
 
                                             <mat-icon class="text-danger" style="margin-top: -10px;"><i
@@ -1800,15 +1801,20 @@
                             </div>
                         </div>
 
+                    
 
-                        <div class="form-group clearfix">
+                        
+
+
+
+                        <div    class="form-group clearfix">
                             <label class="main-title control-label col-sm-4  p-0  pt-1" for="joiningDate"
                                 style="float: left;">Joining Date</label>
                             <div class="col-sm-7 p-0 m-0" style="float: left;">
                                 <div style="padding: 0px; width: 94.5%; font-size: 13px; float: left;">
                                     <input formControlName="joiningDate" type="date"
                                         class="main-input form-control form-control-sm input-sm input-sm-*"
-                                        id="joiningDate" placeholder="Enter Joinning Date..." name="joiningDate">
+                                        id="joiningDate" placeholder="Enter Joinning Date..." name="joiningDate">  
                                 </div>
                             </div>
                         </div>

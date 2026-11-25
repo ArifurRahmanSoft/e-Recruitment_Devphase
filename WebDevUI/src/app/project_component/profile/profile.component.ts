@@ -853,13 +853,39 @@ export class ProfileComponent implements OnInit {
     }
     const ModelsArray = [param, [reqform], acaQlf, wrkExp, profCirtificate, training, reference];
     if (this.requirementForm.invalid) {
-      this._msg.error("form is invalid");
+     
+
       this.requirementForm.markAllAsTouched();
+
+       // 1. Check Last Degree selection
+  const lastDegreeSelected = this.academicQualifications.controls.some(
+    control => control.get('isLastDegree')?.value === '1'
+  );
+
+  if (!lastDegreeSelected) {
+    this._msg.error('Please select your last degree.');
+    return;
+  }
+
+  // 2. Check Last Work Experience only if rows exist
+  const lastExperienceSelected =
+    this.workExperiences.length === 0 ||
+    this.workExperiences.controls.some(
+      control => control.get('isLastExperience')?.value === '1'
+    );
+
+  if (!lastExperienceSelected) {
+    this._msg.error('Please select your last work experience.');
+    return;
+  }
+// . end last validaton
+
       this.academicQualifications.controls.forEach(control => control.markAllAsTouched());
       this.workExperiences.controls.forEach(control => control.markAllAsTouched());
       this.professionalCirtificate.controls.forEach(control => control.markAllAsTouched());
       this.training.controls.forEach(control => control.markAllAsTouched());
       this.reference.controls.forEach(control => control.markAllAsTouched());
+        this._msg.error("Please fill up all required fields.");
       return;
     }
 

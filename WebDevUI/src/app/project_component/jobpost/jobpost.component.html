@@ -13,12 +13,12 @@
 
 </div>
 
+<!-- table-primary -->
 
-
-<div *ngIf="!cmnEntity.isShow && isToggleMaster" class="col-md-12 pl-0 pr-0 pt-2 pb-0 m-0 table-primary">
-    <form id="subForm" [formGroup]="jobPostForm" #f="ngForm" class="form-horizontal">
+<div *ngIf="!cmnEntity.isShow && isToggleMaster" class="col-md-12 pl-0 pr-0 pt-2 pb-0 m-0  jp-form-shell  ">
+    <form id="subForm" [formGroup]="jobPostForm" #f="ngForm" class="form-horizontal ">
         <div class="row p-0 m-0">
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0 " style="float: left;">
                 <!-- <div class="form-group clearfix">
                     <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="jobTitle" style="float: left;">Job
                         Title: <span class="text-danger">*</span></label>
@@ -43,9 +43,13 @@
                         </div>
                     </div>
 
-                    <span class="col-sm-2 ml-3 p-1 m-1 btn btn-outline-info btn-sm" style="width: 9.5%;"
+                       <button type="button" class="jp-add-btn"
+                                (click)="GetRequsitionList(pageSize); openModalEntryDialog('WorkOrder');">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                    <!-- <span class="col-sm-2 ml-3 p-1 m-1 btn btn-outline-info btn-sm" style="width: 9.5%;"
                         (click)="GetRequsitionList(pageSize);" (click)="openModalEntryDialog('WorkOrder');"><i
-                            class="fa fa-plus"></i></span>
+                            class="fa fa-plus"></i></span> -->
 
                 </div>
 
@@ -109,15 +113,15 @@
                     </div>
                 </div>
 
-                          <div class="form-group clearfix">
-                    <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="business"
-                        style="float: left;">Recruit Type: <span class="text-danger">*</span></label>
+                <div class="form-group clearfix">
+                    <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="business" style="float: left;">Recruit
+                        Type: <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
                         <div style="padding: 0px; width: 99.5%; font-size: 13px; float: left;">
 
-                            <ng-select2 formControlName="recruitType" [options]="options" [allowClear]="true" id="recruitType"
-                                name="recruitType" [data]="recruitTypeList" [placeholder]="'Select RecruitType'"
-                                style="line-height: 3; height: auto; ">
+                            <ng-select2 formControlName="recruitType" [options]="options" [allowClear]="true"
+                                id="recruitType" name="recruitType" [data]="recruitTypeList"
+                                [placeholder]="'Select RecruitType'" style="line-height: 3; height: auto; ">
                             </ng-select2>
                             <!-- <input formControlName="business" type="text"
                                 class="form-control form-control-sm input-sm input-sm-*" id="business"
@@ -337,8 +341,8 @@
                             name="isActive" checked id="isActive" (change)="onCheckboxChange($event)">
                     </div> -->
 
-                    <label *ngIf="setAsnewJob || isShow" class="control-label col-sm-2 ml-4 mr-(-2) p-0 m-0 pt-1" for="isActive"
-                        style="float: left;">Set New ? </label>
+                    <label *ngIf="setAsnewJob || isShow" class="control-label col-sm-2 ml-4 mr-(-2) p-0 m-0 pt-1"
+                        for="isActive" style="float: left;">Set New ? </label>
                     <div *ngIf="setAsnewJob || isShow" class="form-check ">
                         <input class="form-check-input" type="checkbox" value="isNewJob" name="isActive" checked
                             id="isNewJob" [checked]="false" (change)="SetNewJob($event,setAsnewJob)">
@@ -377,34 +381,10 @@
 
             <div class=" col-xl-6 col-lg-6 col-md-12 col-sm-6 col-xs-12 m-0 p-0" style="float: left;">
 
-                <!-- <div  class="Requirement pt-0 mr-2  mb-2 containers ">
-                <h6 id="title" style="background-color: #138496; color: white; height: 30px;" class="mb-1 h5 text-center">Skill</h6>
-         <div formArrayName="applicantSkill">
-                <div  *ngFor="let skilld of applicantSkill.controls; let i = index" [formGroupName]="i" class="form-group clearfix">
-                    <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="skill"
-                        style="float: left;">Skill: </label>
-                    <div class="col-sm-7 p-0 m-0" style="float: left;">
-                        <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
-                           
-                            <textarea rows="1" cols="3" formControlName="skill"
-                            class="form-control form-control-sm input-sm input-sm-*" id="skill"
-                            placeholder="Applicant Skill" name="skill"></textarea>
 
-                            
-
-                        </div>
-                    </div>
-                    
-                    <span (click)="removeSkill(i)" class="col-sm-1 ml-3 p-1 m-1 btn btn-outline-info btn-sm" style=" width: 8.5%; color: white;background-color: red;"
-                    
-                       ><i class="fa fa-minus"></i></span>
-                </div>
-                </div>
-                <button type="button" class="btn btn-primary smallDeviceTopColButton" (click)="addSkill()">Add Skill ++</button>
-            </div> -->
-                <div class="Requirement pt-0 mr-2 mb-2 containers" style="max-height: 400px; overflow-y: auto;">
+                <!-- <div class="Requirement pt-0 mr-2 mb-2 containers" style="max-height: 400px; overflow-y: auto;">
                     <h6 id="title" style="background-color: #138496; color: white; height: 30px;"
-                        class="mb-1 h5 text-center">Applicant Skill</h6>
+                        class="  mb-1 h5 text-center">Applicant Skill</h6>
 
                     <div formArrayName="applicantSkill">
                         <div *ngFor="let skilld of applicantSkill.controls; let i = index" [formGroupName]="i"
@@ -428,12 +408,48 @@
 
                     <button type="button" class="btn btn-primary smallDeviceTopColButton" (click)="addSkill()">Add Skill
                         ++</button>
+                </div> -->
+
+
+
+
+
+                    <div class="jp-section containers " style="max-height: 400px; overflow-y: auto;">
+                    <h6 id="title" 
+                        class=" jp-section-title mb-1 h5 text-center">Applicant Skill</h6>
+
+                    <div formArrayName="applicantSkill">
+                        <div *ngFor="let skilld of applicantSkill.controls; let i = index" [formGroupName]="i"
+                            class="form-group clearfix">
+                            <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="skill"
+                                style="float: left;">Skill:- {{i+1}} <span class="text-danger">*</span></label>
+                            <div class="col-sm-7 p-0 m-0" style="float: left;">
+                                <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
+                                    <textarea rows="1" cols="3" formControlName="skill"
+                                        class="form-control form-control-sm input-sm input-sm-*" id="skill"
+                                        placeholder="Applicant Skill" name="skill"></textarea>
+                                </div>
+                            </div>
+
+                            <span (click)="removeSkill(i)" class="col-sm-1 ml-3 p-1 m-1 btn btn-outline-info btn-sm"
+                                style="width: 8.5%; color: #dc3545; background-color: #fce8e8; border: 1px solid #ec8a94;">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <button type="button" class="jp-add-row-btn" (click)="addSkill()">Add Skill
+                        ++</button>
                 </div>
 
 
-                <div class="Requirement pt-0 mr-2 mb-2 containers" style="max-height: 400px; overflow-y: auto;">
-                    <h6 id="title" style="background-color: #138496; color: white; height: 30px;"
-                        class="mb-1 h5 text-center">Appliant Academic Requirement</h6>
+
+
+
+
+                <div class="jp-section containers" style="max-height: 400px; overflow-y: auto;">
+                    <h6 id="title" 
+                        class="jp-section-title mb-1 h5 text-center">Appliant Academic Requirement</h6>
 
                     <div formArrayName="applicantRequirement">
                         <div *ngFor="let requirement of applicantRequirement.controls; let i = index"
@@ -450,20 +466,20 @@
 
                             <span (click)="removeRequirement(i)"
                                 class="col-sm-1 ml-3 p-1 m-1 btn btn-outline-info btn-sm"
-                                style="width: 8.5%; color: white; background-color: red;">
-                                <i class="fa fa-minus"></i>
+                                style="width: 8.5%; color: #dc3545; background-color: #fce8e8; border: 1px solid #ec8a94;">
+                                <i class="fa fa-trash"></i>
                             </span>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary smallDeviceTopColButton" (click)="addRequirement()">Add
+                    <button type="button" class="jp-add-row-btn" (click)="addRequirement()">Add
                         Academic Requirement ++</button>
                 </div>
 
 
-                <div class="experience pt-0 mr-2 mb-2 containers" style="max-height: 400px; overflow-y: auto;">
-                    <h6 id="title" style="background-color: #138496; color: white; height: 30px;"
-                        class="mb-1 h5 text-center">Applicant Experience Requirement</h6>
+                <div class="jp-section containers" style="max-height: 400px; overflow-y: auto;">
+                    <h6 id="title" 
+                        class="jp-section-title mb-1 h5 text-center">Applicant Experience Requirement</h6>
 
                     <div formArrayName="applicantExperience">
                         <div *ngFor="let experience of applicantExperience.controls; let i = index" [formGroupName]="i"
@@ -480,13 +496,13 @@
 
                             <span (click)="removeExperience(i)"
                                 class="col-sm-1 ml-3 p-1 m-1 btn btn-outline-info btn-sm"
-                                style="width: 8.5%; color: white; background-color: red;">
-                                <i class="fa fa-minus"></i>
+                                style="width: 8.5%; color: #dc3545; background-color: #fce8e8; border: 1px solid #ec8a94;">
+                                <i class="fa fa-trash"></i>
                             </span>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary smallDeviceTopColButton" (click)="addExperience()">Add
+                    <button type="button" class="jp-add-row-btn" (click)="addExperience()">Add
                         Experience ++</button>
                 </div>
 
@@ -495,9 +511,9 @@
 
 
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
-                <div class="Requirement pt-0 mr-2 mb-2 containers" style="max-height: 400px; overflow-y: auto;">
-                    <h6 id="title" style="background-color: #138496; color: white; height: 30px;"
-                        class="mb-1 h5 text-center">Appliant Responsibility</h6>
+                <div class="jp-section containers" style="max-height: 400px; overflow-y: auto;">
+                    <h6 id="title" 
+                        class="jp-section-title mb-1 h5 text-center">Appliant Responsibility</h6>
 
                     <div formArrayName="applicantResponsibility">
                         <div *ngFor="let responsibility of applicantResponsibility.controls; let i = index"
@@ -514,20 +530,20 @@
 
                             <span (click)="removeResponsibility(i)"
                                 class="col-sm-1 ml-3 p-1 m-1 btn btn-outline-info btn-sm"
-                                style="width: 8.5%; color: white; background-color: red;">
-                                <i class="fa fa-minus"></i>
+                                style="width: 8.5%; color: #dc3545; background-color: #fce8e8; border: 1px solid #ec8a94;">
+                                <i class="fa fa-trash"></i>
                             </span>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary smallDeviceTopColButton"
+                    <button type="button" class="jp-add-row-btn"
                         (click)="addResponsibility()">Add Responsibility ++</button>
                 </div>
 
 
-                <div class="Other Requirement pt-0 mr-2 mb-2 containers" style="max-height: 400px; overflow-y: auto;">
-                    <h6 id="title" style="background-color: #138496; color: white; height: 30px;"
-                        class="mb-1 h5 text-center">Applicant Other Requirement</h6>
+                <div class="jp-section containers" style="max-height: 400px; overflow-y: auto;">
+                    <h6 id="title" 
+                        class="jp-section-title mb-1 h5 text-center">Applicant Other Requirement</h6>
 
                     <div formArrayName="applicantOtherRequirement">
                         <div *ngFor="let otherRequirement of applicantOtherRequirement.controls; let i = index"
@@ -545,19 +561,19 @@
 
                             <span (click)="removeOtherRequirement(i)"
                                 class="col-sm-1 ml-3 p-1 m-1 btn btn-outline-info btn-sm"
-                                style="width: 8.5%; color: white; background-color: red;">
-                                <i class="fa fa-minus"></i>
+                                style="width: 8.5%; color: #dc3545; background-color: #fce8e8; border: 1px solid #ec8a94;">
+                                <i class="fa fa-trash"></i>
                             </span>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary smallDeviceTopColButton"
+                    <button type="button" class="jp-add-row-btn"
                         (click)="addOtherRequirement()">Add Other Requirement ++</button>
                 </div>
 
-                <div class="Benefit pt-0 mr-2 mb-2 containers" style="max-height: 400px; overflow-y: auto;">
-                    <h6 id="title" style="background-color: #138496; color: white; height: 30px;"
-                        class="mb-1 h5 text-center">Applicant Benifit</h6>
+                <div class="jp-section containers" style="max-height: 400px; overflow-y: auto;">
+                    <h6 id="title" 
+                        class="jp-section-title mb-1 h5 text-center">Applicant Benifit</h6>
 
                     <div formArrayName="applicantBenifit">
                         <div *ngFor="let benefit of applicantBenifit.controls; let i = index" [formGroupName]="i"
@@ -573,13 +589,13 @@
                             </div>
 
                             <span (click)="removeBenifit(i)" class="col-sm-1 ml-3 p-1 m-1 btn btn-outline-info btn-sm"
-                                style="width: 8.5%; color: white; background-color: red;">
-                                <i class="fa fa-minus"></i>
+                                style="width: 8.5%; color: #dc3545; background-color: #fce8e8; border: 1px solid #ec8a94;">
+                                <i class="fa fa-trash"></i>
                             </span>
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary smallDeviceTopColButton" (click)="addBenifit()">Add
+                    <button type="button" class="jp-add-row-btn" (click)="addBenifit()">Add
                         Benefit ++</button>
                 </div>
 
@@ -689,8 +705,7 @@
                             <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: center;">
                                 Status</th>
 
-                            <th
-                                style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: center; ">
+                            <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: center; ">
                                 Show</th>
 
                             <th
@@ -725,8 +740,24 @@
                             <td class="pl-2 pr-1 pt-1 pb-1">{{item.startDate}}</td>
                             <td class="pl-2 pr-1 pt-1 pb-1">{{item.endDate}}</td>
 
-                            <td style="color: darkred; text-align: center;" class="pl-2 pr-1 pt-1 pb-1">
-                                {{ item.remainingDay <0 ? 'Closed' : item.remainingDay }} </td>
+                            <!-- <td style="color: darkred; text-align: center;" class="pl-2 pr-1 pt-1 pb-1">
+                                {{ item.remainingDay <0 ? 'Closed' : item.remainingDay }} </td> -->
+
+                            <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center;">
+
+                                <span *ngIf="item.isFinilized == 1" class="badge badge-pill text-white"
+                                    style="background-color: #e0a800; padding: 5px 10px; font-size: 11px;">
+                                    Finished
+                                </span>
+
+                                <span *ngIf="item.isFinilized != 1" class="badge badge-pill text-white"
+                                    [ngClass]="item.remainingDay < 0 ? 'badge-danger' : 'badge-success'"
+                                    style="padding: 5px 10px; font-size: 11px;">
+                                    {{ item.remainingDay < 0 ? 'Closed' : item.remainingDay }} </span>
+
+                            </td>
+
+
                             <td class="pl-2 pr-1 pt-1 pb-1">{{item.eployeementStatus}}</td>
 
 
@@ -734,11 +765,7 @@
 
 
 
-                            <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center;" width="5%">
-                                <!-- <h6><span
-                                                        class="badge badge-pill badge-{{item.isActive?'success':'danger'}}">{{item.isActive?'Active':'Inactive'}}</span>
-                                                </h6> -->
-
+                            <!-- <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center;" width="5%">
                                 <h6>
                                     <span
                                         class="badge badge-pill badge-{{ item.status == 1 && item.isActive == '1'? 'success' : 'danger' }}">
@@ -746,20 +773,72 @@
                                     </span>
                                 </h6>
 
+                            </td>   -->
+
+                            <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center;" width="5%">
+                                <h6>
+                                    <span class="badge badge-pill text-white" [ngClass]="{
+                'badge-warning': item.isFinilized == 1,
+                'badge-success': item.isFinilized != 1 && item.status == 1 && item.isActive == '1',
+                'badge-danger': item.isFinilized != 1 && !(item.status == 1 && item.isActive == '1')
+            }">
+                                        {{ item.isFinilized == 1
+                                        ? 'Finished'
+                                        : (item.status == 1 && item.isActive == '1' ? 'Active' : 'Inactive') }}
+                                    </span>
+                                </h6>
                             </td>
 
-                            <td class="pl-2 pr-1 pt-1 pb-1" style="color: green; height: 20%;text-align: center;  cursor: pointer;"
-                                class="fa fa-eye center pl-2 pr-1 pt-1 pb-1" (click)="showJobDetails(item)"> 
+                            <td class="pl-2 pr-1 pt-1 pb-1"
+                                style="color: green; height: 20%;text-align: center;  cursor: pointer;"
+                                class="fa fa-eye center pl-2 pr-1 pt-1 pb-1" (click)="showJobDetails(item)">
                             </td>
 
-                       
 
+                            <!-- <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center; width: 12%;">
+
+
+    <button
+        *ngIf="item.isFinilized == '0'"
+        type="button"
+        (click)="finishCloseJobPostById(item.jobOid)"
+        class="btn btn-sm btn-danger d-inline-flex align-items-center gap-1">
+        Close
+    </button>
+
+
+    <button
+        *ngIf="item.isFinilized == '1'"
+        type="button"
+        class="btn btn-sm btn-warning d-inline-flex align-items-center gap-1 text-white"
+        disabled>
+        Closed
+    </button>
+
+    <common-button-option
+        #cmnbuttonoption
+        style="float: left;"
+        (executeSubmit)="cmnbtnAction($event)"
+        [cmnEntity]="cmnEntity"
+        [model]="item"
+        [itemName]="item.quotationRefNo">
+    </common-button-option>
+
+</td> -->
 
                             <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center; width: 12%;">
+
+                                <button *ngIf="item.isFinilized=='0'" type="button"
+                                    (click)="finishCloseJobPostById(item.jobOid)"
+                                    class="btn btn-sm btn-danger   d-inline-flex align-items-center gap-1">
+                                    <i class="fa fa-stop-circle"></i>
+                                </button>
                                 <common-button-option #cmnbuttonoption style="float: left;"
                                     (executeSubmit)="cmnbtnAction($event)" [cmnEntity]="cmnEntity" [model]="item"
                                     [itemName]="item.quotationRefNo">
                                 </common-button-option>
+
+
 
                             </td>
 
@@ -816,7 +895,7 @@
 
 
 
-   <!-- <button type="button"
+    <!-- <button type="button"
                 class="btn btn-secondary btn-sm"
                 (click)="ShowRecruuitmentApproval(0)">
                 <i class="fa fa-arrow-left"></i> Back
@@ -1131,8 +1210,3 @@
     </form>
 </ng-template>
 <!-- dynamic Modal End -->
-
-
-
-
-

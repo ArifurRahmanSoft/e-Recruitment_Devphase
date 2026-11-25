@@ -1,0 +1,638 @@
+<!-- ================= HEADER CARD ================= -->
+<div class="card-header jobpost-header clearfix">
+    <h4 class="myCustomTitle jobpost-title">
+        <i class="fa fa-table"></i>
+        <span class="jobpost-toggle" (click)="setToggling('Master')">
+            Job Post {{cmnEntity.isShow ? 'List' : 'Entry'}}
+        </span>
+    </h4>
+
+    <common-button-top #cmnsrv
+        (executeSubmit)="cmnbtnAction($event)"
+        [cmnEntity]="cmnEntity"
+        class="pull-right"
+        [btnForm]="jobPostForm">
+    </common-button-top>
+</div>
+
+<!-- ================= ENTRY FORM ================= -->
+<div *ngIf="!cmnEntity.isShow && isToggleMaster" class="jp-form-wrapper">
+    <form id="subForm" [formGroup]="jobPostForm" #f="ngForm" class="form-horizontal jp-form">
+
+        <div class="row jp-row">
+
+            <!-- ---------- COLUMN 1 ---------- -->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 jp-col">
+                <div class="jp-field-group">
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="jobTitle">Job Title <span class="jp-required">*</span></label>
+                        <div class="jp-input-row">
+                            <input formControlName="jobTitle" type="text"
+                                class="form-control form-control-sm jp-input"
+                                id="jobTitle" placeholder="Enter Job Title..." name="jobTitle">
+                            <button type="button" class="jp-add-btn"
+                                (click)="GetRequsitionList(pageSize); openModalEntryDialog('WorkOrder');">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="post">Post <span class="jp-required">*</span></label>
+                        <ng-select2 formControlName="post" [options]="options" [allowClear]="true" id="post"
+                            name="post" [data]="designationList" [placeholder]="'Select Post'"
+                            class="jp-select">
+                        </ng-select2>
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="education">Education <span class="jp-required">*</span></label>
+                        <input formControlName="education" type="text"
+                            class="form-control form-control-sm jp-input"
+                            id="education" placeholder="Enter Education..." name="education">
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="employeeStatus">Emp Status <span class="jp-required">*</span></label>
+                        <input formControlName="employeeStatus" type="text"
+                            class="form-control form-control-sm jp-input"
+                            id="employeeStatus" placeholder="Enter Employment Status..." name="employeeStatus">
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="recruitType">Recruit Type <span class="jp-required">*</span></label>
+                        <ng-select2 formControlName="recruitType" [options]="options" [allowClear]="true"
+                            id="recruitType" name="recruitType" [data]="recruitTypeList"
+                            [placeholder]="'Select Recruit Type'" class="jp-select">
+                        </ng-select2>
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="business">Business <span class="jp-required">*</span></label>
+                        <ng-select2 formControlName="business" [options]="options" [allowClear]="true" id="business"
+                            name="business" [data]="businessTypeList" [placeholder]="'Select Business'"
+                            class="jp-select">
+                        </ng-select2>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ---------- COLUMN 2 ---------- -->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 jp-col">
+                <div class="jp-field-group">
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="company">Company <span class="jp-required">*</span></label>
+                        <ng-select2 formControlName="company" [options]="options" [allowClear]="true" id="company"
+                            name="company" [data]="companyList" [placeholder]="'Select Company'"
+                            class="jp-select">
+                        </ng-select2>
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="startDate">Start Date <span class="jp-required">*</span></label>
+                        <input formControlName="startDate" type="date"
+                            class="form-control form-control-sm jp-input"
+                            id="startDate" name="startDate">
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="experience">Experience <span class="jp-required">*</span></label>
+                        <input formControlName="experience" type="text"
+                            class="form-control form-control-sm jp-input"
+                            id="experience" placeholder="Enter Experience..." name="experience">
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="jobLocation">Job Location <span class="jp-required">*</span></label>
+                        <input formControlName="jobLocation" type="text"
+                            class="form-control form-control-sm jp-input"
+                            id="jobLocation" placeholder="Enter Job Location..." name="jobLocation">
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="address">Address <span class="jp-required">*</span></label>
+                        <input formControlName="address" type="text"
+                            class="form-control form-control-sm jp-input"
+                            id="address" placeholder="Enter Address..." name="address">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ---------- COLUMN 3 ---------- -->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 jp-col">
+                <div class="jp-field-group">
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="department">Department <span class="jp-required">*</span></label>
+                        <ng-select2 formControlName="department" [options]="options" [allowClear]="true"
+                            id="department" name="department" [data]="DepartmentList"
+                            [placeholder]="'Select Department'" class="jp-select">
+                        </ng-select2>
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="endDate">End Date <span class="jp-required">*</span></label>
+                        <input formControlName="endDate" type="date"
+                            class="form-control form-control-sm jp-input"
+                            id="endDate" name="endDate">
+                    </div>
+
+                    <div class="jp-field d-none">
+                        <label class="jp-label" for="workPlace">Work Place <span class="jp-required">*</span></label>
+                        <input formControlName="workPlace" type="text"
+                            class="form-control form-control-sm jp-input"
+                            id="workPlace" placeholder="Enter Work Place..." name="workPlace">
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="gender">Gender <span class="jp-required">*</span></label>
+                        <ng-select2 class="main-input jp-select" formControlName="gender" [options]="options"
+                            [data]="genderList" [allowClear]="true" id="gender" name="gender"
+                            [placeholder]="'Select Gender'">
+                        </ng-select2>
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="description">Description <span class="jp-required">*</span></label>
+                        <textarea formControlName="description"
+                            class="form-control form-control-sm jp-input jp-textarea"
+                            id="description" placeholder="Enter Description..." name="description" rows="2"></textarea>
+                    </div>
+
+                    <div class="jp-field">
+                        <label class="jp-label" for="salaryRange">Salary Range <span class="jp-required">*</span></label>
+                        <div class="jp-inline-row">
+                            <input formControlName="salaryRange" type="text"
+                                class="form-control form-control-sm jp-input"
+                                id="salaryRange" placeholder="Enter Salary Range..." name="salaryRange">
+
+                            <div *ngIf="setAsnewJob || isShow" class="jp-check-inline">
+                                <label class="jp-check-label" for="isNewJob">Set New?</label>
+                                <input class="form-check-input jp-checkbox" type="checkbox"
+                                    value="isNewJob" name="isActive" checked id="isNewJob"
+                                    [checked]="false" (change)="SetNewJob($event, setAsnewJob)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div hidden *ngIf="setAsnewJob || isShow" class="jp-field">
+                        <label class="jp-label" for="isNewJob">Set As New</label>
+                        <div class="jp-check-inline">
+                            <input class="form-check-input jp-checkbox" type="checkbox"
+                                value="isNewJob" name="isActive" checked id="isNewJob"
+                                [checked]="false" (change)="SetNewJob($event, setAsnewJob)">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ---------- COLUMN 4 : ARRAY SECTIONS ---------- -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 jp-col">
+
+                <!-- Applicant Skill -->
+                <div class="jp-section containers">
+                    <h6 class="jp-section-title">Applicant Skill</h6>
+                    <div formArrayName="applicantSkill">
+                        <div *ngFor="let skilld of applicantSkill.controls; let i = index" [formGroupName]="i"
+                            class="jp-array-item">
+                            <label class="jp-label jp-array-label">Skill {{i+1}} <span class="jp-required">*</span></label>
+                            <div class="jp-array-input-row">
+                                <textarea rows="1" formControlName="skill"
+                                    class="form-control form-control-sm jp-input jp-textarea"
+                                    placeholder="Applicant Skill" name="skill"></textarea>
+                                <button type="button" class="jp-remove-btn" (click)="removeSkill(i)">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="jp-add-row-btn" (click)="addSkill()">
+                        <i class="fa fa-plus"></i> Add Skill
+                    </button>
+                </div>
+
+                <!-- Applicant Academic Requirement -->
+                <div class="jp-section containers">
+                    <h6 class="jp-section-title">Applicant Academic Requirement</h6>
+                    <div formArrayName="applicantRequirement">
+                        <div *ngFor="let requirement of applicantRequirement.controls; let i = index"
+                            [formGroupName]="i" class="jp-array-item">
+                            <label class="jp-label jp-array-label">Requirement {{i+1}} <span class="jp-required">*</span></label>
+                            <div class="jp-array-input-row">
+                                <textarea rows="1" formControlName="requirement"
+                                    class="form-control form-control-sm jp-input jp-textarea"
+                                    placeholder="Applicant Requirement" name="requirement"></textarea>
+                                <button type="button" class="jp-remove-btn" (click)="removeRequirement(i)">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="jp-add-row-btn" (click)="addRequirement()">
+                        <i class="fa fa-plus"></i> Add Academic Requirement
+                    </button>
+                </div>
+
+                <!-- Applicant Experience -->
+                <div class="jp-section containers">
+                    <h6 class="jp-section-title">Applicant Experience Requirement</h6>
+                    <div formArrayName="applicantExperience">
+                        <div *ngFor="let experience of applicantExperience.controls; let i = index" [formGroupName]="i"
+                            class="jp-array-item">
+                            <label class="jp-label jp-array-label">Experience {{i+1}} <span class="jp-required">*</span></label>
+                            <div class="jp-array-input-row">
+                                <textarea rows="1" formControlName="experience"
+                                    class="form-control form-control-sm jp-input jp-textarea"
+                                    placeholder="Applicant Experience" name="experience"></textarea>
+                                <button type="button" class="jp-remove-btn" (click)="removeExperience(i)">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="jp-add-row-btn" (click)="addExperience()">
+                        <i class="fa fa-plus"></i> Add Experience
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- ---------- COLUMN 5 : ARRAY SECTIONS ---------- -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 jp-col">
+
+                <!-- Applicant Responsibility -->
+                <div class="jp-section containers">
+                    <h6 class="jp-section-title">Applicant Responsibility</h6>
+                    <div formArrayName="applicantResponsibility">
+                        <div *ngFor="let responsibility of applicantResponsibility.controls; let i = index"
+                            [formGroupName]="i" class="jp-array-item">
+                            <label class="jp-label jp-array-label">Responsibility {{i+1}} <span class="jp-required">*</span></label>
+                            <div class="jp-array-input-row">
+                                <textarea rows="1" formControlName="responsibility"
+                                    class="form-control form-control-sm jp-input jp-textarea"
+                                    placeholder="Applicant Responsibility" name="responsibility"></textarea>
+                                <button type="button" class="jp-remove-btn" (click)="removeResponsibility(i)">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="jp-add-row-btn" (click)="addResponsibility()">
+                        <i class="fa fa-plus"></i> Add Responsibility
+                    </button>
+                </div>
+
+                <!-- Applicant Other Requirement -->
+                <div class="jp-section containers">
+                    <h6 class="jp-section-title">Applicant Other Requirement</h6>
+                    <div formArrayName="applicantOtherRequirement">
+                        <div *ngFor="let otherRequirement of applicantOtherRequirement.controls; let i = index"
+                            [formGroupName]="i" class="jp-array-item">
+                            <label class="jp-label jp-array-label">Other Requirement {{i+1}} <span class="jp-required">*</span></label>
+                            <div class="jp-array-input-row">
+                                <textarea rows="1" formControlName="requirement"
+                                    class="form-control form-control-sm jp-input jp-textarea"
+                                    placeholder="Applicant Other Requirement" name="requirement"></textarea>
+                                <button type="button" class="jp-remove-btn" (click)="removeOtherRequirement(i)">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="jp-add-row-btn" (click)="addOtherRequirement()">
+                        <i class="fa fa-plus"></i> Add Other Requirement
+                    </button>
+                </div>
+
+                <!-- Applicant Benefit -->
+                <div class="jp-section containers">
+                    <h6 class="jp-section-title">Applicant Benefit</h6>
+                    <div formArrayName="applicantBenifit">
+                        <div *ngFor="let benefit of applicantBenifit.controls; let i = index" [formGroupName]="i"
+                            class="jp-array-item">
+                            <label class="jp-label jp-array-label">Benefit {{i+1}} <span class="jp-required">*</span></label>
+                            <div class="jp-array-input-row">
+                                <textarea rows="1" formControlName="benefits"
+                                    class="form-control form-control-sm jp-input jp-textarea"
+                                    placeholder="Applicant Benefit" name="benefits"></textarea>
+                                <button type="button" class="jp-remove-btn" (click)="removeBenifit(i)">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="jp-add-row-btn" (click)="addBenifit()">
+                        <i class="fa fa-plus"></i> Add Benefit
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<!-- ================= LIST VIEW ================= -->
+<div *ngIf="cmnEntity.isShow && !jobShowDiv" class="jp-list-wrapper">
+
+    <div class="row jp-list-topbar">
+        <div class="col-md-12">
+            <pager-top (setPage)="getListByPage($event)" (sendList)="sendToList($event)"
+                [loggedUserId]="loggedUserId" [pageSize]="pageSize" [IsSearchOnServer]="true"
+                [responseTag]="responseTag" [apiUrl]="_listByPageUrl">
+            </pager-top>
+        </div>
+    </div>
+
+    <div class="row jp-list-row">
+        <div class="col-md-12">
+            <div class="table-responsive jp-table-responsive">
+                <table id="table" class="table table-sm table-bordered jp-table">
+                    <thead class="jp-thead">
+                        <tr class="banglaTitle">
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Department</th>
+                            <th hidden>Post</th>
+                            <th>Education</th>
+                            <th>Opening Date</th>
+                            <th>Closing Date</th>
+                            <th>Remaining Day</th>
+                            <th>Employment Status</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Show</th>
+                            <th class="text-center" style="width: 5%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="banglaTitle">
+                        <tr *ngFor="let item of jobPostLists; let sl = index">
+                            <td><a href="javascript:void(0);" title="Quotation Reference">{{item.jobTitle}}</a></td>
+                            <td>{{item.companyName}}</td>
+                            <td>{{item.departmentName}}</td>
+                            <td hidden>{{item.postName}}</td>
+                            <td>{{item.education}}</td>
+                            <td>{{item.startDate}}</td>
+                            <td>{{item.endDate}}</td>
+
+                            <td class="text-center">
+                                <span *ngIf="item.isFinilized == 1" class="badge badge-pill text-white jp-badge jp-badge-finished">Finished</span>
+                                <span *ngIf="item.isFinilized != 1"
+                                    class="badge badge-pill text-white jp-badge"
+                                    [ngClass]="item.remainingDay < 0 ? 'badge-danger' : 'badge-success'">
+                                    {{ item.remainingDay < 0 ? 'Closed' : item.remainingDay }}
+                                </span>
+                            </td>
+
+                            <td>{{item.eployeementStatus}}</td>
+
+                            <td class="text-center" width="5%">
+                                <span class="badge badge-pill text-white jp-badge" [ngClass]="{
+                                    'badge-warning': item.isFinilized == 1,
+                                    'badge-success': item.isFinilized != 1 && item.status == 1 && item.isActive == '1',
+                                    'badge-danger': item.isFinilized != 1 && !(item.status == 1 && item.isActive == '1')
+                                }">
+                                    {{ item.isFinilized == 1
+                                        ? 'Finished'
+                                        : (item.status == 1 && item.isActive == '1' ? 'Active' : 'Inactive') }}
+                                </span>
+                            </td>
+
+                            <td class="text-center jp-show-cell" (click)="showJobDetails(item)">
+                                <i class="fa fa-eye"></i>
+                            </td>
+
+                            <td class="text-center jp-action-cell">
+                                <button *ngIf="item.isFinilized=='0'" type="button"
+                                    (click)="finishCloseJobPostById(item.jobOid)"
+                                    class="btn btn-sm btn-danger jp-finish-btn">
+                                    <i class="fa fa-stop-circle"></i>
+                                </button>
+                                <common-button-option #cmnbuttonoption style="float: left;"
+                                    (executeSubmit)="cmnbtnAction($event)" [cmnEntity]="cmnEntity" [model]="item"
+                                    [itemName]="item.quotationRefNo">
+                                </common-button-option>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row jp-list-bottombar">
+        <div class="col-md-12">
+            <pager-bottom #cmnpager (setPage)="getListByPage($event)" (sendList)="sendToList($event)"
+                [loggedUserId]="loggedUserId" [responseTag]="responseTag" [apiUrl]="_listByPageUrl">
+            </pager-bottom>
+        </div>
+    </div>
+</div>
+
+<!-- ================= DETAILS VIEW ================= -->
+<div class="jp-details-wrapper" *ngIf="jobShowDiv">
+
+    <div class="jp-details-header">
+        <div class="jp-details-title">{{masterListDetails.jobTitle}}</div>
+        <button (click)="BackToJobList()" class="jp-back-btn">
+            <i class="fa fa-arrow-left"></i> Back
+        </button>
+    </div>
+
+    <div class="jp-details-card">
+        <div class="jp-details-section-title">General Information</div>
+        <div class="generalInformation jp-info-grid">
+            <div class="jp-info-label">Location:</div>
+            <div class="jp-info-value">{{masterListDetails.jobLocation}}</div>
+
+            <div class="jp-info-label jp-deadline">Deadline:</div>
+            <div class="jp-info-value jp-deadline">{{masterListDetails.endDate | date: 'dd-MM-yyyy'}}</div>
+
+            <div class="jp-info-label">Salary Range:</div>
+            <div class="jp-info-value">{{masterListDetails.salaryRange}}</div>
+
+            <div class="jp-info-label">Employment Status:</div>
+            <div class="jp-info-value">{{masterListDetails.employeeStatus}}</div>
+        </div>
+    </div>
+
+    <div class="jp-details-card">
+        <div *ngIf="requirementList.length>0" class="Requirement jp-details-group">
+            <h6 class="jp-details-section-title">Academic Requirement</h6>
+            <hr>
+            <ul class="jp-details-list">
+                <li *ngFor="let req of requirementList">{{req.requirement}}</li>
+            </ul>
+        </div>
+
+        <div *ngIf="experienceList.length>0" class="Experience jp-details-group">
+            <h6 class="jp-details-section-title">Experience</h6>
+            <hr>
+            <ul class="jp-details-list">
+                <li *ngFor="let exp of experienceList">{{exp.experience}}</li>
+            </ul>
+        </div>
+
+        <div *ngIf="otherRequirementList.length>0" class="Other Requirement jp-details-group">
+            <h6 class="jp-details-section-title">Other Requirement</h6>
+            <hr>
+            <ul class="jp-details-list">
+                <li *ngFor="let otReq of otherRequirementList">{{otReq.otherRequirement}}</li>
+            </ul>
+        </div>
+
+        <div *ngIf="responsibilityList.length>0" class="Responsibility jp-details-group">
+            <h6 class="jp-details-section-title">Responsibility</h6>
+            <hr>
+            <ul class="jp-details-list">
+                <li *ngFor="let res of responsibilityList">{{res.responsibility}}</li>
+            </ul>
+        </div>
+
+        <div *ngIf="skillList.length>0" class="Skills jp-details-group">
+            <h6 class="jp-details-section-title">Skills</h6>
+            <hr>
+            <ul class="jp-details-list">
+                <li *ngFor="let skl of skillList">{{skl.skill}}</li>
+            </ul>
+        </div>
+
+        <div *ngIf="benifitList.length>0" class="Benefits jp-details-group">
+            <h6 class="jp-details-section-title">Compensation & Other Benefits</h6>
+            <hr>
+            <ul class="jp-details-list">
+                <li *ngFor="let bnft of benifitList">{{bnft.benefits}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="jp-details-card">
+        <h6 class="jp-details-section-title">Company Information</h6>
+        <hr>
+        <p class="jp-company-name">{{masterListDetails.companyName}}</p>
+        <div class="jp-company-block">
+            <h6>Address:</h6>
+            <p>{{masterListDetails.address}}</p>
+        </div>
+        <div class="jp-company-block">
+            <h6>Business:</h6>
+            <p>{{businessTypeForm.details}}</p>
+        </div>
+    </div>
+</div>
+
+<!-- ================= MODAL TEMPLATE (kept as-is functionally) ================= -->
+<ng-template #modalEntry>
+    <div class="mat-dialog-header border-bottom jp-modal-header">
+        <ng-container *ngIf="modalLabelName !== 'Quotation'; else searchTemplate">
+            <h2 class="pull-left" mat-dialog-title class="mb-0">{{modalLabelName}} Entry</h2>
+        </ng-container>
+        <ng-template #searchTemplate>
+            <h2 class="pull-left" mat-dialog-title class="mb-0">Requisition List</h2>
+        </ng-template>
+
+        <div class="pull-right jp-modal-close" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+            <button class="pull-right" mat-icon-button matDialogClose tabindex="-1">
+                <mat-icon aria-label="Close dialog">close</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <form #modalForms="ngForm" [formGroup]="modalForm" role="form" novalidate name="modalForm"
+        (ngSubmit)="modalSubmit(modalForm)">
+        <mat-dialog-content style="overflow: hidden;">
+            <fieldset class="mt-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div [ngClass]="{'col-md-11': modalType === 'WorkOrder', 'col-md-6': modalType !== 'WorkOrder'}">
+
+                            <div class="form-group clearfix" *ngIf="modalType=='WorkOrder'">
+                                <div class="card-body jp-modal-card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <pager-top (setPage)="GetRequsitionList($event)"
+                                                (sendList)="sendToLists($event)" [loggedUserId]="loggedUserId"
+                                                [pageSize]="pageSize" [IsSearchOnServer]="true" [Status]="status"
+                                                [responseTag]="responseTags" [apiUrl]="_listByPageUrls">
+                                            </pager-top>
+                                        </div>
+                                    </div>
+
+                                    <div class="row pr-3">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive jp-table-responsive jp-modal-table">
+                                                <table id="table" class="table table-sm table-bordered jp-table">
+                                                    <thead class="jp-thead">
+                                                        <tr class="banglaTitle">
+                                                            <th>Company</th>
+                                                            <th>Department</th>
+                                                            <th>Post</th>
+                                                            <th>Quantity</th>
+                                                            <th>Type</th>
+                                                            <th>Education</th>
+                                                            <th class="text-center" style="width: 5%;">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="banglaTitle">
+                                                        <tr *ngFor="let item of requsitionLists; let sl = index">
+                                                            <td>
+                                                                <a href="javascript:void(0);" title="Quotation Reference">{{item.companyName}}</a>
+                                                            </td>
+                                                            <td>{{item.departmentName}}</td>
+                                                            <td>{{item.designationName}}</td>
+                                                            <td>{{item.reqQuantity}}</td>
+                                                            <td>{{item.reqType}}</td>
+                                                            <td>{{item.educationQlf}}</td>
+                                                            <td class="text-center">
+                                                                <div class="form-check form-switch jp-switch">
+                                                                    <input (click)="getRequsitionById(item)" matDialogClose
+                                                                        type="checkbox" id="flexSwitchCheckDefault">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row pr-2">
+                                        <div class="col-md-12">
+                                            <pager-bottom #cmnpager (setPage)="GetRequsitionList($event)"
+                                                (sendList)="sendToLists($event)" [Status]='status'
+                                                [loggedUserId]="loggedUserId" [responseTag]="responseTags"
+                                                [apiUrl]="_listByPageUrls">
+                                            </pager-bottom>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="modalType!='WorkOrder'" class="form-group clearfix jp-modal-status">
+                                <label class="control-label col-sm-4 p-0 m-0" for="isActive">Status:</label>
+                                <div class="col-sm-6 p-0 m-0">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="isActive" type="checkbox" name="isActive" checked
+                                            id="isActive" class="custom-control-input">
+                                        <label class="custom-control-label" for="isActive">Is Active?</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </mat-dialog-content>
+
+        <mat-dialog-actions class="border-top jp-modal-actions" align="end">
+            <button type="button" mat-button matDialogClose class="jp-btn-cancel">Close</button>
+            <button *ngIf="modalType!='WorkOrder'" type="submit" mat-raised-button color="primary"
+                [disabled]="!modalForm.valid" class="jp-btn-save">Save changes</button>
+        </mat-dialog-actions>
+    </form>
+</ng-template>

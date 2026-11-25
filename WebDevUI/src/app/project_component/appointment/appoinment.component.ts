@@ -92,10 +92,15 @@ export class AppoinmentComponent implements OnInit {
     { value: '1', label: 'Estimate InComing' },
     { value: '0', label: 'Estimate OutGoing' },
   ];
-  
-  public fromDate:any;
-  public toDate:any;
-  public Status:any;
+
+    bloodGroupList: Array<{ id: string, text: string }> = [
+    { id: '', text: 'Select Blood Group' }, { id: '1', text: 'A+' }, { id: '5', text: 'B+' }, { id: '7', text: 'O+' }, { id: '3', text: 'AB+' },
+    { id: '2', text: 'A-' }, { id: '6', text: 'B-' }, { id: '8', text: 'O-' }, { id: '4', text: 'AB-' }
+  ];
+
+  public Status: any;
+  public fromDate: any;
+  public toDate: any;
 
   constructor(public appSettings: AppSettings,
     private datePipe: DatePipe,
@@ -579,18 +584,69 @@ public approvalProcess: string='1';
 
 
   //GET DATA BY ID FOR REPORT 
-  public _getcanDeIdUrl: string = 'reqform/getapplicationdetailbyid';
+  // public _getcanDeIdUrl: string = 'reqform/getapplicationdetailbyid';
+  // getcandidateDetail(modelEvnt) {
+  //   debugger;
+    
+  //   console.log("modelEvnt", modelEvnt)
+  //   var param = { strId: modelEvnt };
+  //   var apiUrl = this._getcanDeIdUrl
+  //   this._dataservice.getWithMultipleModel(apiUrl, param)
+  //     .subscribe(response => {
+  //       this.res = response;
+  //       console.log("Detalis master ", this.res)
+  //       this.masterList = JSON.parse(this.res.resdata.regApplicantMaster)
+  //       this.downloadFile(this.masterList[0].CvNo, this.masterList[0].name, this.masterList[0].job_title)
+  //       if (this.res.resdata.accQlfDetail) {
+  //         this.accQlfList = JSON.parse(this.res.resdata.accQlfDetail)
+  //       }
+  //       if (this.res.resdata.wrkExperience) {
+  //         this.wrkExpList = JSON.parse(this.res.resdata.wrkExperience)
+  //       }
+  //       if (this.res.resdata.profCertificate) {
+  //         this.proCirtificateList = JSON.parse(this.res.resdata.profCertificate)
+  //       }
+  //       console.log("Detalis master change ", this.masterList)
+  //       console.log("Detalis accQlfList", this.accQlfList)
+  //       console.log("Detalis wrkExpList", this.wrkExpList)
+  //       console.log("Detalis proCirtificateList", this.proCirtificateList)
+
+     
+
+  //     }, error => {
+  //       console.log(error);
+  //     });
+  // }
+
+
+ public BGtxt: any;
+  getBloodGroupText(id: string) {
+    const bg = this.bloodGroupList.find(item => item.id === id);
+    this.BGtxt = bg?.text;
+  }
+
+   public candidateMaster: any;
+  public masterListDetails: any;
+  public hTrainingList: any;
+  hReferenceList: any;
+  public htmlView: boolean = false;
+  public _getcanDeIdUrl: string = 'reqform/getcandidatedetailsbyid';
   getcandidateDetail(modelEvnt) {
     debugger;
+    this.htmlView = true;
+
     console.log("modelEvnt", modelEvnt)
     var param = { strId: modelEvnt };
     var apiUrl = this._getcanDeIdUrl
     this._dataservice.getWithMultipleModel(apiUrl, param)
       .subscribe(response => {
         this.res = response;
-        console.log("Detalis master ", this.res)
+
+        console.log("details data is ", this.res)
         this.masterList = JSON.parse(this.res.resdata.regApplicantMaster)
-        this.downloadFile(this.masterList[0].CvNo, this.masterList[0].name, this.masterList[0].job_title)
+        this.masterListDetails = this.masterList[0];
+        this.candidateMaster = this.masterListDetails
+        if (this.candidateMaster.blood_group) { this.getBloodGroupText(this.candidateMaster.blood_group) }
         if (this.res.resdata.accQlfDetail) {
           this.accQlfList = JSON.parse(this.res.resdata.accQlfDetail)
         }
@@ -600,19 +656,29 @@ public approvalProcess: string='1';
         if (this.res.resdata.profCertificate) {
           this.proCirtificateList = JSON.parse(this.res.resdata.profCertificate)
         }
-        console.log("Detalis master change ", this.masterList)
+        if (this.res.resdata.training) {
+          this.hTrainingList = JSON.parse(this.res.resdata.training)
+
+        }
+        if (this.res.resdata.reference) {
+          this.hReferenceList = JSON.parse(this.res.resdata.reference)
+        }
+        console.log("Detalis master------------- ", this.candidateMaster)
         console.log("Detalis accQlfList", this.accQlfList)
         console.log("Detalis wrkExpList", this.wrkExpList)
         console.log("Detalis proCirtificateList", this.proCirtificateList)
+        console.log("Detalis trainingList", this.hTrainingList)
+        console.log("Detalis referenceList", this.hReferenceList)
 
-        //this.loadImages( this.masterListDetails.imagePath)
-        //this.loadImages( this.masterListDetails.signaturePath)
 
       }, error => {
         console.log(error);
       });
   }
 
+  backToListShow() {
+    this.htmlView = false;
+  }
 
 
 
@@ -644,6 +710,28 @@ public approvalProcess: string='1';
   loadCandidatePersonalInfo(model) {
     debugger
     var repFile = 'rptPersonalInfo' + '.rdlc';
+    var rmodel = { reportPath: '/reportfile/business/applicant/' + repFile, reportName: 'CV' };
+    this._rptViewer.rptModel = new ReportModel(rmodel.reportPath, rmodel.reportName, 580);
+    var param = { strId: model };
+    var repParam = [{ PrintDate: this._conversion.Today() }];
+    var ModelsArray = [repParam, param];
+    this._rptViewer.reportOutPage(this._getReportUrl, ModelsArray);
+  }
+
+    loadRacReports(model) {
+    debugger
+    var repFile = 'rptRAC' + '.rdlc';
+    var rmodel = { reportPath: '/reportfile/business/applicant/' + repFile, reportName: 'RAC' };
+    this._rptViewer.rptModel = new ReportModel(rmodel.reportPath, rmodel.reportName, 580);
+    var param = { strId: model };
+    var repParam = [{ PrintDate: this._conversion.Today() }];
+    var ModelsArray = [repParam, param];
+    this._rptViewer.reportOutPage(this._getReportUrl, ModelsArray);
+  }
+
+   loadIdentityCardInfo(model) {
+    debugger
+    var repFile = 'rptIdentyCard' + '.rdlc';
     var rmodel = { reportPath: '/reportfile/business/applicant/' + repFile, reportName: 'CV' };
     this._rptViewer.rptModel = new ReportModel(rmodel.reportPath, rmodel.reportName, 580);
     var param = { strId: model };

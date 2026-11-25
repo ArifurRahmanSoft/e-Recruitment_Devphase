@@ -47,16 +47,15 @@ body {
   padding-bottom: 40px;
   
 }
-.containers{
-  border: 2px solid gray; 
-  /* background: linear-gradient(to top,#aeaef0 50%,  #aeaef0 90%) no-repeat; */
-  background: white;
-  border-radius: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+// .containers{
+//   border: 2px solid gray; 
+//   background: white;
+//   border-radius: 10px;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   padding-bottom: 10px;
   
-}
+// }
 
 
 .container-details{
@@ -499,6 +498,217 @@ width: 100px;
 
 
 
+// here start from 
+$jp-primary: #0f6a7d;
+$jp-primary-dark: #0a4c5a;
+$jp-primary-light: #e6f4f7;
+$jp-border: #d9dee5;
+$jp-border-strong: #c3cad3;
+$jp-text: #2d3748;
+$jp-text-muted: #6b7280;
+$jp-bg: #f7f9fb;
+$jp-bg-card: #ffffff;
+$jp-radius: 8px;
+$jp-radius-sm: 6px;
+$jp-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+$jp-shadow-md: 0 4px 10px rgba(16, 24, 40, 0.08);
+$jp-gap: 14px;
 
 
+
+
+/* ---------- Array Sections (containers) ---------- */
+.containers {
+    background: $jp-bg-card;
+    border: 1px solid $jp-border;
+    border-radius: $jp-radius;
+    padding: 0 14px 14px 14px;
+    margin-bottom: 16px;
+    box-shadow: $jp-shadow-sm;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+
+.jp-section-title {
+    background: $jp-primary;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-radius: $jp-radius-sm;
+    margin: 12px 0 14px 0;
+    letter-spacing: 0.3px;
+}
+
+
+/* ---------- Add row button ---------- */
+.jp-add-row-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: $jp-primary-light;
+    color: $jp-primary-dark;
+    border: 1px solid $jp-primary;
+    border-radius: $jp-radius-sm;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    margin-top: 4px;
+}
+
+.jp-add-row-btn:hover {
+    background: $jp-primary;
+    color: #ffffff;
+}
+
+.jp-add-row-btn i {
+    font-size: 11px;
+}
+
+  //  .jp-add-row-btn {
+  //       width: 100%;
+  //       justify-content: center;
+  //   }
+
+.jp-form-wrapper {
+    background: $jp-bg;
+    border: 1px solid $jp-border;
+    border-top: none;
+    border-radius: 0 0 $jp-radius $jp-radius;
+    padding: 18px;
+}
+
+
+.jp-add-btn {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    margin-left: 3%;
+    border: 1px solid $jp-primary;
+    background: $jp-primary;
+    color: #fff;
+    border-radius: $jp-radius-sm;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.jp-add-btn:hover {
+    background: $jp-primary-dark;
+    border-color: $jp-primary-dark;
+}
+
+.jp-add-btn:active {
+    transform: scale(0.97);
+}
+
+.jp-add-btn i {
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+//ADD LETTE
+/* Put this after your existing CSS (component SCSS or global styles.scss) */
+
+#subForm {
+  --jp-control-h: 36px;        /* change to 38px if you want taller */
+  --jp-control-radius: 6px;
+  --jp-control-border: #c3cad3;
+}
+
+/* ---------- 1. Normal text / date / number inputs ---------- */
+#subForm input.form-control,
+#subForm select.form-control,
+#subForm .form-control:not(textarea) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: var(--jp-control-h) !important;
+  min-height: var(--jp-control-h) !important;
+  padding: 6px 10px !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  border: 1px solid var(--jp-control-border) !important;
+  border-radius: var(--jp-control-radius) !important;
+}
+
+/* textarea keeps multiline height, only width is normalized */
+#subForm textarea.form-control {
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* ---------- 2. Remove the different inline widths of field wrappers ---------- */
+/* These are the divs like style="width:96.5%" / 99.5% / 92% / 92.5% */
+#subForm .form-group > div[class*="col-"] > div[style] {
+  width: 100% !important;
+  float: none !important;
+  padding: 0 !important;
+}
+
+/* ---------- 3. ng-select2 dropdown = same height as inputs ---------- */
+#subForm ng-select2 {
+  display: block !important;
+  width: 100% !important;
+  height: var(--jp-control-h) !important;
+  line-height: normal !important; /* overrides inline line-height:3 */
+}
+
+#subForm ng-select2 .select2-container,
+#subForm ng-select2 .select2-container--default {
+  width: 100% !important;
+  height: var(--jp-control-h) !important;
+}
+
+#subForm ng-select2 .select2-selection--single {
+  height: var(--jp-control-h) !important;
+  min-height: var(--jp-control-h) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 8px !important;
+  border: 1px solid var(--jp-control-border) !important;
+  border-radius: var(--jp-control-radius) !important;
+  box-shadow: none !important;
+}
+
+#subForm ng-select2 .select2-selection--single .select2-selection__rendered {
+  line-height: normal !important;
+  padding: 0 22px 0 2px !important;
+  font-size: 13px !important;
+}
+
+#subForm ng-select2 .select2-selection--single .select2-selection__arrow {
+  height: var(--jp-control-h) !important;
+  top: 0 !important;
+  right: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* focus style, optional */
+#subForm input.form-control:focus,
+#subForm ng-select2 .select2-container--focus .select2-selection--single,
+#subForm ng-select2 .select2-container--open .select2-selection--single {
+  border-color: #0f6a7d !important;
+  box-shadow: 0 0 0 3px rgba(15, 106, 125, .15) !important;
+}
+
+:host ::ng-deep #subForm ng-select2 .select2-selection--single {
+  height: var(--jp-control-h) !important;
+}
+
+#subForm, .jp-form-shell { --jp-shell-bg: #f4f5f7; }
 

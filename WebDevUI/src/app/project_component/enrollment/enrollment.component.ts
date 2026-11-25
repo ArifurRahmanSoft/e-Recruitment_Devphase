@@ -725,9 +725,12 @@ export class EnrollmentComponent implements OnInit {
   public candidateMaster: any;
   public hTrainingList: any;
   public hReferenceList: any;
+  public modelEvent:any;
   public _getcanDeIdUrl: string = 'reqform/getcandidatedetailsbyid';
   getcandidateDetail(modelEvnt) {
     debugger;
+    this.modelEvent='';
+    this.modelEvent=modelEvnt;
     console.log("modelEvnt", modelEvnt)
     var param = { strId: modelEvnt.profileId };
     var apiUrl = this._getcanDeIdUrl
@@ -818,10 +821,10 @@ export class EnrollmentComponent implements OnInit {
       preAddThana: this.candidateMaster.pre_add_thana,
 
        location: null,
-      company: this.candidateMaster.company_name,
+      company: this.modelEvent.company,
        taxCompany: null,
        atnSchedule: null,
-      department: this.candidateMaster.department,
+      department: this.modelEvent.department,
        areaStatus: null,
        taxZone: this.candidateMaster.taxZone,
 

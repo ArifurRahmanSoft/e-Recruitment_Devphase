@@ -584,3 +584,224 @@ width: 100px;
 
 
 
+/* =====================================================================
+   UNIFORM FIELD SIZING  –  inputs / ng-select2 / textarea / dropdown-box
+   Scope: #subForm (enrollment form)  –  no HTML changes needed
+   ===================================================================== */
+
+
+   $jp-primary: #0f6a7d;
+$jp-primary-dark: #0a4c5a;
+$jp-primary-light: #e6f4f7;
+$jp-border: #d9dee5;
+$jp-border-strong: #c3cad3;
+$jp-text: #2d3748;
+$jp-text-muted: #6b7280;
+$jp-bg: #f7f9fb;
+$jp-bg-card: #ffffff;
+$jp-radius: 8px;
+$jp-radius-sm: 6px;
+$jp-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+$jp-shadow-md: 0 4px 10px rgba(16, 24, 40, 0.08);
+$jp-gap: 14px;
+
+
+#subForm {
+  --h: 36px;
+}
+
+/* Inputs */
+#subForm input.form-control,
+#subForm select.form-control {
+  height: var(--h) !important;
+  min-height: var(--h) !important;
+  padding: 6px 10px !important;
+  line-height: 1.4 !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+/* Textarea - same height */
+#subForm textarea.form-control {
+  height: var(--h) !important;
+  min-height: var(--h) !important;
+  padding: 6px 10px !important;
+  line-height: 1.4 !important;
+  resize: none !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ng-select2 */
+#subForm ng-select2 {
+  display: block !important;
+  width: 100% !important;
+  height: var(--h) !important;
+  line-height: normal !important;
+}
+#subForm ng-select2 .select2-container,
+#subForm ng-select2 .select2-container--default,
+#subForm ng-select2 .select2-selection--single {
+  width: 100% !important;
+  height: var(--h) !important;
+  min-height: var(--h) !important;
+  box-sizing: border-box !important;
+}
+#subForm ng-select2 .select2-selection--single {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 8px !important;
+}
+#subForm ng-select2 .select2-selection__rendered {
+  line-height: normal !important;
+  padding: 0 22px 0 2px !important;
+}
+#subForm ng-select2 .select2-selection__arrow {
+  height: var(--h) !important;
+  top: 0 !important;
+}
+
+/* Custom Supervisor dropdown-box */
+#subForm .dropdown-box {
+  height: var(--h) !important;
+  min-height: var(--h) !important;
+  padding: 6px 10px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* + button */
+#subForm .btn.btn-outline-info {
+  height: var(--h) !important;
+  min-height: var(--h) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Override inline width 96.5% etc on wrappers — set to 100% */
+#subForm .form-group > div[class*="col-"] > div[style] {
+  width: 100% !important;
+}
+
+
+
+
+#subForm input.form-control:focus,
+#subForm ng-select2 .select2-container--focus .select2-selection--single,
+#subForm ng-select2 .select2-container--open .select2-selection--single {
+  border-color: #0f6a7d !important;
+  box-shadow: 0 0 0 3px rgba(15, 106, 125, .15) !important;
+}
+
+:host ::ng-deep #subForm ng-select2 .select2-selection--single {
+  height: var(--jp-control-h) !important;
+}
+
+
+.jp-add-btn {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    margin-left: 3%;
+    border: 1px solid $jp-primary;
+    background: $jp-primary;
+    color: #fff;
+    border-radius: $jp-radius-sm;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.jp-add-btn:hover {
+    background: $jp-primary-dark;
+    border-color: $jp-primary-dark;
+}
+
+.jp-add-btn:active {
+    transform: scale(0.97);
+}
+
+.jp-add-btn i {
+    font-size: 12px;
+}
+
+
+
+
+#subForm .card-header.bg-dark {
+  background: linear-gradient(90deg, #143460 0%, #1f5a8a 60%, #0f6a7d 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 10px 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: .4px;
+  border-radius: 10px 10px 0 0 !important;
+}
+
+
+
+/* ============================================================
+   "Official Info" — standard card look
+   ============================================================ */
+
+.jp-info-card {
+  --jp-accent: #0f6a7d;
+  --jp-border: #e5e9ef;
+  --jp-text:   #143460;
+  --jp-muted:  #6b7280;
+
+  background: #ffffff;
+  border: 1px solid var(--jp-border);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(16,24,40,.06),
+              0 1px 2px rgba(16,24,40,.04);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* ---------- Header: soft slate strip + accent marker ---------- */
+.jp-info-card > .card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--jp-border);
+  color: var(--jp-text);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  padding: 12px 16px;
+}
+
+/* teal vertical accent on the left of the title */
+.jp-info-card > .card-header::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  background: var(--jp-accent);
+  border-radius: 2px;
+}
+
+/* ---------- Body ---------- */
+.jp-info-card > .card-body {
+  background: #ffffff;
+  padding: 16px 16px 4px 16px;
+}
+
+/* ---------- Responsive: same soft look on mobile ---------- */
+@media (max-width: 767px) {
+  .jp-info-card > .card-header {
+    padding: 10px 12px;
+    font-size: 12.5px;
+  }
+  .jp-info-card > .card-body {
+    padding: 12px 12px 2px 12px;
+  }
+}

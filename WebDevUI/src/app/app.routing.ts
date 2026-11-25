@@ -49,6 +49,7 @@ import { ApprovalHedofBusinessUnitComponent } from './project_component/Approval
 import { ApprovalHrLeadComponent } from './project_component/ApprovalHrLead/ApprovalHrLead.component';
 import { ApprovalHrDirectorComponent } from './project_component/ApprovalHrDirector/ApprovalHrDirector.component';
 import { AppoinmentComponent } from './project_component/appointment/appoinment.component';
+import { ArchiveListComponent } from './project_component/Archive/archiveList.component';
 
 //import { ApplicantFormsComponent } from './project_component/applicant/applicant/applicantforms.component';
 //import { HomesComponent } from './pages/homes/homes.component';
@@ -117,7 +118,9 @@ export const routes: Routes = [
 
            { path: 'profile/addProfile', component: ProfileComponent, canActivate: [AuthGuard], data: {roles: ['/profile/addProfile']} },
            { path: 'applicantforms', component: ApplicantFormsComponent, canActivate: [AuthGuard], data: {roles: ['/applicantforms']} },
-           { path: 'vivaevaluation', component: VivaEvaluationComponent, canActivate: [AuthGuard], data: {roles: ['/vivaevaluation']} }
+           { path: 'vivaevaluation', component: VivaEvaluationComponent, canActivate: [AuthGuard], data: {roles: ['/vivaevaluation']} },
+
+             { path: 'profile/archiveList', component: ArchiveListComponent, canActivate: [AuthGuard], data: {roles: ['/archiveList']} }
            //{ path: 'businessSetup/workorder', component: WorkOrderComponent, canActivate: [AuthGuard, RoleGuard], data: {roles: ['/businessSetup/workorder']} },//, RoleGuard
           
           

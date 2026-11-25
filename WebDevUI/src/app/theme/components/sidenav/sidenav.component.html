@@ -1,19 +1,19 @@
-<div class="sidenav-menu-outer" [perfectScrollbar]="psConfig" [disabled]="settings.fixedSidenavUserContent">    
+<div style="background-color: #044267; color: white;"  class="sidenav-menu-outer" [perfectScrollbar]="psConfig" [disabled]="settings.fixedSidenavUserContent">    
    
    
-    <div fxLayout="column" fxLayoutAlign="center center" class="user-block" [class.py-3]="settings.menuType != 'mini'" [class.py-2]="settings.menuType == 'mini'">
+    <div   style="background-color: #044267; color: white; border-bottom: 4px solid white;" fxLayout="column" fxLayoutAlign="center center" class="user-block" [class.py-3]="settings.menuType != 'mini'" [class.py-2]="settings.menuType == 'mini'">
         <!-- <img src="{{employeePhoto}}"> -->
         <img [src]="employeePhoto ? employeePhoto : imageUrl">
 
         <h2 *ngIf="settings.menuType != 'mini'" class="mt-2">{{exployeeName}}</h2>
-        <p *ngIf="settings.menuType == 'default'" class="secondary-text-color">{{employeeDesignation}}</p>
-        <p *ngIf="settings.menuType == 'default'" class="secondary-text-color">{{employeeEmail}}</p>
-        <p *ngIf="settings.menuType == 'default'" class="secondary-text-color">{{employeeMobile}}</p>
+        <p  *ngIf="settings.menuType == 'default'" class="primary-text-color">{{employeeDesignation}}</p>
+        <p *ngIf="settings.menuType == 'default'" class="primary-text-color">{{employeeEmail}}</p>
+        <p *ngIf="settings.menuType == 'default'" class="primary-text-color">{{employeeMobile}}</p>
     </div>
-    <mat-divider></mat-divider>
+    <mat-divider ></mat-divider>
 
 
-    <div id="vertical-menu" [perfectScrollbar]="psConfig" [disabled]="!settings.fixedSidenavUserContent">
+    <div  id="vertical-menu" [perfectScrollbar]="psConfig" [disabled]="!settings.fixedSidenavUserContent">
         <app-vertical-menu></app-vertical-menu> 
       
     </div>

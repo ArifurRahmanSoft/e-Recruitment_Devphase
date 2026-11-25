@@ -5,8 +5,9 @@
             <!-- <mat-tab-group class="custom-tab-group" mat-align-tabs="center" style="background-color: #138496;"
                 color="accent">
                 <mat-tab class="custom-group" label="Application List"> -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card "
-                style="border: 1px solid #ccc; background-color: #B8DAFF;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card jp-filter-bar"
+               >
+                <!-- style="border: 1px solid #ccc; background-color: #B8DAFF;" -->
                 <form [formGroup]="candidateForm">
                     <div>
 
@@ -316,7 +317,7 @@
                                 Job Title</th>
                             <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
                                 Exp(Years)</th>
-                            <th hidden style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
+                            <th  style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
                                 Download All File</th>
                             <!-- <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
                                 Download CV</th>
@@ -391,7 +392,7 @@
                             <td class="pl-2 pr-1 pt-1 pb-1">{{list.jobTitle}}</td>
                             <td style="text-align: center;" class="pl-2 pr-1 pt-1 pb-1">{{list.totalYear}}</td>
 
-                            <td hidden class="pl-2 pr-1 pt-1 pb-1" style="text-align: center; width: 12%;">
+                            <td  class="pl-2 pr-1 pt-1 pb-1" style="text-align: center; width: 12%;">
 
 
                                 <a mat-button [matMenuTriggerFor]="actionMenu" aria-label="hidden"
@@ -420,6 +421,9 @@
                                         </button>
                                     </a>
 
+                                     
+
+
                                     <!-- When CV path is missing -->
                                     <button *ngIf="!list.docCvVPath" mat-menu-item disabled>
                                         <mat-icon class="text-danger" style="margin-top: -10px;">
@@ -444,6 +448,22 @@
                                         <span>Generated CV</span>
                                     </button>
 
+                                      <button  mat-menu-item (click)="loadRacReports(list.applicantOid);">
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-pdf-o"></i></mat-icon>
+                                            <span>RAC</span>
+                                        </button>
+
+                                          <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                            (click)="loadIdentityCardInfo(list.applicantOid);">
+
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-pdf-o"></i></mat-icon>
+                                            <span>Identity Card</span>
+                                        </button>
+
+
+
                                     <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
                                         (click)="loadCandidateParticulars(list.applicantOid);">
 
@@ -459,6 +479,15 @@
                                                 class="fa fa-file-pdf-o"></i></mat-icon>
                                         <span>Personal Info</span>
                                     </button>
+
+
+                                       <button hidden *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                            (click)="getcandidateDetail(list.profileId);">
+
+                                            <mat-icon class="text-danger" style="margin-top: -10px;"><i
+                                                    class="fa fa-file-code-o"></i></mat-icon>
+                                            <span>Generated CV(HTML)</span>
+                                        </button>
 
                                 </mat-menu>
 
@@ -547,8 +576,14 @@
                                     [(ngModel)]="list.vivaDate" type="date"></td>
                             <!-- <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant'"><input  [(ngModel)]="list.vivaDate" type="date"></td> -->
 
-                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant'"><input
+                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant' && !list.selectedDate"><input
                                     [(ngModel)]="list.selectedDate" type="date"></td>
+
+                                      
+
+                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser !== 'Applicant' && list.selectedDate">
+                                {{ list.selectedDate ? (list.selectedDate | date:'dd-MM-yyyy') : '' }}
+                            </td>
 
 
 
@@ -1151,3 +1186,647 @@
         </mat-dialog-actions>
     </form>
 </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-4 " *ngIf="htmlView">
+    <div class="custom-modal-backdrop-test">
+        <div class="custom-modal-test">
+
+            <!-- Resume Header -->
+            <div class="row align-items-center ml-2 mb-4" style="width: 95%;  background-color: #ffffff;  padding: 15px;  border-radius: 8px;  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1); 
+                             justify-content: space-between;  align-items: center;  margin-top: 30px;">
+                <div class="col-md-8 col-12">
+                    <h4 class="fw-bold">Resume of</h4>
+                    <h6>{{ candidateMaster.name }}</h6>
+                    <p>
+                        <strong>Mobile:</strong> {{ candidateMaster.mobile_number }}<br />
+                        <strong>Email:</strong> {{ candidateMaster.email }}
+                    </p>
+                </div>
+
+
+                <div class="imgPosition col-md-3 col-12 text-md-end  mt-3 mt-md-0">
+                    <img [src]="candidateMaster.docPhotoVPath" alt="Applicant Photo" class="img-thumbnail"
+                        style="max-width: 120px;" />
+                </div>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Personal Information</div>
+                <div class="card-body row">
+                    <div class="col-md-5 col-12 mb-2"><strong>Father Name:</strong> {{ candidateMaster.father_name }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>NID:</strong> {{ candidateMaster.nid }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>TIN:</strong> {{ candidateMaster.tin }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Date of Birth:</strong> {{ candidateMaster.date_of_birth |
+                        date:'dd-MM-yyyy'}}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Birth Place:</strong> {{ candidateMaster.birth_place }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Blood Group:</strong> {{ BGtxt }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Religion:</strong> {{
+                        candidateMaster?.religion==='1'?'Muslim':
+                        candidateMaster?.religion==='1'?'Islam':candidateMaster?.religion==='2'?'Shonaton':candidateMaster?.religion==='3'?'Buddhist':
+                        candidateMaster?.religion==='4'?'Christian':candidateMaster?.religion==='5'?'Other':'Not
+                        sepecific' }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Gender:</strong> {{ candidateMaster?.gender === 'M' ?
+                        'Male' :
+                        candidateMaster?.gender === 'F' ? 'Female' : candidateMaster?.gender === 'O' ? 'Other' : 'Not
+                        Specified' }}</div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Expected Salary:</strong> {{
+                        candidateMaster.expected_selery }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Source From:</strong> {{ candidateMaster.sourceFrom }}
+                    </div>
+                    <div class="col-md-5 col-12 mb-2"><strong>Last Update:</strong>
+                        {{(candidateMaster.updateon?candidateMaster.updateon : candidateMaster.apply_date) |
+                        date:'dd-MM-yyyy'}}
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Address Details -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Address Details</div>
+                <div class="card-body table-responsive d-none d-md-block">
+                    <!-- Table for large/medium devices -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Address</th>
+                                <th>Division</th>
+                                <th>District</th>
+                                <th>Thana</th>
+                                <th>Post Office</th>
+                                <th>Village</th>
+                                <th>Address Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Present Address</td>
+                                <td>{{ candidateMaster.pre_add_division_Text }}</td>
+                                <td>{{ candidateMaster.pre_add_district_Text }}</td>
+                                <td>{{ candidateMaster.pre_add_Thana_Text }}</td>
+                                <td>{{ candidateMaster.pre_add_post_office }}</td>
+                                <td>{{ candidateMaster.pre_add_village }}</td>
+                                <td>{{ candidateMaster.pre_add_detail }}</td>
+                            </tr>
+                            <tr>
+                                <td>Permanent Address</td>
+                                <td>{{ candidateMaster.par_add_division_Text }}</td>
+                                <td>{{ candidateMaster.par_add_district_Text }}</td>
+                                <td>{{ candidateMaster.par_add_Thana_Text }}</td>
+                                <td>{{ candidateMaster.par_add_post_office }}</td>
+                                <td>{{ candidateMaster.par_add_village }}</td>
+                                <td>{{ candidateMaster.par_add_detail }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile layout -->
+                <div class="card-body d-block d-md-none">
+                    <!-- Present Address -->
+                    <div class="mb-3 border p-2 rounded shadow-sm">
+                        <strong>Present Address</strong>
+                        <div><b>Division:</b> {{ candidateMaster.pre_add_division_Text }}</div>
+                        <div><b>District:</b> {{ candidateMaster.pre_add_district_Text }}</div>
+                        <div><b>Thana:</b> {{ candidateMaster.pre_add_Thana_Text }}</div>
+                        <div><b>Post Office:</b> {{ candidateMaster.pre_add_post_office }}</div>
+                        <div><b>Village:</b> {{ candidateMaster.pre_add_village }}</div>
+                        <div><b>Address Details:</b> {{ candidateMaster.pre_add_detail }}</div>
+                    </div>
+
+                    <!-- Permanent Address -->
+                    <div class="mb-3 border p-2 rounded shadow-sm">
+                        <strong>Permanent Address</strong>
+                        <div><b>Division:</b> {{ candidateMaster.par_add_division_Text }}</div>
+                        <div><b>District:</b> {{ candidateMaster.par_add_district_Text }}</div>
+                        <div><b>Thana:</b> {{ candidateMaster.par_add_Thana_Text }}</div>
+                        <div><b>Post Office:</b> {{ candidateMaster.par_add_post_office }}</div>
+                        <div><b>Village:</b> {{ candidateMaster.par_add_village }}</div>
+                        <div><b>Address Details:</b> {{ candidateMaster.par_add_detail }}</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Academic Qualification -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Academic Qualification</div>
+
+                <!-- Table layout for large/medium devices -->
+                <div class="card-body table-responsive d-none d-md-block">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Degree</th>
+                                <th>Board/University</th>
+                                <th>Institution</th>
+                                <th>Major</th>
+                                <th>Result</th>
+                                <th>Passing Year</th>
+                                <th>Cirtificate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let degree of accQlfList">
+                                <!-- <td>{{ degree.degree }}</td> -->
+                                <td>
+                                    <ng-container *ngIf="degree.docVPath; else noDoc">
+                                        <a [href]="degree.docVPath" target="_blank">
+                                            {{ degree.degree_text }}
+                                        </a>
+                                    </ng-container>
+                                    <ng-template #noDoc>
+                                        {{ degree.degree_text }}
+                                    </ng-template>
+                                </td>
+
+                                <td>{{ degree.board }}</td>
+                                <td>{{ degree.institution }}</td>
+                                <td>{{ degree.major }}</td>
+                                <td>{{ degree.result }}</td>
+                                <td>{{ degree.passingyear }}</td>
+                                <td>
+                                    <div *ngIf="degree.docVPath">
+                                        <a [href]="degree.docVPath" target="_blank">
+                                            <button type="button" class="btn btn-primary">
+                                                <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                Document
+                                            </button>
+                                        </a>
+                                    </div>
+
+                                    <div *ngIf="!degree.docVPath">
+                                        <button type="button" class="btn btn-warning">
+                                            <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Stacked card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let degree of accQlfList" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">{{ degree.degree }}</strong>
+                        <div><b>Board/University:</b> {{ degree.board }}</div>
+                        <div><b>Institution:</b> {{ degree.institution }}</div>
+                        <div><b>Major:</b> {{ degree.major }}</div>
+                        <div><b>Result:</b> {{ degree.result }}</div>
+                        <div><b>Passing Year:</b> {{ degree.passingyear }}</div>
+                        <div><b>Passing Year:</b>
+                            <div *ngIf="degree.docVPath">
+                                <a [href]="degree.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!degree.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Work  Experience -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Work Experience</div>
+
+                <!-- Table layout for large/medium devices -->
+                <div class="card-body d-none d-md-block">
+                    <div *ngFor="let experience of wrkExpList; let i = index" class="mb-3">
+                        <h6 style="font-weight: bold;">Experience-{{ i + 1 }}</h6>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 200px; padding-left: 2px; border: 1px solid black;">
+                                        <strong>Company
+                                            Name:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">
+
+                                        <ng-container *ngIf="experience.docVPath; else noDoc">
+                                            <a [href]="experience.docVPath" target="_blank">
+                                                {{ experience.company_name }}
+                                            </a>
+                                        </ng-container>
+                                        <ng-template #noDoc>
+                                            {{ experience.company_name }}
+                                        </ng-template>
+                                    </td>
+
+                                    <!-- <td style="border: 1px solid black; padding-left: 2px;">{{ experience.company_name
+                                        }}</td> -->
+                                </tr>
+                                <tr hidden>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Company
+                                            Type:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.company_type
+                                        }}</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td style="width: 200px; padding-left: 2px; border: 1px solid black;">
+                                        <strong>Document
+                                            :</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">
+                                        <div *ngIf="experience.docVPath">
+                                            <a [href]="experience.docVPath" target="_blank">
+                                                <button type="button" class="btn btn-primary">
+                                                    <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                    Document
+                                                </button>
+                                            </a>
+                                        </div>
+
+                                        <div *ngIf="!experience.docVPath">
+                                            <button type="button" class="btn btn-warning">
+                                                <span style="color:white"><i style="color: white;"
+                                                        class=""></i>Empty</span>
+
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+
+
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Salary:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.salary }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Department:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.department }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;">
+                                        <strong>Designation:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{ experience.designation }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;"><strong>Start
+                                            Date:</strong></td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{
+                                        experience.priod_from_date |
+                                        date:
+                                        'dd-MM-yyyy' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;"><strong>End
+                                            Date:</strong></td>
+                                    <td style="border: 1px solid black; padding-left: 2px;">{{experience.isRunning ?
+                                        'Continuing' :
+                                        experience.priod_to_date | date: 'dd-MM-yyyy' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; border: 1px solid black; padding-left: 2px;"><strong>Job
+                                            Description:</strong>
+                                    </td>
+                                    <td
+                                        style="border: 1px solid black; padding-left: 2px; padding-right: 4px; text-align: justify;">
+                                        {{
+                                        experience.job_description }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let experience of wrkExpList; let i = index" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">Experience-{{ i + 1 }}</strong>
+                        <div><b>Company Name:</b> {{ experience.company_name }}</div>
+                        <div><b>Document:</b>
+                            <div *ngIf="experience.docVPath">
+                                <a [href]="experience.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!experience.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+                        <div><b>Company Type:</b> {{ experience.company_type }}</div>
+                        <div><b>Department:</b> {{ experience.department }}</div>
+                        <div><b>Designation:</b> {{ experience.designation }}</div>
+                        <div><b>Start Date:</b> {{ experience.priod_from_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>End Date:</b> {{ experience.priod_to_date | date: 'dd-MM-yyyy' }}</div>
+                        <div style="padding-left: 2px; padding-right: 2px; text-align: justify;"><b>Job Description:</b>
+                            {{
+                            experience.job_description }}</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Professional Certificate -->
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Professional Certificate</div>
+
+                <!-- Table for medium & large devices -->
+                <div class="card-body table-responsive d-none d-md-block">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Institution</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Documnet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cert of proCirtificateList">
+                                <!-- <td>{{ cert.course_name }}</td> -->
+                                <td>
+                                    <ng-container *ngIf="cert.docVPath; else noDoc">
+                                        <a [href]="cert.docVPath" target="_blank">
+                                            {{ cert.course_name }}
+                                        </a>
+                                    </ng-container>
+                                    <ng-template #noDoc>
+                                        {{ cert.course_name }}
+                                    </ng-template>
+                                </td>
+                                <td>{{ cert.institution }}</td>
+                                <td>{{ cert.start_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>{{ cert.achievment_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>
+                                    <div *ngIf="cert.docVPath">
+                                        <a [href]="cert.docVPath" target="_blank">
+                                            <button type="button" class="btn btn-primary">
+                                                <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                Document
+                                            </button>
+                                        </a>
+                                    </div>
+
+                                    <div *ngIf="!cert.docVPath">
+                                        <button type="button" class="btn btn-warning">
+                                            <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let cert of proCirtificateList" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">{{ cert.course_name }}</strong>
+                        <div><b>Institution:</b> {{ cert.institution }}</div>
+                        <div><b>Start Date:</b> {{ cert.start_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>End Date:</b> {{ cert.achievment_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>Document:</b>
+                            <div *ngIf="cert.docVPath">
+                                <a [href]="cert.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!cert.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRAINING START FROM HERE  -->
+
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Training</div>
+
+                <!-- Table for medium & large devices -->
+                <div class="card-body table-responsive d-none d-md-block">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Institution</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Document</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tran of hTrainingList">
+                                <!-- <td>{{ tran.training_name }}</td> -->
+                                <td>
+                                    <ng-container *ngIf="tran.docVPath; else noDoc">
+                                        <a [href]="tran.docVPath" target="_blank">
+                                            {{ tran.training_name }}
+                                        </a>
+                                    </ng-container>
+                                    <ng-template #noDoc>
+                                        {{ tran.training_name }}
+                                    </ng-template>
+                                </td>
+                                <td>{{ tran.institution }}</td>
+                                <td>{{ tran.start_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>{{ tran.achievment_date | date: 'dd-MM-yyyy' }}</td>
+                                <td>
+                                    <div *ngIf="tran.docVPath">
+                                        <a [href]="tran.docVPath" target="_blank">
+                                            <button type="button" class="btn btn-primary">
+                                                <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                                Document
+                                            </button>
+                                        </a>
+                                    </div>
+
+                                    <div *ngIf="!tran.docVPath">
+                                        <button type="button" class="btn btn-warning">
+                                            <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Card layout for small devices -->
+                <div class="card-body d-block d-md-none">
+                    <div *ngFor="let tran of hTrainingList" class="mb-3 border p-2 rounded shadow-sm">
+                        <strong class="d-block mb-2">{{ tran.training_name }}</strong>
+                        <div><b>Institution:</b> {{ tran.institution }}</div>
+                        <div><b>Start Date:</b> {{ tran.start_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>End Date:</b> {{ tran.achievment_date | date: 'dd-MM-yyyy' }}</div>
+                        <div><b>Documenr:</b>
+                            <div *ngIf="tran.docVPath">
+                                <a [href]="tran.docVPath" target="_blank">
+                                    <button type="button" class="btn btn-primary">
+                                        <span><i style="color: white;" class="fa fa-eye"></i></span>
+                                        Document
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div *ngIf="!tran.docVPath">
+                                <button type="button" class="btn btn-warning">
+                                    <span style="color:white"><i style="color: white;" class=""></i>Empty</span>
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRAINING END HERE  -->
+
+            <!-- REFERENCE START FROM HERE  -->
+
+            <div style="" class="master  container mt-4">
+                <div class="row">
+                    <div class="col-md-5 mb-3 d-flex" *ngFor="let ref of hReferenceList; let i=index">
+                        <div class="card job-card" style="width: 20rem;">
+                            <div class="card-body">
+                                <div style="font-size: medium;" class="card-header bg-dark text-white">Reference:
+                                    {{i+1}}</div>
+                                <!-- <h5 style="color: white; height: 40px; padding: 5px;" class="card-title card-header bg-dark">Reference: {{i+1}}</h5> -->
+                                <hr>
+                                <p class="card-text"><strong>Name</strong> {{ ref.reference_name }}</p>
+                                <p class="card-text"><strong>Organization</strong> {{ ref.orgazination }}</p>
+                                <p class="card-text"><strong>Designation:</strong> {{ ref.designation }}</p>
+                                <p class="card-text"><strong>Email:</strong> {{ ref.email }}</p>
+                                <p class="card-text"><strong>Mobile No:</strong> {{ ref.mobile }}</p>
+                                <p class="card-text"><strong>Relation</strong> {{ ref.relation }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- Signature Bottom-Left -->
+            <!-- <div class="row mt-5 mb-3">
+                <div class="col-6 text-start">
+                    <div>
+                        <img [src]="candidateMaster.docSignatureVPath" alt="No Signature"
+                            style="max-width: 80px; margin: 10px;">
+                    </div>
+
+                    <p class="mt-1">{{(candidateMaster.updateon?candidateMaster.updateon:candidateMaster.apply_date ) |
+                        date:
+                        'dd-MM-yyyy'}}</p>
+                    <p class="mt-1"><strong>Signature</strong></p>
+                </div>
+
+                <div class="col-6 text-end">
+                    <div class="button-container" style="text-align: center;">
+                        <button (click)="backToListShow()"
+                            style="margin-right: 10px; background-color:black; color: white; font-weight: bold; border: none; 
+                                padding: 10px 20px; border-radius: 4px; font-size: 14px; cursor: pointer; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+                            Close
+                        </button>
+                    </div>
+
+                </div>
+            </div> -->
+
+
+            <div class="row mt-5 mb-3">
+                <!-- Left: Image, Date, Signature stacked -->
+                <div class="col-6 text-start d-flex flex-column">
+                    <img [src]="candidateMaster.docSignatureVPath" alt="No Signature"
+                        style="max-width: 80px; margin-bottom: 10px;">
+                    <p class="mb-1">{{ (candidateMaster.updateon ? candidateMaster.updateon :
+                        candidateMaster.apply_date) | date:'dd-MM-yyyy' }}</p>
+                    <p class="mb-0"><strong>Signature</strong></p>
+                </div>
+
+                <!-- Right: Button, aligned to bottom of left column -->
+                <div class="col-6 d-flex align-items-end justify-content-end">
+                    <button (click)="backToListShow()" class="btn btn-danger">
+                        Close
+                    </button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+        <!-- //HTML View -->
+
+
+
+    </div>
+</div>

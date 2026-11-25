@@ -494,8 +494,12 @@
       <!-- ADDRESS START FORM HERE -->
       <div style="background-color: white;" class="containers mb-2   mt-2 addressDetails">
 
-        <h6 id="title" style="background-color: #138496; color: white; height: 30px;" class=" mb-1 h5 text-center">
-          Address</h6>
+        <!-- <h6 id="title" style="background-color: #138496; color: white; height: 30px;" class=" mb-1 h5 text-center">
+          Address</h6> -->
+        <div class="card-header jp-label-header p-2 bg-info text-white text-center">
+          <h6 class="mb-0"><i class="fa fa-map-marker mr-2"></i> Address</h6>
+        </div>
+
         <h6 class="addressMstrTitle preandparAddress">Present Address : </h6>
         <div class="row p-0 m-0">
 
@@ -767,8 +771,11 @@
 
       <div class="container-fluid p-2 containers">
         <div class="card">
-          <div class="card-header p-2 bg-info text-white ">
+          <!-- <div class="card-header p-2 bg-info text-white ">
             <h6 class="mb-0 text-center">Academic Qualification</h6>
+          </div> -->
+          <div class="card-header jp-label-header p-2 bg-info text-white text-center">
+            <h6 class="mb-0"><i class="fa fa-graduation-cap mr-2"></i> Academic Qualification</h6>
           </div>
 
           <div class="card-body p-2">
@@ -872,7 +879,7 @@
                       </div>
                     </div>
 
-                    <div class="col-lg-1 col-5  mb-2">
+                    <div class="col-lg-1 col-5  mb-4">
                       <label [for]="'isLastDegree'+i">Is Last Degree-{{i+1}}<span class="text-danger">*</span></label>
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="isLastDegree" formControlName="isLastDegree"
@@ -880,6 +887,9 @@
                       </div>
 
                     </div>
+
+
+
 
 
 
@@ -916,7 +926,7 @@
                     <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
                       <button type="button" class="btn btn-danger btn-sm  remove-btn"
                         (click)="removeAcademicQualification(i)" [disabled]="academicQualifications.length <= 1">
-                        <i class="fa fa-minus"></i> Remove
+                        <i class="fa fa-trash"></i> Remove
                       </button>
                     </div>
                   </div>
@@ -927,7 +937,7 @@
             <!-- Add Button -->
             <div class="row mt-3">
               <div class="col-lg-2 col-11">
-                <button type="button" class="btn btn-primary btn-sm" (click)="addAcademicQualification()"
+                <button type="button" class="btn btn-primary jp-add-btn" (click)="addAcademicQualification()"
                   [disabled]="academicQualifications.length >= qualificationType.length">
                   <i class="fa fa-plus"></i> Add More
                 </button>
@@ -948,8 +958,12 @@
 
       <div class="container-fluid p-2 containers mt-2">
         <div class="card">
-          <div class="card-header p-2 bg-info text-white">
+          <!-- <div class="card-header p-2 bg-info text-white">
             <h6 class="mb-0 text-center">Work Experience</h6>
+          </div> -->
+
+          <div class="card-header jp-label-header p-2 bg-info text-white text-center">
+            <h6 class="mb-0"><i class="fa fa-briefcase mr-2"></i> Work Experience</h6>
           </div>
 
           <div class="card-body p-2">
@@ -1049,7 +1063,7 @@
                   </div>
 
 
-                  <div class="col-lg-1 col-5  mb-2">
+                  <div class="col-lg-1 col-5  mb-4">
                     <label [for]="'isLastExperience'+i">Is Last Experience-{{i+1}}<span
                         class="text-danger">*</span></label>
                     <div class="form-check">
@@ -1133,7 +1147,7 @@
                   <!-- Remove Button -->
                   <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
                     <button type="button" class="btn  btn-danger btn-sm  remove-btn" (click)="removeExperience(i)">
-                      <i class="fa fa-minus"></i> Remove
+                      <i class="fa fa-trash"></i> Remove
                     </button>
                   </div>
 
@@ -1146,7 +1160,7 @@
             <!-- Add Button -->
             <div class="row mt-3">
               <div class="col-lg-2 col-11 ">
-                <button type="button" class="btn btn-primary btn-sm" (click)="addExperience()">
+                <button type="button" class="btn btn-primary jp-add-btn" (click)="addExperience()">
                   <i class="fa fa-plus"></i> Add Experience
                 </button>
               </div>
@@ -1166,8 +1180,11 @@
 
       <div class="container-fluid p-2 mt-2 containers">
         <div class="card">
-          <div class="card-header p-2 bg-info text-white">
+          <!-- <div class="card-header p-2 bg-info text-white">
             <h6 class="mb-0 text-center">Professional Certification</h6>
+          </div> -->
+          <div class="card-header jp-label-header p-2 bg-info text-white text-center">
+            <h6 class="mb-0"><i class="fa fa-certificate mr-2"></i> Professional Certification</h6>
           </div>
 
           <div class="card-body p-2">
@@ -1264,7 +1281,7 @@
                   <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
                     <button style="" type="button" class="btn btn-danger btn-sm  remove-btn"
                       (click)="removeProfCirtificate(i)">
-                      <i class="fa fa-minus"></i> Remove
+                      <i class="fa fa-trash"></i> Remove
                     </button>
                   </div>
                 </div>
@@ -1274,7 +1291,7 @@
             <!-- Add Button -->
             <div class="row mt-3">
               <div class="col-1g-1 col-11">
-                <button type="button" class="btn btn-primary btn-sm" (click)="addProfCirtificate()">
+                <button type="button" class="btn btn-primary jp-add-btn" (click)="addProfCirtificate()">
                   <i class="fa fa-plus"></i> Add Certificate
                 </button>
               </div>
@@ -1286,9 +1303,14 @@
 
       <div class="container-fluid p-2 mt-2 containers">
         <div class="card">
-          <div class="card-header p-2 bg-info text-white">
+          <!-- <div class="card-header p-2 bg-info text-white">
             <h6 class="mb-0 text-center">Training </h6>
+          </div> -->
+
+          <div class="card-header jp-label-header p-2 bg-info text-white text-center">
+            <h6 class="mb-0"><i class="fa fa-book mr-2"></i> Training</h6>
           </div>
+
 
           <div class="card-body p-2">
             <div formArrayName="training">
@@ -1374,7 +1396,7 @@
                   <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
                     <button style="" type="button" class="btn btn-danger btn-sm  remove-btn"
                       (click)="removeTraining(i)">
-                      <i class="fa fa-minus"></i> Remove
+                      <i class="fa fa-trash"></i> Remove
                     </button>
                   </div>
                 </div>
@@ -1384,7 +1406,7 @@
             <!-- Add Button -->
             <div class="row mt-3">
               <div class="col-1g-1 col-11">
-                <button type="button" class="btn btn-primary btn-sm" (click)="addTraining()">
+                <button type="button" class="btn btn-primary jp-add-btn" (click)="addTraining()">
                   <i class="fa fa-plus"></i> Add Training
                 </button>
               </div>
@@ -1398,8 +1420,12 @@
 
       <div class="container-fluid p-2 mt-2 containers">
         <div class="card">
-          <div class="card-header p-2 bg-info text-white">
+          <!-- <div class="card-header p-2 bg-info text-white">
             <h6 class="mb-0 text-center">Reference </h6>
+          </div> -->
+
+          <div class="card-header jp-label-header p-2 bg-info text-white text-center">
+            <h6 class="mb-0"><i class="fa fa-users mr-2"></i> Reference</h6>
           </div>
 
           <div class="card-body p-2">
@@ -1493,7 +1519,7 @@
                   <div class="col-lg-1 col-11 col-md-2 mt-md-0 removeButton">
                     <button style="" type="button" class="btn btn-danger btn-sm  remove-btn"
                       (click)="removeReference(i)">
-                      <i class="fa fa-minus"></i> Remove
+                      <i class="fa fa-trash"></i> Remove
                     </button>
                   </div>
                 </div>
@@ -1503,7 +1529,7 @@
             <!-- Add Button -->
             <div class="row mt-3">
               <div class="col-1g-1 col-11">
-                <button type="button" class="btn btn-primary btn-sm" (click)="addReference()">
+                <button type="button" class="btn btn-primary jp-add-btn" (click)="addReference()">
                   <i class="fa fa-plus"></i> Add Reference
                 </button>
               </div>
@@ -1521,8 +1547,11 @@
 
       <div class="container-fluid p-2 containers mt-2">
         <div class="card">
-          <div class="card-header p-2 bg-info text-white">
+          <!-- <div class="card-header p-2 bg-info text-white">
             <h6 class="mb-0 text-center">Document Upload</h6>
+          </div> -->
+          <div class="card-header jp-label-header p-2 bg-info text-white text-center">
+            <h6 class="mb-0"><i class="fa fa-cloud-upload mr-2"></i> Document Upload</h6>
           </div>
 
           <div class="card-body">

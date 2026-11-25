@@ -49,3 +49,431 @@
         color: #fff;
     }
 }
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------//------------------------------
+
+
+//-----------------global css add-------------------------------------------
+
+/* Global styles.css */
+
+.notification-dialog-panel .mat-dialog-container {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.20);
+}
+
+/* Material menu surface */
+.notification-menu {
+  max-width: 95vw !important;
+}
+
+.notification-menu .mat-menu-content {
+  padding: 0 !important;
+}
+
+/* Remove default Material menu-item sizing for our custom list */
+.notification-menu .mat-menu-content:not(:empty) {
+  overflow: hidden;
+}
+
+
+//-----------------------global css end---------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Notification Icon */
+.notification-button {
+  position: relative;
+  overflow: visible;
+  
+}
+
+.notification-button mat-icon {
+  font-size: 27px;
+  width: 27px;
+  height: 27px;
+  //color: #555;
+   color: #ffffff !important;
+}
+
+.notification-count {
+  position: absolute;
+  top: -3px;
+  right: -2px;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #ed2856;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Notification Menu */
+.notification-menu-container {
+  width: 370px;
+  max-width: 90vw;
+  max-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f4f4f7;
+  border-radius: 12px;
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-header h3 {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #333;
+}
+
+.notification-subtitle {
+  font-size: 12px;
+  color: #888;
+}
+
+.notification-header button {
+  flex-shrink: 0;
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+/* Scrollable List */
+.notification-list {
+  padding: 10px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.notification-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 15px;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: background 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.notification-item:last-child {
+  margin-bottom: 0;
+}
+
+.notification-item:hover {
+  background: #faffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+.notification-item:focus-visible {
+  outline: 2px solid #5c9994;
+  outline-offset: 2px;
+}
+
+.notification-item.unread {
+  background: #fff;
+}
+
+.notification-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.notification-category {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #527c76;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.notification-category mat-icon {
+  font-size: 19px;
+  width: 19px;
+  height: 19px;
+}
+
+.notification-time {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #999;
+}
+
+.notification-title {
+  padding-right: 10px;
+  margin-bottom: 7px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #222;
+}
+
+.notification-preview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #454545;
+  overflow-wrap: anywhere;
+}
+
+.unread-dot {
+  position: absolute;
+  top: 17px;
+  right: 12px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ed2856;
+  box-shadow: 0 0 5px rgba(237, 40, 86, 0.35);
+}
+
+.empty-notifications {
+  padding: 35px 15px;
+  text-align: center;
+  color: #888;
+}
+
+.empty-notifications mat-icon {
+  font-size: 38px;
+  width: 38px;
+  height: 38px;
+}
+
+.empty-notifications p {
+  margin-bottom: 0;
+}
+
+/* Details Dialog */
+.notification-dialog {
+  overflow: hidden;
+  background: #fff;
+  border-radius: 22px;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 24px;
+  background: #5d9994;
+  color: #fff;
+}
+
+.dialog-date {
+  flex-shrink: 0;
+  width: 100px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  text-align: center;
+}
+
+.dialog-month {
+  display: block;
+  padding: 9px 4px;
+  background: #fff;
+  color: #5d9994;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dialog-day {
+  display: block;
+  padding: 12px 4px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.dialog-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.dialog-heading h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.dialog-heading p {
+  margin: 7px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.9;
+  overflow-wrap: anywhere;
+}
+
+.dialog-close {
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.dialog-body {
+  padding: 28px 32px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.dialog-body h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #222;
+}
+
+.dialog-message {
+  margin: 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  font-size: 18px;
+ // line-height: 1.9;
+  color: #333;
+}
+
+.dialog-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 22px;
+  color: #888;
+  font-size: 12px;
+}
+
+.dialog-meta mat-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+}
+
+.dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 20px 24px;
+}
+
+.navigation-button {
+  width: 52px;
+  height: 52px;
+  background: #e3efed;
+  color: #518c86;
+}
+
+.navigation-button[disabled] {
+  opacity: 0.35;
+}
+
+.navigation-counter {
+  min-width: 38px;
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .notification-menu-container {
+    width: 320px;
+    max-width: 90vw;
+  }
+
+  .notification-item {
+    padding: 13px;
+  }
+
+  .notification-title {
+    font-size: 14px;
+  }
+
+  .notification-preview {
+    font-size: 14px;
+  }
+
+  .dialog-header {
+    gap: 12px;
+    padding: 20px 14px;
+  }
+
+  .dialog-date {
+    width: 76px;
+  }
+
+  .dialog-month {
+    font-size: 13px;
+  }
+
+  .dialog-day {
+    font-size: 22px;
+  }
+
+  .dialog-heading h2 {
+    font-size: 18px;
+  }
+
+  .dialog-heading p {
+    font-size: 12px;
+  }
+
+  .dialog-body {
+    padding: 22px 18px;
+  }
+
+  .dialog-message {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+}

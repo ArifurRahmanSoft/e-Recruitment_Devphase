@@ -34,9 +34,16 @@
                         </div>
                     </div>
 
-                    <span class="col-sm-2 ml-3 p-1 m-1 btn btn-outline-info btn-sm" style="width: 9.5%;"
+                    <!-- <span class="col-sm-2 ml-3 p-1 m-1 btn btn-outline-info btn-sm" style="width: 9.5%;"
                         (click)="GetApprovalList(pageSize);" (click)="openModalEntryDialog('WorkOrder');"><i
-                            class="fa fa-plus"></i></span>
+                            class="fa fa-plus"></i></span> -->
+
+
+
+                    <button type="button" class="jp-add-btn"
+                        (click)="GetApprovalList(pageSize);" (click)="openModalEntryDialog('WorkOrder');">
+                        <i class="fa fa-plus"></i>
+                    </button>
 
                 </div>
 
@@ -178,17 +185,13 @@
 
 
 
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
 
                 <div class="form-group clearfix">
                     <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="gender" style="float: left;">Gender
                         <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
-                        <!-- <div style="padding: 0px; width: 92%; font-size: 13px; float: left;">
-                            <input formControlName="gender" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="gender"
-                                placeholder="Enter End Date..." name="gender" style="line-height: 2; height: auto; ">
-                        </div> -->
+
                         <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
                             <ng-select2 formControlName="gender" [options]="options" [allowClear]="true" id="gender"
                                 name="gender" [data]="genderAList" [placeholder]="'Select Gender'">
@@ -203,11 +206,7 @@
                         Status
                         <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
-                        <!-- <div style="padding: 0px; width: 92%; font-size: 13px; float: left;">
-                            <input formControlName="maritialStatus" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="maritialStatus"
-                                placeholder="Enter End Date..." name="maritialStatus" style="line-height: 2; height: auto; ">
-                        </div> -->
+
                         <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
                             <ng-select2 formControlName="maritialStatus" [options]="options" [allowClear]="true"
                                 id="maritialStatus" name="maritialStatus" [data]="maritialStatusList"
@@ -222,11 +221,7 @@
                         Group
                     </label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
-                        <!-- <div style="padding: 0px; width: 92%; font-size: 13px; float: left;">
-                            <input formControlName="bloodGroup" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="bloodGroup"
-                                placeholder="Enter End Date..." name="bloodGroup" style="line-height: 2; height: auto; ">
-                        </div> -->
+
 
                         <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
                             <ng-select2 formControlName="bloodGroup" [options]="options" [allowClear]="true"
@@ -244,11 +239,7 @@
                     <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="relegion" style="float: left;">Religion
                         <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
-                        <!-- <div style="padding: 0px; width: 92%; font-size: 13px; float: left;">
-                            <input formControlName="relegion" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="relegion"
-                                placeholder="Enter End Date..." name="relegion" style="line-height: 2; height: auto; ">
-                        </div> -->
+
 
 
                         <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
@@ -278,34 +269,13 @@
 
 
 
-                <!-- 
-                <div hidden *ngIf="setAsnewJob || isShow" class="form-group clearfix" style="width: 80%;">
-                    <label class="control-label col-sm-3 ml-4   p-0 m-0 pt-0" for="isNewJob" style="float: left;">Set As
-                        New </label>
-                    <div class="form-check mr-2">
-                        <input class="form-check-input" type="checkbox" value="isNewJob" name="isActive" checked
-                            id="isNewJob" [checked]="false" (change)="SetNewJob($event,setAsnewJob)">
-                    </div>
-                </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             </div>
 
 
 
-            <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: right;">
+            <div hidden class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: right;">
 
 
                 <div class="imgPosition col-md-2 col-6 text-md-end  mt-3 mt-md-0">
@@ -351,7 +321,7 @@
 
 
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
-                 <div class="form-group clearfix">
+                <div class="form-group clearfix">
                     <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="brandId"
                         style="float: left;">Supervisor Id </label>
                     <div class="col-sm-11 pr-8 m-0 position-relative">
@@ -374,10 +344,10 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
 
 
-         
+
 
 
 
@@ -386,9 +356,7 @@
                         Type </label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
                         <div style="padding: 0px; width: 99.5%;  font-size: 13px; float: left;">
-                            <!-- <input formControlName="recruitType" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="recruitType"
-                                placeholder="Enter RecruitType" name="recruitType"> -->
+
 
                             <ng-select2 formControlName="recruitType" [options]="options" [allowClear]="true"
                                 id="recruitType" name="recruitType" [data]="recruitTypeList"
@@ -494,9 +462,7 @@
                         Add <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
                         <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                            <!-- <input formControlName="preAddDetai" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="preAddDetai"
-                                placeholder="Enter preAddDetai..." name="preAddDetai"> -->
+
 
                             <textarea rows="1" cols="3" formControlName="preAddDetai"
                                 class="form-control form-control-sm input-sm input-sm-*" id="preAddDetai"
@@ -512,9 +478,7 @@
                         style="float: left;">Parmanent Add <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
                         <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                            <!-- <input formControlName="parAddDetai" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="parAddDetai"
-                                placeholder="Enter parAddDetai..." name="parAddDetai"> -->
+
 
                             <textarea rows="1" cols="3" formControlName="parAddDetai"
                                 class="form-control form-control-sm input-sm input-sm-*" id="parAddDetai"
@@ -528,11 +492,7 @@
                     <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-0" for="preAddDistrict"
                         style="float: left;">District <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
-                        <!-- <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                            <input formControlName="preAddDistrict" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="preAddDistrict"
-                                placeholder="Enter preAddDistrict..." name="preAddDistrict">
-                        </div> -->
+
 
                         <div style="padding: 0px; width: 99.9%; font-size: 13px; float: left;">
                             <ng-select2 formControlName="preAddDistrict" [options]="options" [allowClear]="true"
@@ -548,11 +508,7 @@
                     <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-0" for="preAddThana" style="float: left;">Thana
                         <span class="text-danger">*</span></label>
                     <div class="col-sm-9 p-0 m-0" style="float: left;">
-                        <!-- <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                            <input formControlName="preAddThana" type="text"
-                                class="form-control form-control-sm input-sm input-sm-*" id="preAddThana"
-                                placeholder="Enter preAddThana..." name="preAddThana">
-                        </div> -->
+
 
                         <div style="padding: 0px; width: 99.9%; font-size: 13px; float: left;">
                             <ng-select2 formControlName="preAddThana" [options]="options" [allowClear]="true"
@@ -570,7 +526,7 @@
 
 
 
-        <div class="card mb-3">
+        <div class="card mb-3 jp-info-card">
             <div class="card-header bg-dark text-white">Official Info</div>
             <div class="card-body d-none d-md-block">
                 <div class="row p-0 mr-6">
@@ -580,11 +536,6 @@
                             <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-0" for="location"
                                 style="float: left;">Location </label>
                             <div class="col-sm-9 p-0 m-0" style="float: left;">
-                                <!-- <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                                    <input formControlName="location" type="text"
-                                        class="form-control form-control-sm input-sm input-sm-*" id="location"
-                                        placeholder="Enter location..." name="location">
-                                </div> -->
 
 
                                 <div style="padding: 0px; width: 99.9%; font-size: 13px; float: left;">
@@ -616,7 +567,7 @@
 
                         <div class="form-group clearfix mb-2">
                             <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-0" for="taxCompany"
-                                style="float: left;">I Tax Company <span class="text-danger">*</span></label>
+                                style="float: left;">I Tax Company </label>
                             <div class="col-sm-9 p-0 m-0" style="float: left;">
                                 <div style="padding: 0px; width: 99.9%; font-size: 13px; float: left;">
                                     <ng-select2 formControlName="taxCompany" [options]="options" [allowClear]="true"
@@ -716,11 +667,7 @@
                             <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-0" for="issueGrade"
                                 style="float: left;">Issue Grade </label>
                             <div class="col-sm-9 p-0 m-0" style="float: left;">
-                                <!-- <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                                    <input formControlName="issueGrade" type="text"
-                                        class="form-control form-control-sm input-sm input-sm-*" id="issueGrade"
-                                        placeholder="Enter issueGrade..." name="issueGrade">
-                                </div> -->
+
 
                                 <div style="padding: 0px; width: 99.9%; font-size: 13px; float: left;">
                                     <ng-select2 formControlName="issueGrade" [options]="options" [allowClear]="true"
@@ -834,11 +781,7 @@
                             <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-0" for="taxDistrict"
                                 style="float: left;">Taxes District </label>
                             <div class="col-sm-9 p-0 m-0" style="float: left;">
-                                <!-- <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                                    <input formControlName="taxDistrict" type="text"
-                                        class="form-control form-control-sm input-sm input-sm-*" id="taxDistrict"
-                                        placeholder="Enter taxDistrict..." name="taxDistrict">
-                                </div> -->
+
 
                                 <div style="padding: 0px; width: 99.9%; font-size: 13px; float: left;">
                                     <ng-select2 formControlName="taxDistrict" [options]="options" [allowClear]="true"
@@ -895,11 +838,7 @@
                             <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-0" for="workingArea"
                                 style="float: left;">Working Area </label>
                             <div class="col-sm-9 p-0 m-0" style="float: left;">
-                                <!-- <div style="padding: 0px; width: 96.5%;  font-size: 13px; float: left;">
-                                    <input formControlName="workingArea" type="text"
-                                        class="form-control form-control-sm input-sm input-sm-*" id="workingArea"
-                                        placeholder="Enter workingArea..." name="workingArea">
-                                </div> -->
+
 
 
                                 <div style="padding: 0px; width: 99.9%; font-size: 13px; float: left;">
@@ -1341,7 +1280,7 @@
                                                 [responseTag]="responseTags" [apiUrl]="_listByPageUrls">
                                             </pager-top>
 
-       <!-- <pager-top (setPage)="getListByPage($event)" (sendList)="sendToList($event)" [loggedUserId]="loggedUserId"
+                                            <!-- <pager-top (setPage)="getListByPage($event)" (sendList)="sendToList($event)" [loggedUserId]="loggedUserId"
                 [pageSize]="pageSize" [IsSearchOnServer]="true" [responseTags]="responseTags" [apiUrl]="_listByPageUrls"
                 [company]="company" [JobTitle]="JobTitle" [department]="department" [post]="post" [sDate]="sDate"
                 [eDate]="eDate" [Role]="Role" [fromDate]="fromDate" [toDate]="toDate" [Status]="Status"

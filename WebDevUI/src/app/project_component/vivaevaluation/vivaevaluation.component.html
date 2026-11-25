@@ -1,4 +1,4 @@
-<div *ngIf="RoleUser !== 'Applicant' && !htmlView &&!showRecruitmentApproval" class="col-12 p-0 m-0">
+<!-- <div *ngIf="RoleUser !== 'Applicant' && !htmlView &&!showRecruitmentApproval" class="col-12 p-0 m-0">
     <div class="d-flex justify-content-center p-0 m-0">
         <div class="col-12 pl-0 pr-0 pb-0 pt-1 m-0" style="background-color: #fff;">
 
@@ -30,7 +30,7 @@
                                                     [placeholder]="'Select Job Title'">
 
                                                 </ng-select2>
-                                                <!-- (valueChanged)="onJobTitleChanged($event)" -->
+                                              
 
                                             </div>
                                         </div>
@@ -242,7 +242,269 @@
             </mat-tab-group>
         </div>
     </div>
+</div> -->
+
+
+
+
+
+<div *ngIf="RoleUser !== 'Applicant' && !htmlView &&!showRecruitmentApproval" class="col-12 p-0 m-0">
+    <div class="d-flex justify-content-center p-0 m-0">
+        <div class="col-12 pl-0 pr-0 pb-0 pt-1 m-0" style="background-color: #fff;">
+
+            <mat-tab-group class="custom-tab-group" mat-align-tabs="center" color="accent" color="accent">
+
+
+
+                <mat-tab class="custom-group" label="Application List">
+
+                    <form [formGroup]="candidateForm">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card jp-filter-bar">
+
+
+                            <div class="row p-0 mt-3">
+
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">Job Title:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left; ">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+
+                                                <ng-select2 formControlName="jobTitle" [options]="options"
+                                                    [allowClear]="true" id="jobTitle" name="job" [data]="jobPostList"
+                                                    [placeholder]="'Select Job Title'">
+
+                                                </ng-select2>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="mailType"
+                                            style="float: left;">Status:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <select (change)="getApplicantType($event.target.value)">
+                                                    <option value="">Select Status</option>
+                                                    <option *ngFor="let list of applicantStatusType"
+                                                        [value]="list.value">
+                                                        {{ list.label }}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">From Exp:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <input formControlName="fromExperience" style="width: 93%;"
+                                                    type="number"
+                                                    class="form-control form-control-sm input-sm input-sm-*"
+                                                    id="fromExperience" placeholder="Enter From Experience Year"
+                                                    name="fromExperience">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">To Experience:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <input formControlName="toExperience" style="width: 93%;" type="number"
+                                                    class="form-control form-control-sm input-sm input-sm-*"
+                                                    id="toExperience" placeholder="Enter From Experience Year"
+                                                    name="toExperience">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <button class="btn btn-primary btn-sm"
+                                                    (click)="getApplicantListByExperience()"><i
+                                                        class="fa fa-search mr-2"></i>Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                            <div hidden class="row p-0 mt-3">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="mailType"
+                                            style="float: left;">Status:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <select (change)="getApplicantType($event.target.value)"
+                                                    style="line-height: 2.5;width: 100%; height: auto; padding: 5px;">
+                                                    <option value="">Select Status</option>
+                                                    <option *ngFor="let list of applicantStatusType"
+                                                        [value]="list.value">
+                                                        {{ list.label }}
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID"
+                                            style="float: left;">Date:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 93%; font-size: 13px; float: left;">
+
+                                                <input ngModel="mailDate" formControlName="mailDate"
+                                                    (change)="getMAilDate($event)" style="width: 100%;" type="date"
+                                                    class="form-control form-control-sm input-sm input-sm-*"
+                                                    id="startDate" placeholder="Enter mailDate..." name="mailDate">
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+                                <div hidden class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+
+                                    <div class="form-group clearfix">
+                                        <label class="control-label col-sm-3 ml-2 p-0 m-0 pt-1" for="mailType"
+                                            style="float: left;">Time:
+                                        </label>
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 93%; font-size: 13px; float: left;">
+                                                <input #timeInput ngModel="examTime" type="time"
+                                                    formControlName="examTime" (change)="getMAilTime($event)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div hidden class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0"
+                                    style="float: left;">
+                                    <div class="form-group clearfix">
+
+                                        <div class="col-sm-8 p-0 m-0" style="float: left;">
+                                            <div style="padding: 0px; width: 100%; font-size: 13px; float: left;">
+                                                <button class="btn btn-primary" (click)="SendAllMail()"><i
+                                                        class="fa fa-envelope mr-2"></i>Send</button>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </form>
+
+
+
+
+
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- *ngIf="!htmlView" -->
@@ -307,7 +569,7 @@
 
 
                             <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
-                                Set Info </th>
+                                Set Viva </th>
 
                             <th hidden *ngIf="roleName==='Approve' || roleName==='Admin' || roleName==='Verify'"
                                 style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
@@ -429,7 +691,7 @@
                                             <span>Personal Info</span>
                                         </button>
 
-                                        <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                        <button hidden *ngIf="RoleUser!=='Applicant'" mat-menu-item
                                             (click)="loadIdentityCardInfo(list.applicantOid);">
 
                                             <mat-icon class="text-danger" style="margin-top: -10px;"><i
@@ -1473,7 +1735,7 @@
             <div style="padding: 20px; border: 1px solid #ccc; border-radius: 8px; background: white;">
 
 
-                <div class="card shadow-lg p-3 mb-5 bg-white rounded"
+             <!--    <div class="card shadow-lg p-3 mb-5 bg-white rounded"
                     style=" border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; ">
                     <div class="card-header"
                         style="background-color: #2b8c90; color: white; padding: 10px; font-weight: bold; margin-bottom: 15px; ">
@@ -1484,7 +1746,7 @@
                     <table class="table table-striped table-sm table-bordered p-0                     "
                         style="margin-left:0%;">
 
-                        <!-- Header Row -->
+                     
                         <thead style="background-color:#56aaad; color:white;">
                             <tr>
                                 <th>Exam Type</th>
@@ -1494,7 +1756,7 @@
                             </tr>
                         </thead>
 
-                        <!-- Data Rows -->
+                        
                         <tbody>
                             <tr>
                                 <td>
@@ -1509,80 +1771,45 @@
                     </table>
 
 
+                </div>-->
 
 
 
 
 
 
+  <div class="jp-custom-card mb-4">
+    <!-- Header part with background color -->
+    <div style="margin-bottom: 1%;" class="jp-card-header-title">
+        Candidate Written Exam Information
+    </div>
 
+    <!-- Body part with the table -->
+    <div class="jp-interview-table-wrapper">
+        <table class="table jp-interview-table mb-0">
+            <thead>
+                <tr>
+                    <th class="jp-th">Exam Type</th>
+                    <th class="jp-th">Exam Date</th>
+                    <th class="jp-th">Total Marks</th>
+                    <th class="jp-th">Out of Marks?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="jp-td font-weight-bold" style="color: #2d3748;">
+                        Written
+                    </td>
+                    <td class="jp-td"> {{ writtenXmDtl?.writtenDate | date:'dd MMM yy'}} </td>
+                    <td class="jp-td"> {{ writtenXmDtl?.writtenMarks }} </td>
+                    <td class="jp-td"> {{ writtenXmDtl?.outOfMarks }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-
-
-                </div>
-
-                <!-----    <div class="card shadow-lg p-3 mb-5 bg-white rounded"
-                    style=" border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; ">
-                    <div class="card-header"
-                        style="background-color: #2b8c90; color: white; padding: 10px; font-weight: bold; margin-bottom: 15px; ">
-                        Entry Viva Exam Details
-                    </div>
-
-                    <div class="row" style="margin-left: 1%;" >
-
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
-                            <div class="form-group clearfix">
-                                <label class="control-label col-sm-2 ml-0 p-0 m-0 pt-1" for="details"
-                                    style="float: left;">Interviewer  </label>
-                                <div class="col-sm-9 p-0 m-0" style="float: left;">
-                                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
-                                              <ng-select2 formControlName="intervieweId" [options]="options"
-                                                                [allowClear]="true" id="intervieweId" name="intervieweId"
-                                                                [data]="examinarList"
-                                                                [placeholder]="'Select Examaminar '">
-                                                            </ng-select2>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
-                            <div class="form-group clearfix">
-                                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="details"
-                                    style="float: left;">Viva Date: </label>
-                                <div class="col-sm-9 p-0 m-0" style="float: left;">
-                                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
-                                        <input formControlName="interViewermarking" type="date"
-                                            class="form-control form-control-sm input-sm input-sm-*" id="interViewermarking"
-                                            placeholder="Enter Viva Date" name="interViewermarking">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
-                            <div class="form-group clearfix">
-                                <label class="control-label col-sm-2 ml-4 p-0 m-0 pt-1" for="details"
-                                    style="float: left;">Marks: </label>
-                                <div class="col-sm-9 p-0 m-0" style="float: left;">
-                                    <div style="padding: 0px; width: 96.5%; font-size: 13px; float: left;">
-                                        <input formControlName="interViewermarking" type="text"
-                                            class="form-control form-control-sm input-sm input-sm-*" id="interViewermarking"
-                                            placeholder="Enter Viva Marks" name="interViewermarking">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-
-
-                </div>   ----->
+              
 
 
 
@@ -1591,92 +1818,76 @@
                 <!-- VIVA MARKING TABLE -->
                 <!-- =============================== -->
 
-                <div class="table-responsive mt-3" *ngIf="dimensions && dimensions.length && loggedInterviewerId">
+               
 
-                    <table class="table table-bordered table-sm">
 
+
+
+                <div class="jp-interview-table-wrapper mt-3"
+                    *ngIf="dimensions && dimensions.length && loggedInterviewerId">
+
+                    <table class="table jp-interview-table mb-0">
                         <thead>
-
-                            <tr style="background-color: #56aaad; color:#fff">
-
-                                <th style="  min-width:250px;">
-                                    Interviewer
-                                </th>
-                                <th *ngFor="let dimension of dimensions" style=" min-width:10px; text-align:center; ">
+                            <tr>
+                                <th class="jp-th">Interviewer</th>
+                                <th *ngFor="let dimension of dimensions" class="jp-th text-center">
                                     {{ dimension.dimension }}
                                 </th>
-                                <th style=" min-width:10px; text-align:center; ">
-                                    <h6>Date</h6>
-                                </th>
-                                <th style=" min-width:10px; text-align:center; ">
-                                    <h6>Expected Salary</h6>
-                                </th>
-
-                                <th style=" min-width:10px; text-align:center; ">
-                                    <h6>Salary</h6>
-                                </th>
-                                <th style=" min-width:10px; text-align:center; ">
-                                    <h6>Out of T. Marks</h6>
-                                </th>
-
+                                <th class="jp-th text-center">Date</th>
+                                <th class="jp-th text-center">Expected Salary</th>
+                                <th class="jp-th text-center">Salary</th>
+                                <th class="jp-th text-center">Out of T. Marks</th>
                             </tr>
-
-                            <tr>
-
-                                <th hidden>
-                                    UserId
-                                </th>
-
-
-                                <th hidden *ngFor="let dimension of dimensions" style="text-align:center;">
-                                    {{ dimension.dimensionId }}
-                                </th>
-
+                            <!-- Hidden Row for IDs -->
+                            <tr style="display: none;">
+                                <th hidden>UserId</th>
+                                <th hidden *ngFor="let dimension of dimensions">{{ dimension.dimensionId }}</th>
                             </tr>
-
                         </thead>
 
-
                         <tbody formArrayName="rows">
+                            <tr *ngFor="let row of rows.controls; let i = index" [formGroupName]="i">
 
-                            <tr *ngFor=" let row of rows.controls; let i = index" [formGroupName]="i">
                                 <!-- Interviewer -->
-                                <td> {{ loggedInterviewerText }} </td>
+                                <td class="jp-td font-weight-bold" style="color: #2d3748;">
+                                    {{ loggedInterviewerText }}
+                                </td>
+
                                 <!-- Dynamic Marks -->
-
-                                <td *ngFor=" let dimension of dimensions">
-                                    <input style="margin-right: 10%;" type="number" class="form-control form-control-sm text-center "
+                                <td *ngFor="let dimension of dimensions" class="jp-td">
+                                    <input type="number" class="form-control form-control-sm text-center jp-input-sm"
                                         [formControlName]="dimension.dimensionId" min="0" max="10" step="1"
-                                        placeholder="Max: 5">
+                                        placeholder="0">
                                 </td>
 
-                                <td>
-                                    <input type="date" class="form-control form-control-sm text-center"
-                                        formControlName="vivaDate" min="0" max="25" step="1" placeholder="0">
-                                </td>
-                                <td disabled type="number" class="form-control form-control-sm text-center">
-                                   {{expectedSalary}}
+                                <!-- Date -->
+                                <td class="jp-td">
+                                    <input type="date" class="form-control form-control-sm text-center jp-input-sm"
+                                        formControlName="vivaDate" min="0" max="25" step="1">
                                 </td>
 
-                                <td>
-                                    <input type="number" class="form-control form-control-sm text-center"
+                                <!-- Expected Salary -->
+                                <td class="jp-td text-center">
+                                    <span class="jp-readonly-text">{{ expectedSalary }}</span>
+                                </td>
+
+                                <!-- Salary -->
+                                <td class="jp-td">
+                                    <input type="number" class="form-control form-control-sm text-center jp-input-sm"
                                         formControlName="salary" placeholder="0">
                                 </td>
 
-                                <td>
-                                    <input disabled type="number" class="form-control form-control-sm text-center"
+                                <!-- Out of T. Marks -->
+                                <td class="jp-td">
+                                    <input disabled type="number"
+                                        class="form-control form-control-sm text-center jp-input-sm"
                                         formControlName="OutOfMarking" min="0" max="25" step="1" placeholder="0">
                                 </td>
                             </tr>
-
                         </tbody>
-
                     </table>
 
                 </div>
-
-
-
 
 
 
@@ -1760,8 +1971,8 @@
 
 
 
-            <button *ngIf="modalType!='WorkOrder' && dimensions && dimensions.length && loggedInterviewerId" type="submit" mat-raised-button color="primary"
-                [disabled]="!modalForm.valid">Submit
+            <button *ngIf="modalType!='WorkOrder' && dimensions && dimensions.length && loggedInterviewerId"
+                type="submit" mat-raised-button color="primary" [disabled]="!modalForm.valid">Submit
             </button>
         </mat-dialog-actions>
     </form>

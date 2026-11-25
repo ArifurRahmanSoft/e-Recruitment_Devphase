@@ -49,3 +49,74 @@
         transition: max-height 0.25s ease-in;
     }    
 }
+
+
+
+
+
+
+.menu-item {
+    background-color: #044267;
+}
+
+/* Menu item */
+.menu-item a {
+    color: #ffffff !important;
+    //border: 1px solid #ffffff;
+    border-bottom: .3px solid white;
+    border-radius: 4px;
+    margin: 2px 4px;
+    transition: all 0.2s ease;
+}
+
+/* Menu text */
+.menu-item a .menu-title {
+    color: #ffffff !important;
+}
+
+/* Menu icons */
+.menu-item a .menu-icon,
+.menu-item a .menu-expand-icon {
+    color: #ffffff !important;
+}
+
+/* Hover */
+.menu-item a:hover {
+    background-color: #ffffff !important;
+    color: #044267 !important;
+    border-color: #ffffff;
+}
+
+/* Hover text */
+.menu-item a:hover .menu-title {
+    color: #044267 !important;
+}
+
+/* Hover icons */
+.menu-item a:hover .menu-icon,
+.menu-item a:hover .menu-expand-icon {
+    color: #044267 !important;
+}
+
+
+.menu-item a:hover {
+    background-color: #0b5d87 !important;
+    color: #ffffff !important;
+    border-color: #ffffff;
+}
+
+.menu-item a:hover .menu-title,
+.menu-item a:hover .menu-icon,
+.menu-item a:hover .menu-expand-icon {
+    color: #ffffff !important;
+}
+
+/* Keep the current route visibly selected after the pointer moves away. */
+.menu-item a.active-link,
+.menu-item a.active-link:hover {
+   
+   //background-color: rgb(28, 4, 75) !important;
+    background-color: #359fb4 !important;
+    border: 1px dotted white;
+   //background-color: #303F9F !important;
+}

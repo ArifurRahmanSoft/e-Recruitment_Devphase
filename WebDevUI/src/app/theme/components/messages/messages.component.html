@@ -1,8 +1,12 @@
-<button mat-icon-button [matMenuTriggerFor]="messagesMenu" (click)="openMessagesMenu()">
+<!-- <button mat-icon-button [matMenuTriggerFor]="messagesMenu" (click)="openMessagesMenu()">
     <mat-icon style="margin-left: -0.8vh!important;">notifications</mat-icon><span style="color: #ed2856; margin-left: -1.6vh!important; font-size: 10px;">{{notiCount}}</span>    
 </button>
+
+
+
+
 <mat-menu #messagesMenu="matMenu" [overlapTrigger]="false" class="toolbar-dropdown-menu messages">
-    <!--<span (mouseleave)="onMouseLeave()">-->
+
         <mat-tab-group (click)="stopClickPropagate($event)" [selectedIndex]="selectedTab">
             <mat-tab>
                 <ng-template mat-tab-label>
@@ -42,90 +46,9 @@
                     </div>             
                 </mat-card>
             </mat-tab>
-            <!-- <mat-tab>
-                <ng-template mat-tab-label>
-                    <mat-icon>event</mat-icon>
-                </ng-template>
-                <mat-card class="content" perfectScrollbar>
-                  <div fxLayout="column" fxLayoutAlign="none">
-                      <button mat-button *ngFor="let meeting of meetings">  
-                          <div fxLayout="column" fxLayoutAlign="center center" class="row-1" [ngClass]="meeting.bgColor">
-                              <span class="name">{{meeting.day}}</span>
-                              <span class="name">{{meeting.month}}</span>
-                          </div>
-                          <div fxLayout="column" fxLayoutAlign="none">
-                              <span class="name">{{meeting.title}}</span>
-                              <span class="text secondary-text-color">{{meeting.text}}</span>
-                          </div>
-                      </button>
-                    </div>             
-                </mat-card>
-            </mat-tab> -->
+         
         </mat-tab-group>
-        <!-- <mat-tab-group (click)="stopClickPropagate($event)" [selectedIndex]="selectedTab">
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <mat-icon>message</mat-icon>
-                </ng-template>
-                <mat-card class="content" perfectScrollbar>
-                  <div fxLayout="column" fxLayoutAlign="none">
-                      <button mat-button *ngFor="let message of messages">
-                          <img src="{{ ( message.image || (message.name | profilePicture)) }}" width="50">   
-                          <div fxLayout="column" fxLayoutAlign="none" class="w-100">
-                              <div fxLayout="row" fxLayoutAlign="space-between start">
-                                  <span class="name">{{message.name}}</span>
-                                  <span class="info"><mat-icon>access_time</mat-icon> {{message.time}}</span>
-                              </div>
-                              <span class="text secondary-text-color">{{message.text}}</span>
-                          </div>
-                      </button>
-                    </div>             
-                </mat-card>
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <mat-icon>description</mat-icon>
-                </ng-template>
-                <mat-card class="content" perfectScrollbar>
-                  <div fxLayout="column" fxLayoutAlign="none">
-                      <button mat-button *ngFor="let file of files">
-                          <div fxLayout="column" fxLayoutAlign="none" class="w-100">
-                              <div fxLayout="row" fxLayoutAlign="space-between start">
-                                  <span class="name">{{file.text}}</span>
-                                  <span class="info">{{file.size}}</span>
-                              </div>
-                              <mat-progress-bar
-                                  class="example-margin"
-                                  [color]="file.color"
-                                  mode="indeterminate"
-                                  [value]="file.value">
-                              </mat-progress-bar>
-                          </div>
-                      </button>
-                    </div>             
-                </mat-card>
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <mat-icon>event</mat-icon>
-                </ng-template>
-                <mat-card class="content" perfectScrollbar>
-                  <div fxLayout="column" fxLayoutAlign="none">
-                      <button mat-button *ngFor="let meeting of meetings">  
-                          <div fxLayout="column" fxLayoutAlign="center center" class="row-1" [ngClass]="meeting.bgColor">
-                              <span class="name">{{meeting.day}}</span>
-                              <span class="name">{{meeting.month}}</span>
-                          </div>
-                          <div fxLayout="column" fxLayoutAlign="none">
-                              <span class="name">{{meeting.title}}</span>
-                              <span class="text secondary-text-color">{{meeting.text}}</span>
-                          </div>
-                      </button>
-                    </div>             
-                </mat-card>
-            </mat-tab>
-        </mat-tab-group> -->
-    <!--</span>-->
+     
 </mat-menu>
 
 <ng-template #modalApprovalProcessed style="overflow: hidden; margin-top: -20%;">
@@ -166,6 +89,7 @@
                                 </tr>
                             </thead>
                             <tbody class="banglaTitle p-0" style="padding-bottom: 0px; margin-bottom: 0px;">
+                          
                                 <tr *ngFor="let item of appModel.commentList;let sl = index">
                                     <td class="pl-2 pr-1 pt-1 pb-1 height-sm" style="width: 30%;"
                                         [style.background]="item.userId==appModel.fromUserId?'red':''"
@@ -201,3 +125,189 @@
             (click)="submitBackward(appModel)">{{appModel.backward}}</button>
     </mat-dialog-actions>
 </ng-template>
+
+ -->
+
+
+
+ 
+<!-- Notification Button -->
+<button 
+  mat-icon-button
+  [matMenuTriggerFor]="messagesMenu"
+  (menuOpened)="onNotificationMenuOpened()"
+  class="notification-button"
+  aria-label="Notifications">
+
+  <mat-icon>notifications</mat-icon>
+
+  <span
+    class="notification-count"
+    *ngIf="notiCount > 0">
+    {{ notiCount > 99 ? '99+' : notiCount }}
+  </span>
+</button>
+
+
+<!-- Notification List Menu -->
+<mat-menu
+  #messagesMenu="matMenu"
+  class="notification-menu"
+  xPosition="before"
+  yPosition="below">
+
+  <div class="notification-menu-container"
+       (click)="$event.stopPropagation()">
+
+    <!-- Header -->
+    <div class="notification-header">
+      <div>
+        <h3>Notifications</h3>
+        <span class="notification-subtitle">
+          All your notifications
+        </span>
+      </div>
+
+      <button
+        mat-button
+        color="primary"
+        (click)="markAllAsRead()">
+         Mark all as read
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-notifications"
+         *ngIf="notifications.length === 0">
+      <mat-icon>notifications_none</mat-icon>
+      <p>No notifications available</p>
+    </div>
+
+    <!-- Notification List -->
+    <div class="notification-list"
+         *ngIf="notifications.length > 0">
+
+      <button
+        type="button"
+        class="notification-item"
+        *ngFor="let item of notifications; trackBy: trackByNotificationId"
+        [class.unread]="!item.isRead"
+        (click)="openNotification(item)">
+
+        <div class="notification-item-top">
+          <div class="notification-category">
+            <mat-icon>lightbulb_outline</mat-icon>
+            <span>{{ item.category }}</span>
+          </div>
+
+          <span class="notification-time">
+            {{ getRelativeTime(item.createdAt) }}
+          </span>
+        </div>
+
+        <div style="color: #0A69E1;" class="notification-title">
+          {{ item.title }}
+        </div>
+
+        <!-- <div class="notification-preview">
+          {{ item.message }}
+        </div> -->
+         <div class="" [innerHTML]="item.message ? item.message : ''"></div>
+
+        <span
+          class="unread-dot"
+          *ngIf="!item.isRead">
+        </span>
+      </button>
+
+    </div>
+  </div>
+</mat-menu>
+
+
+<!-- Full Notification Details Dialog -->
+<ng-template #notificationDialog>
+
+  <div class="notification-dialog">
+
+    <!-- Dialog Header -->
+    <div class="dialog-header">
+
+      <div class="dialog-date">
+        <span class="dialog-month">
+          {{ selectedNotification?.attaendAt | date:'MMMM':'':'en-US' }}
+        </span>
+
+        <span class="dialog-day">
+          {{ selectedNotification?.attaendAt | date:'d':'':'en-US' }}
+        </span>
+      </div>
+
+      <div class="dialog-heading">
+        <h2>{{ selectedNotification?.category }}</h2>
+        <p >{{ selectedNotification?.title }}</p>
+      </div>
+
+      <button
+        mat-icon-button
+        class="dialog-close"
+        aria-label="Close notification"
+        (click)="closeNotification()">
+        <mat-icon>close</mat-icon>
+      </button>
+
+    </div>
+
+    <!-- Dialog Body -->
+    <div class="dialog-body">
+
+      <h3>{{ selectedNotification?.title }}</h3>
+
+      <!-- <p class="dialog-message">
+        {{ selectedNotification?.fullMessage }}
+      </p> -->
+       <div class="dialog-message" [innerHTML]="selectedNotification ? selectedNotification.fullMessage : ''"></div>
+
+      <div class="dialog-meta">
+        <mat-icon>schedule</mat-icon>
+        <span>
+          {{ selectedNotification?.createdAt
+             | date:'dd MMMM yyyy, h:mm a' }}
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Previous / Next Buttons -->
+    <div class="dialog-footer">
+
+      <button
+        mat-icon-button
+        class="navigation-button"
+        [disabled]="currentNotificationIndex <= 0"
+        (click)="showPreviousNotification()"
+        aria-label="Previous notification">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <span class="navigation-counter">
+        {{ currentNotificationIndex + 1 }}
+        /
+        {{ notifications.length }}
+      </span>
+
+      <button
+        mat-icon-button
+        class="navigation-button"
+        [disabled]="currentNotificationIndex >= notifications.length - 1"
+        (click)="showNextNotification()"
+        aria-label="Next notification">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+
+    </div>
+
+  </div>
+
+</ng-template>
+

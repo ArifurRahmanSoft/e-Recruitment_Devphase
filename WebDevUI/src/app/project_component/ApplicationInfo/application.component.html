@@ -1,19 +1,17 @@
-<div *ngIf="RoleUser !== 'Applicant'" class="col-12 p-0 m-0">
+ <!-- <div *ngIf="RoleUser !== 'Applicant'" class="col-12 p-0 m-0">
     <div class="d-flex justify-content-center p-0 m-0">
         <div class="col-12 pl-0 pr-0 pb-0 pt-1 m-1" style="background-color: #fff;">
-
-            <!-- <mat-tab-group class="custom-tab-group" mat-align-tabs="center" style="background-color: #138496;"
-                color="accent">
-                <mat-tab class="custom-group" label="Application List"> -->
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card "
-                style="border: 1px solid #ccc; background-color: #B8DAFF;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0  card jp-filter-card"
+            style="border: 1px solid #ccc; background-color: #B8DAFF;"
+                >
+           
                 <form [formGroup]="candidateForm">
                     <div>
 
 
                         <div class="row p-0 mt-3">
 
-                            <div class="col-xl-4 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0" style="float: left;">
+                            <div class="col-xl-4 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0 " style="float: left;">
 
                                 <div hidden class="form-group clearfix">
                                     <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="OID"
@@ -256,14 +254,181 @@
 
 
 
-
-
-
-            <!-- </mat-tab>
-            </mat-tab-group> -->
         </div>
     </div>
+</div>  -->
+
+
+ <div *ngIf="RoleUser !== 'Applicant'" class="col-12 p-0 m-0">
+  <div class="jp-filter-card">
+    <form [formGroup]="candidateForm">
+      <div>
+
+        <!-- ================= ROW 1 ================= -->
+        <div class="row p-0 m-0">
+          <!-- Job Title (hidden Company above it) -->
+          <div class="col-xl-4 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div hidden class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="OID">Company:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <ng-select2 formControlName="company" [options]="options" [allowClear]="true"
+                              id="company" name="job" [data]="jobCompanyList"
+                              [placeholder]="'Select Company'"></ng-select2>
+                </div>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="OID">Job Title:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <ng-select2 formControlName="jobTitle" [options]="options" [allowClear]="true"
+                              id="jobTitle" name="job" [data]="jobPostList"
+                              [placeholder]="'Select Job Title'"></ng-select2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- From Exp (hidden Department above it) -->
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div hidden class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="OID">Department:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <ng-select2 formControlName="department" [options]="options" [allowClear]="true"
+                              id="department" name="job" [data]="jobdepartmentList"
+                              [placeholder]="'Select department'"></ng-select2>
+                </div>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID">From Exp:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <input formControlName="fromExperience" type="number"
+                         class="form-control form-control-sm" id="fromExperience"
+                         placeholder="Enter From Experience Year" name="fromExperience">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- To Experience (hidden Designation above it) -->
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div hidden class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="OID">Designation:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <ng-select2 formControlName="post" [options]="options" [allowClear]="true"
+                              id="post" name="job" [data]="jobdesignationsList"
+                              [placeholder]="'Select Job Title'"></ng-select2>
+                </div>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID">To Experience:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <input formControlName="toExperience" type="number"
+                         class="form-control form-control-sm" id="toExperience"
+                         placeholder="Enter To Experience Year" name="toExperience">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search button -->
+          <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div class="form-group clearfix">
+              <div class="col-sm-12 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <button type="button" class="btn btn-primary btn-sm"
+                          (click)="getApplicantListByExperience()">
+                    <i class="fa fa-search mr-2"></i>Search
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= ROW 2 ================= -->
+        <div class="row p-0 m-0">
+          <!-- Mail Type -->
+          <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-4 p-0 m-0 pt-1" for="mailType">Mail Type:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <select (change)="getMailType($event.target.value)" id="mailType"
+                          class="form-control form-control-sm">
+                    <option value="">Select mail Type</option>
+                    <option *ngFor="let list of emailTypeLists" [value]="list.value">
+                      {{ list.label }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-0 p-0 m-0 pt-1" for="OID">Date:</label>
+              <div class="col-sm-8 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <input formControlName="mailDate" (change)="getMAilDate($event)"
+                         type="date" class="form-control form-control-sm"
+                         id="startDate" name="mailDate">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Time + Send (message) -->
+          <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div class="form-group clearfix">
+              <label class="control-label col-sm-3 ml-2 p-0 m-0 pt-1" for="mailType">Time:</label>
+              <div class="col-sm-4 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <input #timeInput type="time" formControlName="examTime"
+                         (change)="getMAilTime($event)" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <button type="button" class="btn btn-primary btn-sm"
+                          (click)="sendAllMessage()">
+                    <i class="fa fa-comment mr-2"></i>Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Send mail button -->
+          <div class="col-xl-1 col-lg-1 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
+            <div class="form-group clearfix">
+              <div class="col-sm-12 p-0 m-0">
+                <div style="padding:0;width:100%;font-size:13px">
+                  <button type="button" class="btn btn-primary btn-sm"
+                          (click)="SendAllMail()">
+                    <i class="fa fa-envelope mr-2"></i>Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
 </div>
+
+
 
 
 
@@ -313,8 +478,14 @@
                             <th
                                 style="position:sticky; top:-1.5px; z-index:1;width: 15%; cursor: pointer; text-align: left;">
                                 Job Title</th>
+
+                                 <th
+                                style="position:sticky; top:-1.5px; z-index:1;width: 15%; cursor: pointer; text-align: left;">
+                                Designation</th>
                             <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
                                 Exp(Years)</th>
+                                 <th style="position:sticky; top:-1.5px; z-index:1; width: 5%; cursor: pointer; text-align: left;">
+                                Apply Date</th>
                             <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
                                 Download All File</th>
                             <!-- <th style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
@@ -328,7 +499,7 @@
                                 style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: left;">
                                 Personal Information</th> -->
 
-                            <th *ngIf="RoleUser=='Applicant'"
+                            <th hidden *ngIf="RoleUser=='Applicant'"
                                 style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: center;">
                                 Message</th>
                             <th *ngIf="RoleUser!=='Applicant'"
@@ -350,7 +521,7 @@
                                 style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: center;">
                                 Viva</th> -->
 
-                            <th *ngIf="RoleUser!=='Applicant'"
+                            <th hidden *ngIf="RoleUser!=='Applicant'"
                                 style="position:sticky; top:-1.5px; z-index:1; cursor: pointer; text-align: center;">
                                 Offer Date</th>
 
@@ -372,7 +543,9 @@
                         </tr>
                     </thead>
                     <tbody class="banglaTitle p-0" style="padding-bottom: 0px; margin-bottom: 0px;">
-                        <tr *ngFor="let list of joApplicationLists;let sl = index">
+                        <tr  *ngFor="let list of joApplicationLists;let sl = index"
+                        [style.background-color]="(list.IsVivia == 1 || list.isMsgViva == 1) ? 'powderblue' : null" 
+                        >
 
                             <!-- <td class="pl-2 pr-1 pt-1 pb-1">{{sl+1}}</td> -->
                             <td *ngIf="RoleUser!=='Applicant'" style="text-align: center;"><input type="checkbox"
@@ -388,7 +561,9 @@
 
                             <td class="pl-2 pr-1 pt-1 pb-1">{{list.email}}</td>
                             <td class="pl-2 pr-1 pt-1 pb-1">{{list.jobTitle}}</td>
+                            <td class="pl-2 pr-1 pt-1 pb-1">{{list.appliedPostName}}</td>
                             <td style="text-align: center;" class="pl-2 pr-1 pt-1 pb-1">{{list.totalYear}}</td>
+                            <td style="text-align: center;" class="pl-2 pr-1 pt-1 pb-1">{{ list.applyDate ? (list.applyDate | date:'dd-MM-yy') : '' }}</td>
 
                             <td class="pl-2 pr-1 pt-1 pb-1" style="text-align: center; width: 12%;">
 
@@ -533,20 +708,31 @@
                                 </button>
                             </td>
 
-                            <td *ngIf="RoleUser=='Applicant'" class="pl-2 pr-1 pt-1 pb-1">
+                            <td hidden *ngIf="RoleUser=='Applicant'" class="pl-2 pr-1 pt-1 pb-1">
                                 <button *ngIf="list.offcMessage" style="color: #FFA327;" class="btn btn-primary"
                                     mat-menu-item (click)="updateModal(list.applicantOid)">
                                     <i class="fa fa-eye"></i> show
                                 </button>
                             </td>
-                            <td class=" pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant'"><input
-                                    [(ngModel)]="list.writtenDate" type="date"></td>
 
-                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant'"><input
+                            <td class=" pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant' && !list.showWrittenDate">
+                                <input [(ngModel)]="list.writtenDate" type="date"></td>
+
+                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser !== 'Applicant' && list.showWrittenDate">
+                                {{ list.showWrittenDate ? (list.showWrittenDate | date:'dd-MM-yyyy') : '' }}
+                            </td>
+
+
+
+                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant' && !list.showWvivaDate"><input
                                     [(ngModel)]="list.vivaDate" type="date"></td>
+
+                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser !== 'Applicant' && list.showWvivaDate">
+                                {{ list.showWvivaDate ? (list.showWvivaDate | date:'dd-MM-yyyy') : '' }}
+                            </td>
                             <!-- <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant'"><input  [(ngModel)]="list.vivaDate" type="date"></td> -->
 
-                            <td class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant'"><input
+                            <td hidden class="pl-2 pr-1 pt-1 pb-1" *ngIf="RoleUser!=='Applicant'"><input
                                     [(ngModel)]="list.selectedDate" type="date"></td>
 
 
@@ -565,15 +751,15 @@
                                 <mat-menu #actionMenus="matMenu">
 
                                     <!-- for viva offer by message  -->
-                                          <button style="color: #1F935C;" *ngIf="list.isMsgViva ==0" mat-menu-item
+                                    <button style="color: #1F935C;" *ngIf="list.isMsgViva ==0" mat-menu-item
                                         title="Click to forward" (click)="sendSingleMsg(list,'viva',sl)">
                                         <mat-icon class="text-info">send</mat-icon>
-                                        <i class="fa fa-comment"></i>  Invite Viva 
+                                        <i class="fa fa-comment"></i> Invite Viva
                                     </button>
 
                                     <button disabled *ngIf="list.isMsgViva==1" style="color: #FFA327;" mat-menu-item
                                         title="Click to forward">
-                                        <i class="fa fa-check"></i> Invited Viva 
+                                        <i class="fa fa-check"></i> Invited Viva
                                     </button>
 
 
@@ -618,13 +804,13 @@
 
                                     <!-- for offer later start here -->
 
-                                    <button style="color: #1F935C;" *ngIf="list.IsSelected ==0 " mat-menu-item
+                                    <button hidden style="color: #1F935C;" *ngIf="list.IsSelected ==0 " mat-menu-item
                                         title="Click to forward" (click)="sendMail(list,'OfferLater',sl)">
                                         <mat-icon class="text-info">send</mat-icon>
                                         <i class="fa fa-envelope"></i> Offer Letter
                                     </button>
 
-                                    <button disabled *ngIf="list.IsSelected==1" style="color: #FFA327;" mat-menu-item
+                                    <button hidden disabled *ngIf="list.IsSelected==1" style="color: #FFA327;" mat-menu-item
                                         title="Click to forward">
                                         <i class="fa fa-check"></i> Sent Offer
                                     </button>

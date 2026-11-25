@@ -10,8 +10,10 @@
                 <mat-tab class="custom-group" label="Approval List">
 
                     <form [formGroup]="candidateForm">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card "
-                            style="border: 1px solid #ccc; background-color: #B8DAFF;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0 m-0 card jp-filter-bar "
+                            >
+
+                            <!-- style="border: 1px solid #ccc; background-color: #B8DAFF;" -->
 
 
                             <div class="row p-0 mt-3">
@@ -427,7 +429,7 @@
                                             <span>Personal Info</span>
                                         </button>
 
-                                        <button *ngIf="RoleUser!=='Applicant'" mat-menu-item
+                                        <button hidden *ngIf="RoleUser!=='Applicant'" mat-menu-item
                                             (click)="loadIdentityCardInfo(list.applicantOid);">
 
                                             <mat-icon class="text-danger" style="margin-top: -10px;"><i

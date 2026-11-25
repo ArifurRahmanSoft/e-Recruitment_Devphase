@@ -49,6 +49,7 @@ export class SidenavComponent implements OnInit {
 
   public _getUrl: string = 'jobusers/loggeduserdetails';
   loadEmployeeDetails() {
+    debugger
     var param = { UserId: this.cmnEntity.userId, IsTrue: this.loggedUser.isSys };
     var apiUrl = this._getUrl;
     this._dataservice.getWithMultipleModel_Sync(apiUrl, param)

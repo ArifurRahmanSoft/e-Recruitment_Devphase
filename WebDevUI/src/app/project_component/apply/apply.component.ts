@@ -1027,7 +1027,151 @@ export class ApplyComponent implements OnInit {
     }
     const ModelsArray = [param, [reqform], acaQlf, wrkExp, profCirtificate, training, reference];
     if (this.requirementForm.invalid) {
-      this._msg.error("form is invalid");
+      //this._msg.error("form is invalid");
+      this.requirementForm.markAllAsTouched();
+
+
+
+ // 1. Check Last Degree selection
+  const lastDegreeSelected = this.academicQualifications.controls.some(
+    control => control.get('isLastDegree')?.value === '1'
+  );
+
+  if (!lastDegreeSelected) {
+    this._msg.error('Please select your last degree.');
+    return;
+  }
+
+  // 2. Check Last Work Experience only if rows exist
+  const lastExperienceSelected =
+    this.workExperiences.length === 0 ||
+    this.workExperiences.controls.some(
+      control => control.get('isLastExperience')?.value === '1'
+    );
+
+  if (!lastExperienceSelected) {
+    this._msg.error('Please select your last work experience.');
+    return;
+  }
+// . end last validaton
+
+
+
+  this.academicQualifications.controls.forEach(control =>
+    control.markAllAsTouched()
+  );
+ this._msg.error("Please fill up all required fields.");
+
+      this.academicQualifications.controls.forEach(control => control.markAllAsTouched());
+      this.workExperiences.controls.forEach(control => control.markAllAsTouched());
+      this.professionalCirtificate.controls.forEach(control => control.markAllAsTouched());
+      this.training.controls.forEach(control => control.markAllAsTouched());
+      this.reference.controls.forEach(control => control.markAllAsTouched());
+      return;
+    }
+
+    try {
+      const response: any = await this._dataservice.postMultipleModel(this._saveUrl, ModelsArray).toPromise();
+      this.res = response;
+      this.resmessage = this.res.resdata.message;
+      if (this.res.resdata.resstate) {
+        this.ReferenceIds = this.res.resdata.mstrId;
+        this._msg.success(this.resmessage);
+        if (this.fileList.length > 0) {
+          await this.uploadfileList(this.ReferenceIds, this.fileList, 'master');
+        }
+        if (this.accList.length > 0) {
+          await this.uploadfileList(this.ReferenceIds, this.accList, 'academic');
+        }
+        if (this.experiencesList.length > 0) {
+          await this.uploadfileList(this.ReferenceIds, this.experiencesList, 'experience');
+        }
+        if (this.profCirtificateList.length > 0) {
+          await this.uploadfileList(this.ReferenceIds, this.profCirtificateList, 'certificate');
+        }
+        if (this.trangsList.length > 0) {
+          await this.uploadfileList(this.ReferenceIds, this.trangsList, 'training');
+        }
+
+
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      this._msg.error("Something went wrong, please try again.");
+    }
+  }
+
+
+
+   async onUpdateFileForm(): Promise<void> {
+    debugger;
+    this.scrollContainerTop();
+    let formValues = { ...this.requirementForm.value };
+    delete formValues.academicQualifications;
+    delete formValues.workExperiences;
+    delete formValues.professionalCirtificate;
+    delete formValues.training;
+    delete formValues.reference;
+
+    const reqform = formValues;
+    const applicaOId = reqform.applicantId;
+
+    const acaQlf = this.academicQualifications.value;
+    const wrkExp = this.workExperiences.value;
+    const profCirtificate = this.professionalCirtificate.value;
+    const training = this.training.value;
+    const reference = this.reference.value;
+
+    const param = {
+      loggedUserId: this.userID,
+      strId: this.requirementForm.controls.applicantId.value,
+      strId2: this.userID,
+      JobOid: ''
+      //JobOid:this.jobId
+    };
+
+    if ((!this.image || !this.signature || !this.nid || !this.nidBack) && !applicaOId) {
+      this.toastr.error("Please Upload All Document");
+      return;
+    }
+    const ModelsArray = [param, [reqform], acaQlf, wrkExp, profCirtificate, training, reference];
+    if (this.requirementForm.invalid) {
+
+
+// 1. Check Last Degree selection
+  const lastDegreeSelected = this.academicQualifications.controls.some(
+    control => control.get('isLastDegree')?.value === '1'
+  );
+
+  if (!lastDegreeSelected) {
+    this._msg.error('Please select your last degree.');
+    return;
+  }
+
+  // 2. Check Last Work Experience only if rows exist
+  const lastExperienceSelected =
+    this.workExperiences.length === 0 ||
+    this.workExperiences.controls.some(
+      control => control.get('isLastExperience')?.value === '1'
+    );
+
+  if (!lastExperienceSelected) {
+    this._msg.error('Please select your last work experience.');
+    return;
+  }
+// . end last validaton
+
+
+
+
+
+
+
+
+
+
+      this._msg.error("Please fill up all required fields.");
       this.requirementForm.markAllAsTouched();
       this.academicQualifications.controls.forEach(control => control.markAllAsTouched());
       this.workExperiences.controls.forEach(control => control.markAllAsTouched());
@@ -2452,7 +2596,9 @@ export class ApplyComponent implements OnInit {
 
   public onPsScrollY(event) {
     debugger
-    (event.target.scrollTop > 300) ? this.backToTop.nativeElement.style.display = 'flex' : this.backToTop.nativeElement.style.display = 'none';
+    if (this.backToTop && this.backToTop.nativeElement) {
+      (event.target.scrollTop > 300) ? this.backToTop.nativeElement.style.display = 'flex' : this.backToTop.nativeElement.style.display = 'none';
+    }
   }
 
   public scrollContainerTop3() {
@@ -2477,6 +2623,12 @@ export class ApplyComponent implements OnInit {
 
   scrollContainerTop() {
     debugger
+    if (this.scrollContainer && this.scrollContainer.nativeElement) {
+      this.scrollContainer.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     if (this.ps) {
       this.ps.scrollToTop(0, 200);
     }

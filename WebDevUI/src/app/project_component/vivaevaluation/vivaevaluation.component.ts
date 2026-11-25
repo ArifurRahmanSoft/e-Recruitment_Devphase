@@ -1757,7 +1757,7 @@ else{
 
     controls[dimension.dimensionId] =
       new FormControl(
-        null,
+        0,
         [
           Validators.min(0),
           Validators.max(5)
@@ -2008,7 +2008,7 @@ existingVivaDetails: any[] = [];
  public _getbyVivaIdUrl: string = 'exam/getvivamarksbyinterviewe';
     gwtVivaMrksByInt(modelEvnt) {
         debugger;
-
+let vivaDetails: any;
         var param = { strId: modelEvnt.vivaMasterOid,LoggedUserId:this.loggedUserId };
         //var param = modelEvnt.model.vivaBoardOid;
         var apiUrl = this._getbyVivaIdUrl
@@ -2021,8 +2021,16 @@ existingVivaDetails: any[] = [];
                     //var viva = vaivaMaster[0];  
                 }
                 const vivaMaster=vaivaMaster[0]; 
-                var vivaDetails=JSON.parse(this.res.resdata.vivaMarksDetails)
-                this.existingVivaDetails = vivaDetails;
+                //var vivaDetails=JSON.parse(this.res.resdata?.vivaMarksDetails)
+                   if (this.res.resdata.vivaMarksDetails &&
+        this.res.resdata.vivaMarksDetails.trim() !== '') {
+
+        vivaDetails = JSON.parse(this.res.resdata.vivaMarksDetails);
+    }
+                if(vivaDetails){
+                   this.existingVivaDetails = vivaDetails;
+                }
+                
                 console.log("viva detaisl is ",vivaDetails)
                 console.log("viva master s is ",vaivaMaster)
 
@@ -2041,13 +2049,13 @@ existingVivaDetails: any[] = [];
            vivaDate: vivaMaster.vivaDate == null? null :this.getNameToNumDate(vivaMaster.vivaDate) ,
            salary: vivaMaster.salary
         });
-
+  console.log("details row for viva master id is",this.rows)
 
         // ============================
         // PATCH DIMENSION MARKS
         // ============================
 
-        vivaDetails.forEach((detail: any) => {
+        vivaDetails?.forEach((detail: any) => {
 
           const dimensionId = detail.dimensionDtlId;
 

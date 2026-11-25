@@ -1,0 +1,953 @@
+/* =========================================================
+   JOB POST – STANDARDIZED UI STYLES (Angular 10 / SCSS)
+   ========================================================= */
+
+/* ---------- Design Tokens ---------- */
+$jp-primary: #0f6a7d;
+$jp-primary-dark: #0a4c5a;
+$jp-primary-light: #e6f4f7;
+$jp-border: #d9dee5;
+$jp-border-strong: #c3cad3;
+$jp-text: #2d3748;
+$jp-text-muted: #6b7280;
+$jp-bg: #f7f9fb;
+$jp-bg-card: #ffffff;
+$jp-radius: 8px;
+$jp-radius-sm: 6px;
+$jp-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+$jp-shadow-md: 0 4px 10px rgba(16, 24, 40, 0.08);
+$jp-gap: 14px;
+
+/* ---------- Header ---------- */
+.jobpost-header {
+    height: 46px;
+    border: none;
+    background: linear-gradient(90deg, $jp-primary 0%, $jp-primary-dark 100%);
+    border-radius: $jp-radius $jp-radius 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-shadow: $jp-shadow-sm;
+}
+
+.jobpost-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.2px;
+}
+
+.jobpost-title i {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.jobpost-toggle {
+    cursor: pointer;
+}
+
+/* ---------- Form Wrapper ---------- */
+.jp-form-wrapper {
+    background: $jp-bg;
+    border: 1px solid $jp-border;
+    border-top: none;
+    border-radius: 0 0 $jp-radius $jp-radius;
+    padding: 18px;
+}
+
+.jp-form {
+    margin: 0;
+}
+
+.jp-row {
+    row-gap: 18px;
+}
+
+.jp-col {
+    padding: 0 8px;
+}
+
+/* ---------- Field Groups ---------- */
+.jp-field-group {
+    background: $jp-bg-card;
+    border: 1px solid $jp-border;
+    border-radius: $jp-radius;
+    padding: 16px;
+    box-shadow: $jp-shadow-sm;
+}
+
+.jp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: $jp-gap;
+}
+
+.jp-field:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- Labels ---------- */
+.jp-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: $jp-text;
+    margin: 0;
+    letter-spacing: 0.15px;
+}
+
+.jp-required {
+    color: #e53e3e;
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+/* ---------- Inputs ---------- */
+.jp-input {
+    font-size: 13px;
+    color: $jp-text;
+    background-color: #fff;
+    border: 1px solid $jp-border-strong;
+    border-radius: $jp-radius-sm;
+    padding: 7px 10px;
+    height: 36px;
+    line-height: 1.4;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+}
+
+.jp-input:focus {
+    border-color: $jp-primary;
+    box-shadow: 0 0 0 3px rgba(15, 106, 125, 0.14);
+    outline: none;
+}
+
+.jp-input::placeholder {
+    color: #9aa4b2;
+    font-size: 12.5px;
+}
+
+.jp-textarea {
+    height: auto;
+    min-height: 36px;
+    resize: vertical;
+    padding-top: 8px;
+}
+
+/* ---------- Select2 wrappers ---------- */
+.jp-select {
+    width: 100%;
+    font-size: 13px;
+    display: block;
+}
+
+.jp-select ::ng-deep .select2-container {
+    width: 100% !important;
+}
+
+.jp-select ::ng-deep .select2-selection--single {
+    height: 36px !important;
+    border: 1px solid $jp-border-strong !important;
+    border-radius: $jp-radius-sm !important;
+    background-color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 10px !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.jp-select ::ng-deep .select2-selection--single:focus,
+.jp-select ::ng-deep .select2-selection--single:focus-within {
+    border-color: $jp-primary !important;
+    box-shadow: 0 0 0 3px rgba(15, 106, 125, 0.14) !important;
+    outline: none !important;
+}
+
+.jp-select ::ng-deep .select2-selection__rendered {
+    line-height: 34px !important;
+    font-size: 13px !important;
+    color: $jp-text !important;
+    padding-left: 0 !important;
+}
+
+.jp-select ::ng-deep .select2-selection__placeholder {
+    color: #9aa4b2 !important;
+    font-size: 12.5px !important;
+}
+
+.jp-select ::ng-deep .select2-selection__arrow {
+    height: 34px !important;
+}
+
+/* ---------- Job Title + Add Button Row ---------- */
+.jp-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.jp-input-row .jp-input {
+    flex: 1;
+}
+
+.jp-add-btn {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid $jp-primary;
+    background: $jp-primary;
+    color: #fff;
+    border-radius: $jp-radius-sm;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.jp-add-btn:hover {
+    background: $jp-primary-dark;
+    border-color: $jp-primary-dark;
+}
+
+.jp-add-btn:active {
+    transform: scale(0.97);
+}
+
+.jp-add-btn i {
+    font-size: 12px;
+}
+
+/* ---------- Inline Salary + Check ---------- */
+.jp-inline-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.jp-inline-row .jp-input {
+    flex: 1 1 140px;
+}
+
+.jp-check-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.jp-check-label {
+    font-size: 12.5px;
+    color: $jp-text;
+    margin: 0;
+}
+
+.jp-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ---------- Array Sections (containers) ---------- */
+.containers {
+    background: $jp-bg-card;
+    border: 1px solid $jp-border;
+    border-radius: $jp-radius;
+    padding: 0 14px 14px 14px;
+    margin-bottom: 16px;
+    box-shadow: $jp-shadow-sm;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.jp-section {
+    /* placeholder for section spacing if needed */
+}
+
+.jp-section-title {
+    background: $jp-primary;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-radius: $jp-radius-sm;
+    margin: 12px 0 14px 0;
+    letter-spacing: 0.3px;
+}
+
+.jp-array-item {
+    margin-bottom: 10px;
+}
+
+.jp-array-label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.jp-array-input-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.jp-array-input-row .jp-input {
+    flex: 1;
+}
+
+.jp-remove-btn {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e53e3e;
+    background: #e53e3e;
+    color: #fff;
+    border-radius: $jp-radius-sm;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.jp-remove-btn:hover {
+    background: #c53030;
+    border-color: #c53030;
+}
+
+.jp-remove-btn i {
+    font-size: 11px;
+}
+
+/* ---------- Add row button ---------- */
+.jp-add-row-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: $jp-primary-light;
+    color: $jp-primary-dark;
+    border: 1px solid $jp-primary;
+    border-radius: $jp-radius-sm;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    margin-top: 4px;
+}
+
+.jp-add-row-btn:hover {
+    background: $jp-primary;
+    color: #ffffff;
+}
+
+.jp-add-row-btn i {
+    font-size: 11px;
+}
+
+/* =========================================================
+   LIST VIEW
+   ========================================================= */
+.jp-list-wrapper {
+    background: $jp-bg;
+    border: 1px solid $jp-border;
+    border-radius: 0 0 $jp-radius $jp-radius;
+    padding: 16px;
+    min-height: 460px;
+}
+
+.jp-list-topbar {
+    margin-bottom: 10px;
+}
+
+.jp-list-row {
+    margin-bottom: 10px;
+}
+
+.jp-list-bottombar {
+    margin-top: 10px;
+}
+
+.jp-table-responsive {
+    height: 700px;
+    overflow: auto;
+    border: 1px solid $jp-border;
+    border-radius: $jp-radius-sm;
+    background: #ffffff;
+}
+
+.jp-table {
+    margin-bottom: 0;
+    font-size: 13px;
+    color: $jp-text;
+}
+
+.jp-thead th {
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+    background: $jp-primary-dark !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 12.5px;
+    text-align: left;
+    padding: 9px 10px;
+    border-color: $jp-primary-dark !important;
+    white-space: nowrap;
+}
+
+.jp-table tbody td {
+    padding: 8px 10px;
+    vertical-align: middle;
+    border-color: $jp-border !important;
+}
+
+.jp-table tbody tr:nth-child(even) {
+    background: #fafbfc;
+}
+
+.jp-table tbody tr:hover {
+    background: $jp-primary-light;
+}
+
+.jp-table a {
+    color: $jp-primary;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.jp-table a:hover {
+    text-decoration: underline;
+}
+
+.jp-badge {
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.jp-badge-finished {
+    background-color: #e0a800;
+}
+
+.jp-show-cell {
+    color: $jp-primary;
+    cursor: pointer;
+}
+
+.jp-show-cell i {
+    font-size: 15px;
+}
+
+.jp-show-cell:hover {
+    color: $jp-primary-dark;
+}
+
+.jp-action-cell {
+    white-space: nowrap;
+}
+
+.jp-finish-btn {
+    margin-right: 4px;
+}
+
+/* =========================================================
+   DETAILS VIEW
+   ========================================================= */
+.jp-details-wrapper {
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 15px;
+}
+
+.jp-details-header {
+    width: 100%;
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: $jp-radius;
+    box-shadow: $jp-shadow-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-left: 4px solid $jp-primary;
+}
+
+.jp-details-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: $jp-text;
+}
+
+.jp-back-btn {
+    background: $jp-primary;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    padding: 9px 18px;
+    border-radius: $jp-radius-sm;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: $jp-shadow-sm;
+    transition: background-color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.jp-back-btn:hover {
+    background: $jp-primary-dark;
+}
+
+.jp-details-card {
+    width: 100%;
+    background: #ffffff;
+    padding: 18px 20px;
+    border-radius: $jp-radius;
+    box-shadow: $jp-shadow-md;
+    margin-top: 20px;
+    border: 1px solid $jp-border;
+}
+
+.jp-details-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $jp-primary-dark;
+    margin-bottom: 8px;
+}
+
+.jp-info-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 8px 14px;
+    align-items: center;
+}
+
+.jp-info-label {
+    font-weight: 600;
+    color: $jp-text;
+    font-size: 13px;
+    padding: 4px 0;
+}
+
+.jp-info-value {
+    color: $jp-text;
+    font-size: 13px;
+    padding: 4px 0;
+}
+
+.jp-deadline {
+    color: #e53e3e;
+    font-weight: 700;
+}
+
+.jp-details-group {
+    margin-bottom: 18px;
+}
+
+.jp-details-group:last-child {
+    margin-bottom: 0;
+}
+
+.jp-details-group hr {
+    margin: 6px 0 10px 0;
+    border-top: 1px solid $jp-border;
+}
+
+.jp-details-list {
+    padding-left: 20px;
+    margin: 0;
+    font-size: 13px;
+    color: $jp-text;
+}
+
+.jp-details-list li {
+    margin-bottom: 5px;
+}
+
+.jp-company-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: $jp-text;
+    margin-bottom: 10px;
+}
+
+.jp-company-block {
+    margin-bottom: 10px;
+}
+
+.jp-company-block h6 {
+    font-size: 13px;
+    font-weight: 700;
+    color: $jp-text;
+    margin-bottom: 4px;
+}
+
+.jp-company-block p {
+    font-size: 13px;
+    color: $jp-text-muted;
+    margin: 0;
+}
+
+/* =========================================================
+   MODAL TEMPLATE
+   ========================================================= */
+.jp-modal-header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.jp-modal-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $jp-text;
+    margin: 0;
+}
+
+.jp-modal-close {
+    margin-top: 0;
+}
+
+.jp-modal-card-body {
+    min-height: 460px;
+    margin-bottom: -20px;
+    padding: 8px 0;
+}
+
+.jp-modal-table {
+    height: 500px;
+}
+
+.jp-switch .form-check-input {
+    cursor: pointer;
+}
+
+.jp-modal-status {
+    padding: 8px 4px;
+}
+
+.jp-modal-actions {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.jp-btn-cancel {
+    color: $jp-text-muted;
+}
+
+.jp-btn-save {
+    background: $jp-primary !important;
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.jp-btn-save:hover {
+    background: $jp-primary-dark !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media screen and (max-width: 767px) {
+    .jp-form-wrapper {
+        padding: 12px;
+    }
+
+    .jp-col {
+        padding: 0 4px;
+    }
+
+    .jp-field-group {
+        padding: 12px;
+    }
+
+    .jp-details-wrapper {
+        width: 94%;
+        margin-left: 3%;
+    }
+
+    .jp-info-grid {
+        grid-template-columns: 130px 1fr;
+    }
+
+    .jp-add-row-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .jp-array-input-row {
+        flex-wrap: nowrap;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .jp-array-input-row {
+        flex-wrap: nowrap;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// HERE IS THE LAST 
+/* =========================================================
+   JOB POST FORM – CARD LAYOUT + UNIFORM FIELD HEIGHT
+   ========================================================= */
+$jp-field-h: 38px;
+$jp-field-radius: 6px;
+$jp-field-border: #c3cad3;
+
+#subForm {
+
+  /* ---------- 1. CARD PER COLUMN ---------- */
+  .jp-col-card {
+    background: #fff;
+    border: 1px solid #d9dee5;
+    border-radius: 10px;
+    padding: 14px 14px 6px 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+  }
+
+  /* ---------- 2. LABEL + FIELD ON ONE ROW ---------- */
+  .form-group.clearfix {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    float: none !important;
+
+    &[hidden] { display: none !important; }
+
+    /* label */
+    > label.control-label {
+      flex: 0 0 32%;
+      width: 32% !important;
+      max-width: 32%;
+      float: none !important;
+      margin: 0 !important;
+      padding: 0 8px 0 0 !important;
+      font-size: 12.5px;
+      line-height: 1.25;
+      text-align: right;
+      color: #2d3748;
+      white-space: normal;
+    }
+
+    /* field wrapper (col-sm-9 / col-sm-7 / col-sm-6 …) */
+    > [class*="col-"]:not(.btn) {
+      flex: 1 1 auto;
+      width: auto !important;
+      max-width: none;
+      float: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* inner divs that had inline styles */
+    > [class*="col-"] > div[style] {
+      width: 100% !important;
+      float: none !important;
+      padding: 0 !important;
+      font-size: 13px;
+    }
+
+    /* the little “+” button – square, same height as fields */
+    > .btn {
+      flex: 0 0 $jp-field-h;
+      width: $jp-field-h !important;
+      height: $jp-field-h !important;
+      min-height: $jp-field-h !important;
+      margin: 0 0 0 6px !important;
+      padding: 0 !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: $jp-field-radius;
+      line-height: 1;
+    }
+
+    /* inline “Set New?” checkbox group */
+    > .form-check {
+      flex: 0 0 auto;
+      margin: 0 0 0 8px !important;
+    }
+  }
+
+  /* ---------- 3. ALL TEXT-LIKE FIELDS = SAME HEIGHT ---------- */
+  input.form-control,
+  select.form-control,
+  .form-control {
+    box-sizing: border-box;
+    width: 100% !important;
+    height: $jp-field-h !important;
+    min-height: $jp-field-h !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    color: #2d3748;
+    background-color: #fff;
+    border: 1px solid $jp-field-border !important;
+    border-radius: $jp-field-radius !important;
+    box-shadow: none !important;
+  }
+
+  input[type="date"].form-control {
+    padding: 6px 8px !important;
+  }
+
+  .form-control:focus {
+    border-color: #0f6a7d !important;
+    box-shadow: 0 0 0 3px rgba(15, 106, 125, .15) !important;
+  }
+
+  /* textarea keeps its own (multi-line) height */
+  textarea.form-control {
+    height: auto !important;
+    min-height: 78px !important;
+    padding: 8px 10px !important;
+    line-height: 1.4 !important;
+    resize: vertical;
+  }
+
+  /* ---------- 4. NG-SELECT2 = SAME HEIGHT AS INPUTS ---------- */
+  ng-select2 {
+    display: block !important;
+    width: 100% !important;
+    height: $jp-field-h !important;
+    line-height: normal !important;   /* kills the inline line-height: 3 */
+    font-size: 13px !important;
+
+    .select2-container,
+    .select2-container--default {
+      width: 100% !important;
+      height: $jp-field-h !important;
+    }
+
+    .select2-selection--single {
+      height: $jp-field-h !important;
+      min-height: $jp-field-h !important;
+      display: flex;
+      align-items: center;
+      border: 1px solid $jp-field-border !important;
+      border-radius: $jp-field-radius !important;
+      background: #fff;
+      box-shadow: none !important;
+      padding: 0 8px !important;
+    }
+
+    .select2-selection--single .select2-selection__rendered {
+      line-height: normal !important;
+      padding: 0 22px 0 2px !important;
+      font-size: 13px !important;
+      color: #2d3748;
+    }
+
+    .select2-selection--single .select2-selection__placeholder {
+      color: #6b7280;
+      line-height: normal !important;
+    }
+
+    .select2-selection--single .select2-selection__arrow {
+      height: $jp-field-h !important;
+      top: 0 !important;
+      right: 6px !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .select2-selection--single .select2-selection__clear {
+      line-height: normal !important;
+      height: auto !important;
+      margin-top: 0 !important;
+    }
+
+    /* focus ring */
+    .select2-container--focus .select2-selection--single,
+    .select2-container--open .select2-selection--single {
+      border-color: #0f6a7d !important;
+      box-shadow: 0 0 0 3px rgba(15, 106, 125, .15) !important;
+    }
+  }
+
+  /* ---------- 5. SMALL SCREENS ---------- */
+  @media (max-width: 767px) {
+    .form-group.clearfix {
+      flex-wrap: wrap;
+
+      > label.control-label {
+        flex: 0 0 100%;
+        width: 100% !important;
+        max-width: 100%;
+        text-align: left;
+        padding-bottom: 4px !important;
+      }
+
+      > [class*="col-"]:not(.btn) { flex: 1 1 100%; }
+    }
+  }
+}
+
+
+
+
+

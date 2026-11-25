@@ -691,3 +691,259 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////====================================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>/////
+
+/* =========================================================
+   CANDIDATE FILTER + MAIL SENDER  –  Professional Card
+   ========================================================= */
+
+/* =================================================================
+   Candidate Filter — exactly 2 rows via CSS Grid
+   Uses `display: contents` to flatten Bootstrap wrappers so each
+   form-group becomes a direct grid item → 4 per row × 2 rows.
+   ================================================================= */
+
+.jp-filter-card {
+  --jp-h: 34px;
+  --jp-radius: 6px;
+  --jp-border: #c3cad3;
+  --jp-primary: #0f6a7d;
+  --jp-primary-dark: #0a4c5a;
+  --jp-text: #2d3748;
+  --jp-muted: #6b7280;
+
+  /* clean white card — replaces the harsh #B8DAFF */
+  background: #ffffff !important;
+  border: 1px solid #d9dee5 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 3px rgba(16,24,40,.06),
+              0 1px 2px rgba(16,24,40,.04);
+  padding: 14px 16px !important;
+  margin: 0 !important;
+}
+
+/* --- The <form> becomes the 4-column grid --- */
+.jp-filter-card form {
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 2fr)     /* Job Title / Mail Type */
+    minmax(0, 1.4fr)   /* From Exp  / Date */
+    minmax(0, 1.4fr)   /* To Exp    / Time+Send */
+    minmax(90px, 0.9fr); /* Search   / Send mail */
+  gap: 10px 14px;      /* <-- row gap | column gap */
+  align-items: center;
+}
+
+/* --- Flatten every wrapper between form and form-group --- */
+.jp-filter-card form,
+.jp-filter-card form > div,
+.jp-filter-card form > div > .row,
+.jp-filter-card form > div > .row > [class*="col-"] {
+  /* form stays grid, the rest become transparent to layout */
+}
+.jp-filter-card form > div,
+.jp-filter-card form > div > .row,
+.jp-filter-card form > div > .row > [class*="col-"] {
+  display: contents !important;
+}
+
+/* --- Each form-group = one grid cell --- */
+.jp-filter-card .form-group.clearfix {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  min-width: 0;
+}
+
+/* --- hidden form-groups must stay hidden despite display:flex --- */
+.jp-filter-card .form-group[hidden] {
+  display: none !important;
+}
+
+/* --- Label: fixed width so all rows align --- */
+.jp-filter-card .form-group > label.control-label {
+  flex: 0 0 88px !important;
+  width: 88px !important;
+  max-width: 88px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: right;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--jp-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: none !important;
+}
+
+/* --- Field wrappers --- */
+.jp-filter-card .form-group > div[class*="col-"] {
+  flex: 1 1 0;
+  min-width: 0;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+
+.jp-filter-card .form-group > div[class*="col-"] > div[style] {
+  width: 100% !important;
+  float: none !important;
+  padding: 0 !important;
+  font-size: 13px;
+}
+
+/* --- Inputs & native selects: one height --- */
+.jp-filter-card input.form-control,
+.jp-filter-card select.form-control,
+.jp-filter-card select {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: var(--jp-h) !important;
+  min-height: var(--jp-h) !important;
+  padding: 4px 10px !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  color: var(--jp-text);
+  background: #fff;
+  border: 1px solid var(--jp-border) !important;
+  border-radius: var(--jp-radius) !important;
+  box-shadow: none !important;
+}
+.jp-filter-card input.form-control:focus,
+.jp-filter-card select:focus {
+  border-color: var(--jp-primary) !important;
+  box-shadow: 0 0 0 3px rgba(15,106,125,.15) !important;
+  outline: none;
+}
+.jp-filter-card input[type="date"],
+.jp-filter-card input[type="time"] {
+  padding: 2px 6px !important;
+}
+
+/* --- ng-select2 matches input height --- */
+.jp-filter-card ng-select2 {
+  display: block !important;
+  width: 100% !important;
+  line-height: normal !important;
+  border: none !important;
+  background: transparent !important;
+}
+.jp-filter-card ng-select2 .select2-container,
+.jp-filter-card ng-select2 .select2-container--default,
+.jp-filter-card ng-select2 .select2-selection--single {
+  width: 100% !important;
+  height: var(--jp-h) !important;
+  min-height: var(--jp-h) !important;
+  box-sizing: border-box !important;
+}
+.jp-filter-card ng-select2 .select2-selection--single {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 8px !important;
+  border: 1px solid var(--jp-border) !important;
+  border-radius: var(--jp-radius) !important;
+  background: #fff !important;
+}
+.jp-filter-card ng-select2 .select2-selection--single .select2-selection__rendered {
+  line-height: normal !important;
+  padding: 0 20px 0 2px !important;
+  font-size: 13px !important;
+}
+.jp-filter-card ng-select2 .select2-selection--single .select2-selection__placeholder {
+  color: var(--jp-muted);
+}
+.jp-filter-card ng-select2 .select2-selection--single .select2-selection__arrow {
+  height: var(--jp-h) !important;
+  top: 0 !important;
+  right: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* --- Buttons --- */
+.jp-filter-card .btn {
+  height: var(--jp-h) !important;
+  min-height: var(--jp-h) !important;
+  padding: 0 10px !important;
+  font-size: 12.5px !important;
+  line-height: 1 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--jp-radius) !important;
+  white-space: nowrap;
+}
+.jp-filter-card .btn.btn-primary {
+  background: var(--jp-primary) !important;
+  border-color: var(--jp-primary) !important;
+  color: #fff !important;
+}
+.jp-filter-card .btn.btn-primary:hover,
+.jp-filter-card .btn.btn-primary:focus {
+  background: var(--jp-primary-dark) !important;
+  border-color: var(--jp-primary-dark) !important;
+  box-shadow: 0 0 0 3px rgba(15,106,125,.18) !important;
+}
+
+/* --- Time+Send cell: button hugs the time input --- */
+.jp-filter-card .form-group > div[class*="col-"] + div[class*="col-"] {
+  flex: 0 0 auto;
+}
+.jp-filter-card .form-group > div[class*="col-"] + div[class*="col-"] .btn {
+  padding: 0 8px !important;
+  font-size: 12px !important;
+}
+
+/* --- Responsive: stack on small screens --- */
+@media (max-width: 991px) {
+  .jp-filter-card form {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .jp-filter-card .form-group > label.control-label {
+    flex: 0 0 110px !important;
+    width: 110px !important;
+    max-width: 110px !important;
+  }
+}
+@media (max-width: 575px) {
+  .jp-filter-card .form-group {
+    flex-wrap: wrap;
+  }
+  .jp-filter-card .form-group > label.control-label {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left;
+    margin-bottom: 4px !important;
+  }
+}
+
+
+
+.jp-filter-card {
+  background: #f2f8f9 !important;   /* 5% of your #0f6a7d */
+  border: 1px solid #d5e6e9 !important;
+}
+
+
+// .jp-filter-card {
+//   background: #f7f5f2 !important;   /* warm paper */
+//   border: 1px solid #e4ded6 !important;
+// }

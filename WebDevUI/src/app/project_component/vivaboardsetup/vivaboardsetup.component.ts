@@ -95,7 +95,7 @@ export class VivaBoardSetupComponent implements OnInit {
             boardName: new FormControl(null, Validators.required),
             location: new FormControl(null, Validators.required),
             vivaDate: new FormControl(this.today, Validators.required),
-            vivaMarks: new FormControl(null, Validators.required),
+            vivaMarks: new FormControl(null),
 
             vivaBoardDetails: this.formBuilder.array([]),
         })
@@ -218,12 +218,20 @@ export class VivaBoardSetupComponent implements OnInit {
         this._dataservice.postMultipleModel(this._saveUrl, ModelsArray)
             .subscribe(response => {
                 this.res = response;
+                console.log("Befor ModelsArray===== of save this.res ========>", this.res)
                 this.resmessage = this.res.resdata.message;
                 if (this.res.resdata.resstate) {
                     this.toastr.success('Save Successfully');
                     window.location.reload();
                     this.reset();
-
+                }
+                 else {
+                    if (this.res.resdata.mstrRes == '-1') {
+                        this.toastr.error('Viva Board can not be duplicated');
+                    }
+                    else {
+                        this.toastr.error(this.resmessage);
+                    }
                 }
             }, error => {
                 console.log(error);

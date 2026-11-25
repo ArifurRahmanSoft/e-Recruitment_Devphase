@@ -104,7 +104,7 @@ export class JobPostComponent implements OnInit {
     this.getAllDepartment();
     this.getAllPost();
     this.getAllBusinessType();
-    this.getAllLocation();
+    //this.getAllLocation();
 
 
 
@@ -1067,6 +1067,30 @@ export class JobPostComponent implements OnInit {
       return; // User canceled, do nothing
     }
     var apiUrl = this._dltUrl;
+    var param = { id: jobId }
+    this._dataservice.deleteById(apiUrl, jobId)
+      .subscribe(
+        response => {
+          this.res = response;
+          if (this.res.success = true) {
+            this.toastr.error("Delete Successfully");
+            window.location.reload();
+          }
+          console.log("Delete Item Is", this.res)
+        }, error => {
+          console.log(error);
+        });
+  }
+
+
+    public _clstUrl: string = 'ereqdropdown/finishClose';
+  finishCloseJobPostById(jobId: string) {
+    debugger
+    const confirmDelete = confirm("Are you sure you want to Finish this item?");
+    if (!confirmDelete) {
+      return; // User canceled, do nothing
+    }
+    var apiUrl = this._clstUrl;
     var param = { id: jobId }
     this._dataservice.deleteById(apiUrl, jobId)
       .subscribe(

@@ -703,7 +703,7 @@ input[id^="instution"] {
   display: inline-block;
   white-space: nowrap;
   color: red;
-  animation: marquee 10s linear infinite;
+  animation: marquee 25s linear infinite;
   font-weight: bold;
   font-size: 16px;
 }
@@ -740,3 +740,64 @@ input[id^="instution"] {
   transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
+
+
+
+
+
+
+
+///////ADD LETER CHANGE FOR UI
+
+/* =========================================================
+   ACADEMIC QUALIFICATION RESPONSIVE CARD
+   ========================================================= */
+
+/* Remove Button */
+.jp-remove-btn {
+    height: 32px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Add More Button */
+.jp-add-btn {
+    background-color: #0f6a7d !important;
+    border-color: #0f6a7d !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+}
+
+.jp-add-btn:hover {
+    background-color: #0a4c5a !important;
+}
+
+
+/* Card Header */
+.jp-label-header {
+    background-color: #0f6a7d; /* Standardized Teal */
+    color: #ffffff;
+    padding: 12px 16px;
+}
+
+.jp-label-header h6 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+
+
+
+
+////////////////////////
+
+

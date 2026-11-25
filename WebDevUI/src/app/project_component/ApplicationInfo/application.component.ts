@@ -86,7 +86,7 @@ export class ApplicationComponent implements OnInit {
     { value: '1', label: 'Written' },
     { value: '2', label: 'Viva' },
     { value: '3', label: 'Written & Viva' },
-    { value: '4', label: 'Offer Latter' },
+    //{ value: '4', label: 'Offer Latter' },
   ]
   QuotationStatus: Array<{ value: string, label: string }> = [
     { value: '1', label: 'Estimate InComing' },
